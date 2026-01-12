@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured-blog-posts": {
+      "type": "featured-blog-post",
+      "blocks": {
+        "post-1": {
+          "type": "featured_post",
+          "settings": {
+            "article": "news/georgia-king-on-family-and-her-island-home"
+          }
+        },
+        "post-2": {
+          "type": "featured_post",
+          "settings": {
+            "article": "news/georgia-king-on-family-and-her-island-home-2"
+          }
+        },
+        "post-3": {
+          "type": "featured_post",
+          "settings": {
+            "article": "news/georgia-king-on-family-and-her-island-home-1"
+          }
+        }
+      },
+      "block_order": [
+        "post-1",
+        "post-2",
+        "post-3"
+      ],
+      "settings": {
+        "color_scheme": "custom-3",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "show_author": true,
+        "show_date": true,
+        "show_comment_count": false,
+        "show_subheading": true,
+        "show_read_more": true
+      }
+    },
+    "blog": {
+      "type": "blog",
+      "custom_css": [
+        ".articles__tag {color: #808080;}",
+        ".articles__tag.selected {color: var(--gsc-text-color-100);}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "full-screen",
+        "section_spacing_top": 60,
+        "section_spacing_bottom": 96,
+        "show_title": true,
+        "show_rss_icon": false,
+        "show_tag_navigation": true,
+        "img_ratio": 0.7,
+        "show_tags": true,
+        "show_author": true,
+        "show_date": true,
+        "show_comment_count": false,
+        "show_subheading": true,
+        "show_read_more": true,
+        "article_per_page": 6,
+        "article_per_row": 3,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "pagination_type": "load-button-pagination"
+      }
+    },
+    "61baac88-8b57-467d-b178-44c2d030be72": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16927599919318__61baac88-8b57-467d-b178-44c2d030be72-title-1": {
+          "type": "title",
+          "settings": {
+            "title": "Want 10% off yout order?",
+            "heading_size": "h1"
+          }
+        },
+        "template--16927599919318__61baac88-8b57-467d-b178-44c2d030be72-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Get 10% off yout next online purchase, when you sign up to our VIP Newsletter today!",
+            "body_size": "body3"
+          }
+        },
+        "template--16927599919318__61baac88-8b57-467d-b178-44c2d030be72-subscribe-1": {
+          "type": "subscribe",
+          "settings": {
+            "input_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16927599919318__61baac88-8b57-467d-b178-44c2d030be72-title-1",
+        "template--16927599919318__61baac88-8b57-467d-b178-44c2d030be72-text-1",
+        "template--16927599919318__61baac88-8b57-467d-b178-44c2d030be72-subscribe-1"
+      ],
+      "settings": {
+        "color_scheme": "custom-2",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "desktop_height": 320,
+        "mobile_height": 420,
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "desktop_content_position": "align-items: center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 804,
+        "content_spacing": 16,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none"
+      }
+    }
+  },
+  "order": [
+    "featured-blog-posts",
+    "blog",
+    "61baac88-8b57-467d-b178-44c2d030be72"
+  ]
+}

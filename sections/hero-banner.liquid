@@ -1,0 +1,86 @@
+<!-- hero-banner.liquid -->
+
+{%- liquid
+  assign desktop_img = section.settings.hero_desktop_img
+  assign mobile_img = section.settings.hero_mobile_img
+  assign banner_link = section.settings.hero_banner_link
+-%}
+
+<style>
+  .hero-banner-{{ section.id }} {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-banner-{{ section.id }} img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
+
+<section class="hero-banner-{{ section.id }}">
+  {% if banner_link != blank %}
+    <a href="{{ banner_link }}" class="hero-banner__link">
+  {% endif %}
+    <picture>
+      {% if desktop_img != blank %}
+        <source media="(min-width: 768px)" srcset="
+          {{ desktop_img | img_url: '2048x' }} 2048w,
+          {{ desktop_img | img_url: '1024x' }} 1024w,
+          {{ desktop_img | img_url: '768x' }} 768w
+        " sizes="100vw">
+      {% endif %}
+      {% if mobile_img != blank %}
+        <img src="{{ mobile_img | img_url: '768x' }}"
+          srcset="
+            {{ mobile_img | img_url: '2048x' }} 2048w,
+            {{ mobile_img | img_url: '1024x' }} 1024w,
+            {{ mobile_img | img_url: '768x' }} 768w
+          "
+          sizes="100vw"
+          alt="Hero Banner Image">
+      {% else %}
+        <img src="{{ desktop_img | img_url: '768x' }}"
+          srcset="
+            {{ desktop_img | img_url: '2048x' }} 2048w,
+            {{ desktop_img | img_url: '1024x' }} 1024w,
+            {{ desktop_img | img_url: '768x' }} 768w
+          "
+          sizes="100vw"
+          alt="Hero Banner Image">
+      {% endif %}
+    </picture>
+  {% if banner_link != blank %}
+    </a>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_desktop_img",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_mobile_img",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "url",
+      "id": "hero_banner_link",
+      "label": "Banner Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

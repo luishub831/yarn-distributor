@@ -1,0 +1,160 @@
+{%- liquid
+  assign cart_items = cart.items
+-%}
+<style>
+  .error-message-container {
+    background-color: #ffe5e9; 
+    color: #895152;
+    font-size: x-small; 
+    padding: 10px; 
+    margin: 10px 0; 
+    gap: 5px;
+    border: 1px solid #895152;
+    border-radius: 4px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+    display: none; 
+  }
+  #error-message-container{
+    max-width: 270px;
+  }
+</style>
+  {%- for item in cart_items -%}
+    {% if item.variant.inventory_management == 'shopify' or item.variant.inventory_management == 'null' %}
+      {% assign max_inventory = item.variant.inventory_quantity %}
+    {% else %}
+      {% assign max_inventory = 'untracked' %}
+    {% endif %}
+
+    <div class="custom-sidebar-cart__item cart-item__grid"
+      bss-b2b-cart-item-key="{{ item.key }}"
+      data-cart-item-key="{{ item.key }}"
+      data-product-id="{{ item.product.id }}"
+      data-product-name="{{ item.product.title }}"
+      data-product-parent-id="{{ item.product.metafields.custom.main_product | default: item.product.id | split: '/' | last }}"
+      data-product-parent-name="{{ all_products[item.product.metafields.custom.main_product].title | default: item.product.title }}"
+      data-min-qty="{{ all_products[item.product.metafields.custom.main_product].metafields.custom.min_qty | default: item.product.metafields.custom.min_qty }}">
+    <div class="cart-item__remove-button">
+      <button class="custom-sidebar-cart__remove-btn" onclick="removeItem('{{ item.key }}')">{% render 'icon', icon_name: 'trash', class: 'cart-item__remove-button-icon' %}</button>
+    </div>   
+    {% assign image = item.image %}
+    {% assign ref_id = "0" %}
+    <div class='cart-item__link'>
+      {% if ref_id != "0" %}
+      <ul class="ref-preview-img- custom_loading"style="padding-left: 5px;" data-ref-id="{{ref_id}}" data-varId="{{item.variant.id}}"> 
+        <span class="loading"> Loading product images </span>
+      </ul>
+      {% else %}
+        <a
+          href='{{ item.url }}'
+          class='shape shape--default cart-item__image-wrapper'
+          aria-hidden='true'
+          tabindex='-1'
+          aria-label='{{ item.product.title }}'
+        >
+          <img
+            class='image cart-item__image cart-item__image-custom lazyload {% if enable_multiply %}multiply-mode__target{% endif %}'
+            src='{{ image | image_url: width: 320 }}'
+          >
+          {% comment %}
+            {% render 'image-attributes', image: image, size: 'medium' %}
+          {% endcomment %}
+        </a>
+        {% endif %}
+        <div class='cart-item-checkmark hidden' data-cart-item-checkmark>
+          <svg class='cart-item-checkmark__icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'>
+            <circle class="cart-item-checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="cart-item-checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
+      </div>
+    <div class="cart-item__pay-info">
+      <div class="cart-item__info">
+        <a href='{{ item.url }}' class='cart-item__name' aria-label='{{ item.product.title }}'>
+          <span class="cart-item__name-label">{{ item.product.title | escape }}</span>
+        </a>
+        
+        <div class="custom-sidebar-cart__item-properties">
+          {%- if item.product.has_only_default_variant == false -%}
+            {%- for option in item.options_with_values -%}
+              {% if option.value != blank %}
+                <div class='cart-item__option'>{{ option.name }}: {{ option.value }}</div>
+              {% endif %}
+            {%- endfor -%}
+          {%- endif -%}
+          {%- for property in item.properties -%}
+            {% if property[1] != blank and property[1] != empty  and property[0] != 'ColourSwatchImage' %}
+              <div class='cart-item__option'>{{ property[0] }}: {{ property[1] }}</div>
+            {% else %}
+              <p class="custom-swatch-image-url-cdn" style="display:none" swatchImage="{{property[1]}}">{{property[1]}}</p>
+            {% endif %}
+          {%- endfor -%}          
+        </div>
+
+        <div class="custom-sidebar-cart_cost-wrap cart-item__cost-wrap">
+          <div class="custom-sidebar-cart__item-qty cart-item-quantity  cart-item-quantity--with-rounded-buttons">
+            <button class="custom-sidebar-cart__qty-btn cart-item-quantity__button minusButton" onclick="updateQuantity('{{ item.key }}', -1)" 
+              {% if item.product.tags contains 'COLLECTION_Accessories' and item.quantity == item.product.metafields.custom.min_qty %}
+              disabled
+              {% endif %}>
+              <svg class="cart-item-quantity__button-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">        
+                <path d="M7 12H17" stroke-width="2" stroke="currentColor"></path>
+              </svg>
+            </button>
+            <input type="number" 
+              value="{{ item.quantity }}" 
+              min="1"
+              class="custom-sidebar-cart__qty-input cart-item-quantity__input"
+              data-max-inventory="{{ max_inventory }}" 
+              data-key="{{ item.key }}"
+              onchange="updateQuantity('{{ item.key }}', parseInt(this.value), true)">
+            <button class="custom-sidebar-cart__qty-btn cart-item-quantity__button plusButton" onclick="updateQuantity('{{ item.key }}', 1)">
+              <svg class="cart-item-quantity__button-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">        
+                <path class="x-line" d="M7 12H17" stroke-width="2" stroke="currentColor"></path>        
+                <path class="y-line" d="M12 7L12 17" stroke-width="2" stroke="currentColor"></path>      
+              </svg>
+            </button>
+          </div>
+
+          <div class="custom-cart-item__price-wrap">
+            <div class='cart-item__totals' data-cart-item-totals>
+              <div class='cart-item__totals-price' bss-b2b-final-line-price>
+                <div class='cart-item__price {% if item.original_price != item.final_price %}cart-item__price--column{% elsif item.variant.available and item.unit_price_measurement %}cart-item__price--column{% endif %}'>
+                  <span class="saso-cart-item-line-price" data-key="{{item.key}}">
+                    <div class='cart-item__price-item'>
+                      {{ item.final_line_price | money }}
+                    </div>
+                  </span>
+            
+                  {%- if item.original_line_price != item.final_line_price -%}
+                    <div class='cart-item__price-item--small cart-item__price-item--old'>
+                      {{ item.original_line_price | money }}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if item.variant.available and item.unit_price_measurement -%}
+                    <div class='cart-item__price-item--small'>
+                      ({{ item.variant.unit_price | money }}
+                      <span aria-hidden='true'>/</span>
+                      {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                        {{- item.variant.unit_price_measurement.reference_value -}}
+                      {%- endif -%}
+                      {{ item.variant.unit_price_measurement.reference_unit }})
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+
+              {% render 'icon',
+                icon_name: 'spinner',
+                class: 'loading-spinner cart-item__totals-loading-spinner'
+              %}
+            </div>
+          </div>
+
+          <div class="error-message-container" style="display: none;"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}

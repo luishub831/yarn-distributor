@@ -1,0 +1,191 @@
+{%- liquid
+  assign options = block.settings
+  assign option_type = options.option_type
+  assign primary_option_name_downcase = settings.primary_option_name | downcase | strip
+  assign secondary_option_names = settings.secondary_option_names | newline_to_br | split: '<br />'
+
+  assign block_option_name_downcase = block.settings.option_name | downcase
+  assign information_drawer_button_label = block.settings.information_drawer_button_label
+-%}
+
+{%- if product != blank and product.has_only_default_variant == false -%}
+  <variant-picker
+    class='product-variant-picker block-{{ block.id }} {% if block.settings.option_type contains 'dropdown' %}product-variant-picker--with-dropdown-options{% endif %}'
+    data-section='{{ sectionId }}'
+    data-section-id-without-prefix='{{ section.id }}'
+    data-product-id='{{ product.id }}'
+    data-url='{{ product.url }}'
+    id='product-variant-picker-{{ sectionId }}'
+    data-type='{% if block.settings.option_type contains 'dropdown' %}dropdown{% else %}checkbox{% endif %}'
+    {% if product.selected_or_first_available_variant %}
+      data-selected-variant-id='{{ product.selected_or_first_available_variant.id }}'
+    {% endif %}
+    data-update-url='{% if sectionId contains 'MainSection' %}true{% else %}false{% endif %}'
+    {{ block.shopify_attributes }}
+  >
+    <div class='product-variant-picker__form'>
+      {%- for option in product.options_with_values -%}
+        <div data-variant-picker-option-inputs>
+          {{ option.name }}
+
+          {%- for value in option.values -%}
+            <div>
+              <input
+                type='radio'
+                id='{{ sectionId }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}'
+                name='{{ option.name }}'
+                value='{{ value | escape }}'
+                form='product-form-{{ product.id }}-{{ sectionId }}'
+                {% if option.selected_value == value %}
+                  checked
+                {% endif %}
+              >
+              {{ value }}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class='product-variant-picker__list'>
+      {%- for option in product.options_with_values -%}
+        {% liquid
+          assign option_name_downcase = option.name | downcase
+          assign color_option_picker_type = ''
+
+          assign is_swatch = false
+          assign is_primary_swatch = false
+
+          if option_name_downcase == primary_option_name_downcase
+            assign is_primary_swatch = true
+            assign is_swatch = true
+          else
+            for secondary_option_name in secondary_option_names
+              assign secondary_option_name_downcase = secondary_option_name | downcase | strip
+
+              if secondary_option_name_downcase == option_name_downcase
+                assign is_swatch = true
+
+                break
+              endif
+            endfor
+          endif
+
+          if is_swatch
+            if is_primary_swatch
+              assign color_option_picker_type = block.settings.primary_swatch_option_type
+            else
+              assign color_option_picker_type = block.settings.secondary_swatch_option_type
+            endif
+          endif
+        %}
+
+        <div data-variant-picker-option-labels>
+          {%- if is_swatch -%}
+            {%-
+              render 'product-color-swatches',
+              product: product,
+              option: option,
+              color_option_picker_type: color_option_picker_type,
+              is_primary_swatch: is_primary_swatch,
+              block: block,
+              sectionId: sectionId,
+            -%}
+          {%- elsif block.settings.option_type contains 'button' -%}
+            <div class='product-variant-picker__option-label'>
+              {{ option.name }}
+              {%- assign option_name_downcase = option.name | downcase -%}
+
+              {%- if block_option_name_downcase == option_name_downcase -%}
+                <sidebar-button>
+                  <button
+                    data-sidebar-button
+                    data-sidebar-id='product-variant-picker-popup-{{ product.id }}-{{ sectionId }}'
+                    class='unstyled-button product-variant-picker__popup-toggle'
+                  >
+                    <span>{{ information_drawer_button_label }}</span>
+                  </button>
+                </sidebar-button>
+              {%- endif -%}
+            </div>
+            
+            <div class='product-variant-picker__pill-list'>
+              {%- for value in option.values -%}
+                {% for variant in product.variants %}
+                  {%if variant.title == value %} 
+                     <label
+                      data-id="{{ variant.id }}"
+                      for='{{ sectionId }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}'
+                      class='pill pill--large {% if option.selected_value == value %} selected {% endif %} {% if option_type == 'button-outline' %} pill--outline {% elsif option_type == 'button-solid' %} pill--solid {% elsif option_type == 'button-underline' %} pill--underline {% endif %}'
+                      {% if option.selected_value == value %}
+                        tabindex='0'
+                      {% endif %}
+                    >
+                      <span class='pill__label'>{{ value }}</span>
+                    </label>
+                   
+                  {% endif %}
+                {% endfor %}
+               
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <div class='product-variant-picker__option-label'>
+              {{ option.name }}
+
+              {%- assign option_name_downcase = option.name | downcase -%}
+
+              {%- if block_option_name_downcase == option_name_downcase -%}
+                <sidebar-button>
+                  <button
+                    data-sidebar-button
+                    data-sidebar-id='product-variant-picker-popup-{{ product.id }}-{{ sectionId }}'
+                    class='unstyled-button product-variant-picker__popup-toggle'
+                  >
+                    <span>{{ information_drawer_button_label }}</span>
+                  </button>
+                </sidebar-button>
+              {%- endif -%}
+            </div>
+            <dropdown-opener
+              class='variant-picker-dropdown__toggle {% if option_type == 'dropdown-underline' %} variant-picker-dropdown__toggle--underline {% elsif option_type == 'dropdown-outline' %} variant-picker-dropdown__toggle--outline {% elsif option_type == 'dropdown-solid' %} variant-picker-dropdown__toggle--solid {% endif %}'
+              data-aria-expanded='false'
+              data-float-element-id='variant-picker-dropdown-{{ sectionId }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}'
+              data-trigger='click'
+              tabindex='0'
+            >
+              <div class='variant-picker-dropdown__toggle-label' data-dropdown-variant-picker-label>
+                <span>{{ option.selected_value }}</span>
+              </div>
+              {%- render 'icon', icon_name: 'chevron', class: 'variant-picker-dropdown__chevron' -%}
+            </dropdown-opener>
+            <float-element
+              class='variant-picker-dropdown {% if option_type == 'dropdown-underline' %} variant-picker-dropdown--underline {% endif %}'
+              aria-hidden='true'
+              id='variant-picker-dropdown-{{ sectionId }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}'
+              data-placement='bottom-start'
+              data-main-axis-offset='{% if settings.edge_rounding_degree != 'none' %} 8{% else %} 0{% endif %}'
+            >
+              <template>
+                <div class='variant-picker-dropdown__body'>
+                  {%- for value in option.values -%}
+                    <label
+                      class='variant-picker-dropdown__item {% if option.selected_value == value %} selected {% endif %}'
+                      for='{{ sectionId }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}'
+                      tabindex='0'
+                      data-focus-trap-target
+                    >
+                      <span>{{ value }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </template>
+            </float-element>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    <script data-variant-picker-variants type='application/json'>
+      {{ product.variants | json }}
+    </script>
+  </variant-picker>
+{%- endif -%}

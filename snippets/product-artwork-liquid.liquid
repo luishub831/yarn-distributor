@@ -1,0 +1,67 @@
+{%- liquid
+  assign options = block.settings
+  assign block_style = options.style
+  assign title = options.title | default: options.page.title
+  assign custom_liquid = block.settings.custom_liquid
+  assign custom_icon_image = options.custom_icon_image
+  assign icon = options.icon
+-%}
+
+<style>
+
+
+</style>
+{%- if options.style contains 'collapsible' -%}
+
+
+  <accordeon-component
+    class='accordeon-plus-v2 accordeon-plus accordeon-plus--bottom-bordered accordeon-plus--top-bordered product-content-tab product-content-tab--collapsible-row'
+    data-aria-expanded='{% if block_style == 'collapsible_row_open' %}true{% else %}false{% endif %}'
+    {{ block.shopify_attributes }}
+  >
+    <accordeon-btn class='accordeon-plus__btn accordeon-plus__btn--small product-content-tab__btn' tabindex='0'>
+      {%- if custom_icon_image != blank -%}
+        <img
+          class='accordeon-plus__btn-icon lazyload'
+          {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+        >
+      {%- elsif icon != 'none' -%}
+        {% render 'icon-pack', icon: icon, class: 'accordeon-plus__btn-icon' %}
+      {%- endif -%}
+      {{ title }}
+     <div class="icon-chevron"> {%- render 'icon', icon_name: 'chevron', class: 'accordeon-plus__icon' -%}</div>
+    </accordeon-btn>
+    <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+      <div class='accordeon-plus__content product-content-tab__content' data-accordeon-content>
+        <div class='rte product-content-tab__rte product-content-tab__text'>
+
+        
+
+          {{ block.settings.description  }}
+  <p style="text-align:center; margin-top:20px;">   <img src="{{ block.settings.image | img_url }}" style="margin:0 auto; width:200px;"></p>
+        </div>
+      </div>
+    </div>
+  </accordeon-component>
+{%- else -%}
+  <div class='product-content-tab' {{ block.shopify_attributes }}>
+    {% if title != blank %}
+      <div class='product-content-tab__title'>
+        {%- if custom_icon_image != blank -%}
+          <img
+            class='product-content-tab__title-icon lazyload'
+            {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+          >
+        {%- elsif icon != 'none' -%}
+          {% render 'icon-pack', icon: icon, class: 'product-content-tab__title-icon' %}
+        {%- endif -%}
+        {{ title }}
+      </div>
+    {% endif %}
+    {% if custom_liquid != blank %}
+      <div class='rte product-content-tab__rte product-content-tab__text'>
+        {{ custom_liquid }}
+      </div>
+    {% endif %}
+  </div>
+{%- endif -%}

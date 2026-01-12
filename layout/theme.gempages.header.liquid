@@ -1,0 +1,149 @@
+<!doctype html>
+<html class='no-js' lang='{{ request.locale.iso_code }}'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name='theme-color' content='{{ settings.default_color_scheme }}'>
+    {%- if page_description -%}
+      <meta name='description' content='{{ page_description | escape }}'>
+    {%- endif -%}
+    {%- if settings.favicon != blank -%}
+      <link rel='icon' type='image/png' href='{{ settings.favicon | image_url: width: 32, height: 32 }}'>
+    {%- endif -%}
+    {% render 'meta-tags' %}
+    <link rel='canonical' href='{{ canonical_url }}'>
+    <link rel='preconnect' href='https://cdn.shopify.com' crossorigin>
+    <link rel='preconnect' href='https://fonts.shopifycdn.com' crossorigin>
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %}
+        &ndash; tagged "{{ current_tags | join: ', ' }}"
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %}
+        &ndash; {{ shop.name -}}
+      {%- endunless -%}
+    </title>
+
+    {% render 'css-variables' %}
+    {{ 'index.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'index.css' | asset_url | stylesheet_tag: preload: true }}
+    {% render 'fonts' %}
+    {{ content_for_header }}
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:3916316,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+    <!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5189439.js"></script>
+<!-- End of HubSpot Embed Code -->
+  {% render 'gp-head' %}
+</head>
+  <body class='color-{{ settings.default_color_scheme }} theme-with-{{ settings.edge_rounding_degree }}-rounded-style {% if settings.edge_rounding_degree != 'none' %} theme-with-rounded-style{% endif %}'>
+    {% if template.name == 'password' %}
+      {% sections 'password-header-group' %}
+    {% else %}
+      {% sections 'main-header-group' %}
+      {% sections 'main-aside-group' %}
+    {% endif %}
+
+    <main>
+      {{ content_for_layout }}
+    </main>
+
+    {%- if template.name == 'password' -%}
+      
+    {%- else -%}
+      
+    {%- endif -%}
+
+    {%- if settings.show_back_to_top_button -%}
+      
+    {%- endif -%}
+
+    <div class='body-overlay' id='BodyOverlay'></div>
+
+    
+
+    
+
+    <div id='Portal'></div>
+   
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js')
+
+      if (Shopify.designMode) {
+        document.documentElement.className = `${document.documentElement.className} is-editor-mode`
+      }
+
+      window.lazySizesConfig = {
+        loadMode: 1,
+      }
+    </script>
+    
+    <script src='{{ 'index.js' | asset_url }}' defer='defer'></script>
+  
+
+
+
+
+{% if content_for_header contains 'bss-b2b-cp' %}{% endif %}</body>
+</html>
+
+<script>
+    // setTimeout(() => {
+    //   let button = document.querySelector('product-form .product-form__btns [type="submit"]')
+    //   if(button) {
+    //       button.addEventListener("click", () => {
+    //           setTimeout(() => {
+    //               BSS_B2B.handleCartCheckoutBtn(JSON.parse($('#bss-b2b-store-data').html()))
+    //           }, 2000)
+    //       })
+    //   }
+    // }, 1000)
+  const fixMiniCart = () =>{
+   console.log("BSS fix mini cart")
+    setTimeout(()=>{
+      BSS_B2B.handleCartCheckoutBtn(JSON.parse($('#bss-b2b-store-data').html()), false, false)
+      BSS_B2B.cart.fixer(JSON.parse($('#bss-b2b-store-data').html()), false, false)
+     },1000)
+  }
+  const fixCart = () =>{
+    const targetNode = document.querySelector("[data-cart-page-items]");
+    const config = { attributes: true, childList: true, subtree: true };
+    const callback = (mutationList, observer) => {
+      for (const mutation of mutationList) {
+        if(mutation.target.classList.contains("cart-item__totals")){
+            BSS_B2B.cart.fixer(JSON.parse($('#bss-b2b-store-data').html()), false, false)
+        }
+      }
+    };
+    const observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
+  }
+  if (typeof BSS_B2B !== 'undefined') {
+    if (window.location.pathname === '/cart') {
+      fixCart()
+    }
+  }
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WCTZV4VB');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5189439.js"></script>
+<!-- End of HubSpot Embed Code -->

@@ -1,0 +1,1365 @@
+{
+  "sections": {
+    "35abde66-b33a-4178-b3ef-5bba319784ba": {
+      "type": "slideshow",
+      "blocks": {
+        "image_banner_KqN7rR": {
+          "type": "image-banner",
+          "settings": {
+            "color_scheme": "white",
+            "desktop_img": "shopify:\/\/shop_images\/Slider-3_e01e2d50-d566-4678-965c-3859e949cafe.jpg",
+            "mobile_img": "shopify:\/\/shop_images\/Slider-3-Mobile_53e33adc-a03f-455b-b848-50568e0efe1b.jpg",
+            "desktop_overlay_opacity": 0,
+            "mobile_overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body3",
+            "desktop_content_position": "align-items:flex-end;justify-content:center;",
+            "desktop_content_align": "center",
+            "content_max_width": 528,
+            "content_spacing": 24,
+            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_align": "center",
+            "desktop_content_background": "none",
+            "mobile_content_background": "none",
+            "btn_text": "",
+            "btn_url": "",
+            "btn_style": "solid",
+            "extra_btn_text": "SHOP WORKWEAR POLOS",
+            "extra_btn_url": "shopify:\/\/collections\/all-naidoc-2025-bamboo-polos",
+            "extra_btn_style": "solid"
+          }
+        },
+        "image_banner_p67e4T": {
+          "type": "image-banner",
+          "settings": {
+            "color_scheme": "white",
+            "desktop_img": "shopify:\/\/shop_images\/Slider-1_b6ef4b9b-637b-4a95-b5f2-23648e684fa2.jpg",
+            "mobile_img": "shopify:\/\/shop_images\/Slider-1-Mobile_54ec76be-5b3a-4cc7-8835-9dde906c2a52.jpg",
+            "desktop_overlay_opacity": 0,
+            "mobile_overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body3",
+            "desktop_content_position": "align-items:flex-end;justify-content:center;",
+            "desktop_content_align": "center",
+            "content_max_width": 528,
+            "content_spacing": 32,
+            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_align": "center",
+            "desktop_content_background": "none",
+            "mobile_content_background": "none",
+            "btn_text": "ADD YOUR LOGO",
+            "btn_url": "shopify:\/\/collections\/all-naidoc-2025-polos",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        },
+        "image_banner_jV9bRm": {
+          "type": "image-banner",
+          "settings": {
+            "color_scheme": "white",
+            "desktop_img": "shopify:\/\/shop_images\/Slider-4_300a94ff-8173-485a-abdb-d136332c7124.jpg",
+            "mobile_img": "shopify:\/\/shop_images\/Slider-4-Mobile_a2ee2196-0c9b-4a35-bcc5-45762572dd53.jpg",
+            "desktop_overlay_opacity": 0,
+            "mobile_overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body3",
+            "desktop_content_position": "align-items:flex-end;justify-content:center;",
+            "desktop_content_align": "center",
+            "content_max_width": 528,
+            "content_spacing": 24,
+            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_align": "center",
+            "desktop_content_background": "none",
+            "mobile_content_background": "none",
+            "btn_text": "SHOP CUSTOM ESSENCE POLOS",
+            "btn_url": "shopify:\/\/collections\/all-naidoc-2025-essence-polos",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        },
+        "image_banner_9pY4Gg": {
+          "type": "image-banner",
+          "settings": {
+            "color_scheme": "white",
+            "desktop_img": "shopify:\/\/shop_images\/Slider-8_49a5b252-1e90-43b1-989d-a01922d57f35.jpg",
+            "mobile_img": "shopify:\/\/shop_images\/Slider-8-Mobile_ee24389d-412f-4d9a-97c5-5f918a072091.jpg",
+            "desktop_overlay_opacity": 0,
+            "mobile_overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body3",
+            "desktop_content_position": "align-items:flex-end;justify-content:center;",
+            "desktop_content_align": "center",
+            "content_max_width": 528,
+            "content_spacing": 32,
+            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_align": "center",
+            "desktop_content_background": "none",
+            "mobile_content_background": "none",
+            "btn_text": "CONTACT US",
+            "btn_url": "shopify:\/\/pages\/contact",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "image_banner_KqN7rR",
+        "image_banner_p67e4T",
+        "image_banner_jV9bRm",
+        "image_banner_9pY4Gg"
+      ],
+      "custom_css": [
+        ".image-banner {background: none !important;}",
+        ".body0 {font-family: Inter; font-size: 28px; font-weight: 700; line-height: 40px; letter-spacing: 0em; text-align: left;}",
+        ".btn {background: #f7c156; color: #222222;}",
+        "@media (max-width: 980px) {.btn {display: block; } .image-banner__media {background: #f0f0f0; } .image-banner__btns {} br {display: none; } .media.image-banner__media {} .image-banner__content {top: 10px; } .body0 {font-family: Inter; font-size: 20px; font-weight: 700; line-height: 28px; letter-spacing: 0em; text-align: left; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "desktop_height": 740,
+        "mobile_height": 400,
+        "auto_adjust_height": true,
+        "enable_circle_navigation": true,
+        "enable_arrows_navigation": true,
+        "arrows_style": "corner-buttons",
+        "show_arrows_on_hover": false,
+        "transition_style": "fade",
+        "enable_autoplay": true,
+        "autoplay_interval": 10,
+        "show_button_for_autoplay": true
+      }
+    },
+    "image_banner_KpxNLg": {
+      "type": "image-banner",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "secondary",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 15,
+        "section_spacing_bottom": 9,
+        "desktop_img": "shopify:\/\/shop_images\/Banner_4b2e8415-6d5b-492f-94d6-6220cc4b0117.png",
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "caption": "",
+        "title": "",
+        "text": "",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "desktop_content_position": "align-items:center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 528,
+        "content_spacing": 116,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none",
+        "btn_text": "",
+        "btn_url": "",
+        "btn_style": "solid",
+        "extra_btn_text": "",
+        "extra_btn_url": "",
+        "extra_btn_style": "solid"
+      }
+    },
+    "multiple_collections_QBmQjC": {
+      "type": "multiple-collections",
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 61,
+        "section_spacing_bottom": 48,
+        "section_layout": "carousel",
+        "title": "Order Now To Receive In Time For   NAIDOC Week",
+        "heading_size": "h2",
+        "alignment": "center",
+        "collection_list": [
+          "all-naidoc-2025-bamboo-polos",
+          "all-naidoc-2025-standard-polos",
+          "all-naidoc-2025-essence-polos",
+          "naidoc-2025-merch"
+        ],
+        "img_ratio": "default",
+        "product_card_align": "left",
+        "cards_to_show": 25,
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": true,
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_navigation_on_hover": true
+      }
+    },
+    "multicolumn_3rUdkR": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_with_icon_4r7ciF": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Step 1",
+            "text": "<h4>Select Your Product<\/h4><p>Browse our large selection of apparel and merch featuring First Nations artworks<\/p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "column_with_icon_Q4Ltna": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Step 2",
+            "text": "<h4>Upload Your Logo<\/h4><p>Upload and select your logo placement<\/p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "column_with_icon_UyBV4U": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Step 3",
+            "text": "<h5>Select Your Sizes and Quantity<\/h5><p>Select your sizes and meet our low MOQ's<\/p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "column_with_icon_NrDDGy": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Step 4",
+            "text": "<h5>Approve Your Mock Up<\/h5><p>Within 24 hours, our team will send you a mock-up of your design. Production will not start until it is approved<\/p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_with_icon_4r7ciF",
+        "column_with_icon_Q4Ltna",
+        "column_with_icon_UyBV4U",
+        "column_with_icon_NrDDGy"
+      ],
+      "settings": {
+        "classcss": "",
+        "color_scheme": "secondary",
+        "enable_background_around_container": true,
+        "container_size": "large",
+        "section_spacing_top": 44,
+        "section_spacing_bottom": 50,
+        "section_mobile_spacing_top": 30,
+        "section_mobile_spacing_bottom": 30,
+        "title": "Start Customising In Four Simple Steps",
+        "title_icon_alignment": "left",
+        "title_icon_size": 51,
+        "text": "",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "center",
+        "column_heading_size": "h7",
+        "column_body_size": "body4",
+        "column_alignment": "center",
+        "column_title_color": "#106572",
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 24,
+        "mobile_space_between_cards": 16,
+        "content_spacing": 24,
+        "show_column_background": true,
+        "enable_carousel_on_mobile": true,
+        "btn_text": "Find Out More",
+        "btn_url": "shopify:\/\/pages\/ordering-process",
+        "btn_style": "solid"
+      }
+    },
+    "collage_TiWdGN": {
+      "type": "collage",
+      "blocks": {
+        "rich_text_Aacm7K": {
+          "type": "rich-text",
+          "settings": {
+            "color_scheme": "primary",
+            "desktop_columns": 1,
+            "desktop_rows": 1,
+            "caption": "Step 1",
+            "title": "Select Your Product",
+            "text": "Some text here",
+            "text2": "",
+            "heading_size": "h5",
+            "body_size": "body3",
+            "content_align": "center",
+            "btn_text": "",
+            "btn_url": "",
+            "btn_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_Aacm7K"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "custom-3",
+        "container_size": "large",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 48,
+        "title": "Start Customising Your Uniforms In Four Simple Steps",
+        "heading_size": "h5",
+        "alignment": "center",
+        "columns": 4,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": true
+      }
+    },
+    "multiple_collections_7Jq9jp": {
+      "type": "multiple-collections",
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 51,
+        "section_spacing_bottom": 52,
+        "section_layout": "carousel",
+        "title": "Shop Our Best Sellers",
+        "heading_size": "h2",
+        "alignment": "center",
+        "collection_list": [
+          "all-polos",
+          "scrubs",
+          "workwear",
+          "naidoc-week-2024-merch"
+        ],
+        "img_ratio": "default",
+        "product_card_align": "left",
+        "cards_to_show": 16,
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": true,
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_navigation_on_hover": true
+      }
+    },
+    "7d7f3b78-a198-4be2-814c-fd3197e33a88": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16927600050390__7d7f3b78-a198-4be2-814c-fd3197e33a88-heading-1": {
+          "type": "heading",
+          "settings": {
+            "title": "About Yarn Corp",
+            "heading_size": "h2"
+          }
+        },
+        "template--16927600050390__7d7f3b78-a198-4be2-814c-fd3197e33a88-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Support Artists With Every Purchase And Empower Your Team With Australia’s Premier First Nations Uniform Collection<\/p><p><\/p>",
+            "text_2": "",
+            "text_3": "",
+            "body_size": "body2"
+          }
+        },
+        "template--16927600050390__7d7f3b78-a198-4be2-814c-fd3197e33a88-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "btn_text": "Order For Your Team",
+            "btn_url": "https:\/\/corporate.yarn.com.au\/pages\/corporateuniforms",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16927600050390__7d7f3b78-a198-4be2-814c-fd3197e33a88-heading-1",
+        "template--16927600050390__7d7f3b78-a198-4be2-814c-fd3197e33a88-text-1",
+        "template--16927600050390__7d7f3b78-a198-4be2-814c-fd3197e33a88-buttons-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "custom-3",
+        "enable_background_around_container": false,
+        "container_size": "large",
+        "section_spacing_top": 26,
+        "section_spacing_bottom": 50,
+        "section_mobile_spacing_top": 30,
+        "section_mobile_spacing_bottom": 40,
+        "content_align": "center",
+        "mobile_content_align": "center"
+      }
+    },
+    "560e895f-009c-43b9-acef-236cd697c102": {
+      "type": "images-with-text",
+      "blocks": {
+        "template--16729789989105__560e895f-009c-43b9-acef-236cd697c102-1681819747fe4ef4d1-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Custom-uniforms-Mobile_e8abca29-c41a-4bea-a8c7-526a7ab020fd.jpg"
+          }
+        },
+        "image_wD7aLJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Image-112_c4596eac-f50a-45ca-b56c-22bf9b4ea21e.jpg"
+          }
+        },
+        "image_7CJHxy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DSC_7119_2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16729789989105__560e895f-009c-43b9-acef-236cd697c102-1681819747fe4ef4d1-0",
+        "image_wD7aLJ",
+        "image_7CJHxy"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 30,
+        "section_spacing_bottom": 70,
+        "content_layout": "left",
+        "image_layout": "collage",
+        "img_ratio": 1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "About Us",
+        "heading": "Australia's Leading Supplier For First Nations Workwear, Merchandise & Promotional Goods",
+        "body": "<p>Yarn Corp is driven by our vision to create inclusive, high quality workwear that celebrates the vibrant culture of First Nations Australia in the modern workplace. As the corporate division of Yarn Marketplace, our uniforms and merch not only elevate your brand, organisation or company, but show respect and support for Indigenous culture. <\/p>",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 560,
+        "first_button_text": "Find Out More",
+        "first_button_link": "shopify:\/\/pages\/about",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "collage_KFPN4Q": {
+      "type": "collage",
+      "blocks": {
+        "image_Mgrq3k": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "image": "shopify:\/\/shop_images\/Mobile_0b822637-1fb4-4544-905c-2ac4af3cff58.jpg",
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "Case Study: Amiga Montessori",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "Read Case Study",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "image_RE9KGw": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "image": "shopify:\/\/shop_images\/Image-1_8d31e68e-c5e3-41ff-bbb0-8085cb297bd0.jpg",
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "Case Study: Amiga Montessori",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "Read Case Study",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "image_Mgrq3k",
+        "image_RE9KGw"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 48,
+        "title": "Case Studies: Yarn Corp In The Community",
+        "heading_size": "h2",
+        "alignment": "center",
+        "columns": 4,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false
+      }
+    },
+    "instagram_jUpE7D": {
+      "type": "instagram",
+      "blocks": {
+        "post_pt7hqm": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Image-1_bd5b1aac-5ad6-4df2-8dc1-c8f307ce51ad.jpg",
+            "link": "shopify:\/\/pages\/amiga-montessori-case-study",
+            "icon": "none"
+          }
+        },
+        "post_WFPwVb": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Image-1_8d31e68e-c5e3-41ff-bbb0-8085cb297bd0.jpg",
+            "link": "shopify:\/\/pages\/boodjari-moort-case-study",
+            "icon": "none"
+          }
+        },
+        "post_E8LKJ4": {
+          "type": "post",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Veritas_House_4_2_0de4dc6c-25ff-492b-a2e1-fa3ea87e1db5.jpg",
+            "link": "",
+            "icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "post_pt7hqm",
+        "post_WFPwVb",
+        "post_E8LKJ4"
+      ],
+      "settings": {
+        "color_scheme": "secondary",
+        "container_size": "page-width",
+        "section_spacing_top": 70,
+        "section_spacing_bottom": 67,
+        "title": "Case Studies: Yarn Corp In The Community",
+        "text": "Hear from some of the teams who have benefitted from introducing First Nations uniforms into their workplace.",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "center",
+        "img_ratio": 1,
+        "desktop_columns": 2,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": true,
+        "btn_text": "View Case Studies",
+        "btn_url": "shopify:\/\/pages\/case-studies",
+        "btn_style": "solid"
+      }
+    },
+    "slideshow_gwCVi4": {
+      "type": "slideshow",
+      "blocks": {
+        "image_banner_H6pzCd": {
+          "type": "image-banner",
+          "settings": {
+            "color_scheme": "white",
+            "desktop_img": "shopify:\/\/shop_images\/TEAM-THREADS-WEBSLIDER-FINAL.jpg",
+            "mobile_img": "shopify:\/\/shop_images\/TEAM-THREADS-WEBSLIDER-FINAL-MOBILE.jpg",
+            "desktop_overlay_opacity": 0,
+            "mobile_overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body3",
+            "desktop_content_position": "align-items:flex-end;justify-content:center;",
+            "desktop_content_align": "center",
+            "content_max_width": 528,
+            "content_spacing": 32,
+            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_align": "center",
+            "desktop_content_background": "none",
+            "mobile_content_background": "none",
+            "btn_text": "Learn More",
+            "btn_url": "shopify:\/\/pages\/sponsorship",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        },
+        "image_banner_gUFYHi": {
+          "type": "image-banner",
+          "settings": {
+            "color_scheme": "white",
+            "desktop_img": "shopify:\/\/shop_images\/CUSTOM-JOURNEY.jpg",
+            "mobile_img": "shopify:\/\/shop_images\/CUSTOM-JOURNEY-MOB.jpg",
+            "desktop_overlay_opacity": 0,
+            "mobile_overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body3",
+            "desktop_content_position": "align-items:flex-end;justify-content:center;",
+            "desktop_content_align": "center",
+            "content_max_width": 528,
+            "content_spacing": 32,
+            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_align": "center",
+            "desktop_content_background": "none",
+            "mobile_content_background": "none",
+            "btn_text": "Learn More",
+            "btn_url": "shopify:\/\/pages\/ordering-process",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        },
+        "image_banner_URAprw": {
+          "type": "image-banner",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_img": "shopify:\/\/shop_images\/Slider-7_bd78477f-a10e-4efe-ae02-263e1aaeaabd.jpg",
+            "mobile_img": "shopify:\/\/shop_images\/Slider-7-Mobile_78edd114-6d0d-48c6-9be8-9de03c80366f.jpg",
+            "desktop_overlay_opacity": 0,
+            "mobile_overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body3",
+            "desktop_content_position": "align-items:flex-end;justify-content:center;",
+            "desktop_content_align": "center",
+            "content_max_width": 528,
+            "content_spacing": 32,
+            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_align": "center",
+            "desktop_content_background": "none",
+            "mobile_content_background": "none",
+            "btn_text": "ORDER FOR YOUR TEAM",
+            "btn_url": "shopify:\/\/collections\/all-naidoc-2025-bamboo-polos",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "image_banner_H6pzCd",
+        "image_banner_gUFYHi",
+        "image_banner_URAprw"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 31,
+        "section_spacing_bottom": 30,
+        "desktop_height": 960,
+        "mobile_height": 780,
+        "auto_adjust_height": true,
+        "enable_circle_navigation": true,
+        "enable_arrows_navigation": true,
+        "arrows_style": "corner-buttons",
+        "show_arrows_on_hover": false,
+        "transition_style": "fade",
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_button_for_autoplay": true
+      }
+    },
+    "multicolumn_8mKJDq": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_hb9rjf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DSC_3128-2_15a97dd1-2ff4-4a16-bca1-174ed4191213.jpg",
+            "desktop_image_width": 100,
+            "mobile_image_width": 100,
+            "image_ratio": 1,
+            "title": "Custom Uniforms 5-6 Weeks",
+            "text": "<p>Shop a wide range of styles for every team and industry <\/p>",
+            "link_text": "Shop Custom Uniforms",
+            "link_url": "https:\/\/corporate.yarn.com.au\/pages\/corporateuniforms"
+          }
+        },
+        "column_T4df7c": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DSC_6499_2_23ced4fe-f5b4-4958-9f18-a3d409d20ff5.jpg",
+            "desktop_image_width": 100,
+            "mobile_image_width": 100,
+            "image_ratio": 1,
+            "title": "Express Range 5-10 Days",
+            "text": "<p>Fast turnaround on in-house custom merchandise<\/p>",
+            "link_text": "Shop Express Options",
+            "link_url": "https:\/\/corporate.yarn.com.au\/pages\/branded-merch"
+          }
+        },
+        "column_C3Tj3B": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/0M2A2319_1_52cf135c-0dfe-4e0a-a99d-3a76ec7b6c1e.jpg",
+            "desktop_image_width": 100,
+            "mobile_image_width": 100,
+            "image_ratio": 1,
+            "title": "Bespoke Art (Timeframe Subject To Artist)",
+            "text": "<p>Original, commissioned artwork for a project that is uniquely yours<\/p>",
+            "link_text": "Find Out More",
+            "link_url": "https:\/\/corporate.yarn.com.au\/pages\/bespoke"
+          }
+        },
+        "column_TtXRNX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DSC_9824_163d744a-833d-4202-8757-d0cff6ab992f.jpg",
+            "desktop_image_width": 100,
+            "mobile_image_width": 100,
+            "image_ratio": 1,
+            "title": "Off The Shelf (Immediate Dispatch)",
+            "text": "<p>Access the best pricing with our bulk ordering option<\/p>",
+            "link_text": "Shop Off The Shelf",
+            "link_url": "https:\/\/corporate.yarn.com.au\/collections\/all-from-the-shelf-products"
+          }
+        }
+      },
+      "block_order": [
+        "column_hb9rjf",
+        "column_T4df7c",
+        "column_C3Tj3B",
+        "column_TtXRNX"
+      ],
+      "settings": {
+        "classcss": "",
+        "color_scheme": "secondary",
+        "enable_background_around_container": true,
+        "container_size": "large",
+        "section_spacing_top": 30,
+        "section_spacing_bottom": 24,
+        "section_mobile_spacing_top": 30,
+        "section_mobile_spacing_bottom": 32,
+        "title": "A Solution For Any Timeline",
+        "title_icon_alignment": "left",
+        "title_icon_size": 51,
+        "text": "We offer a range of solutions to suit your project and timeline. Whether you need our full comprehensive service for custom uniforms and bespoke designs or a fast-track option with express uniforms and merchandise, we have the right fit for you. <strong>Explore our order processes to find the best solution for your project.<\/strong>",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "center",
+        "column_heading_size": "h7",
+        "column_body_size": "body3",
+        "column_alignment": "center",
+        "column_title_color": "#222222",
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 24,
+        "mobile_space_between_cards": 3,
+        "content_spacing": 23,
+        "show_column_background": true,
+        "enable_carousel_on_mobile": true,
+        "btn_text": "Start Planning",
+        "btn_url": "https:\/\/corporate.yarn.com.au\/pages\/ordering-process",
+        "btn_style": "solid"
+      }
+    },
+    "66d677db-f419-4997-9d31-680b9b2a3fb9": {
+      "type": "logo-list",
+      "blocks": {
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-2": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-03.png",
+            "image_width": 70,
+            "link": ""
+          }
+        },
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-20.png",
+            "image_width": 70,
+            "link": ""
+          }
+        },
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-24.png",
+            "image_width": 70,
+            "link": ""
+          }
+        },
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-04.png",
+            "image_width": 70,
+            "link": ""
+          }
+        },
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-5": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-21.png",
+            "image_width": 70,
+            "link": ""
+          }
+        },
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-7": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-22.png",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-15.png",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "ad37d05b-3839-44bf-80ec-37cb9b37cd87": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-13.png",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "06094bf0-147e-4f8f-984a-c586822e4b8c": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST-18_bae72d88-cf1b-44d3-b541-16db2ff8c630.jpg",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "2df6203a-1db6-48b7-8a85-dbea5e0eccbc": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST-07_5e899c72-5c26-4139-be9a-949a4af13d9c.jpg",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "a9d8ad32-314c-4793-8ec5-fcd8f3f14e05": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-19.png",
+            "image_width": 100,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-2",
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-1",
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-3",
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-4",
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-5",
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-7",
+        "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-8",
+        "ad37d05b-3839-44bf-80ec-37cb9b37cd87",
+        "06094bf0-147e-4f8f-984a-c586822e4b8c",
+        "2df6203a-1db6-48b7-8a85-dbea5e0eccbc",
+        "a9d8ad32-314c-4793-8ec5-fcd8f3f14e05"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 768px) {carousel-component {--gsc-carousel-max-width: 100% !important; }}",
+        "@media (max-width: 980px) {.logo-list__title {font-size: 22px; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "page-width",
+        "section_spacing_top": 100,
+        "section_spacing_bottom": 100,
+        "title": "Brands We've Worked With",
+        "heading_size": "h2",
+        "alignment": "center",
+        "section_layout": "carousel",
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 28,
+        "mobile_space_between_cards": 12
+      }
+    },
+    "images_with_text_ixVJ97": {
+      "type": "images-with-text",
+      "blocks": {
+        "image_ERNUbF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Testimonial_f45e63fb-609a-4a52-9591-6e5e318c3550.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_ERNUbF"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 95,
+        "content_layout": "right",
+        "image_layout": "collage",
+        "img_ratio": 1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "Jenni - Manly State School",
+        "heading": "",
+        "body": "<h5>\"The feedback from our staff for the “Our Future Together” NAIDOC 2024 Essence Polo Shirts has been excellent... Our school community has responded well, and as a staff we love the new shirts, including our logo which has been perfectly printed. We would highly recommend YARN as a supplier of staff polo shirts.<\/h5>",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 700,
+        "first_button_text": "View Testimonials",
+        "first_button_link": "shopify:\/\/pages\/testimonials",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "instagram_NxJxwz": {
+      "type": "instagram",
+      "blocks": {
+        "post_wkmeEx": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Caitlin_f88d30a3-46b8-4614-a337-c0962865b192.jpg",
+            "link": "shopify:\/\/metaobjects\/artist\/caitlin-trindall",
+            "icon": "none"
+          }
+        },
+        "post_tKbqzQ": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Luke_Mallie37.jpg",
+            "link": "shopify:\/\/metaobjects\/artist\/luke-mallie",
+            "icon": "none"
+          }
+        },
+        "post_GcyGTk": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Amy-Kilby.jpg",
+            "link": "shopify:\/\/metaobjects\/artist\/amy-kilby",
+            "icon": "none"
+          }
+        },
+        "post_JTLrTd": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Brayden.jpg",
+            "link": "shopify:\/\/metaobjects\/artist\/brayden-chambers",
+            "icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "post_wkmeEx",
+        "post_tKbqzQ",
+        "post_GcyGTk",
+        "post_JTLrTd"
+      ],
+      "settings": {
+        "color_scheme": "secondary",
+        "container_size": "page-width",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 48,
+        "title": "Meet Some of Our Collaborating Artists",
+        "text": "We collaborate with talented First Nations artists from around the country. With every purchase, Royalties go directly to the artists.",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "center",
+        "img_ratio": 1,
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": true,
+        "btn_text": "Find More Artists",
+        "btn_url": "shopify:\/\/pages\/yarn-artists",
+        "btn_style": "solid"
+      }
+    },
+    "0aca6547-2879-4883-8a69-56bfce5dfe5c": {
+      "type": "collection-list",
+      "disabled": true,
+      "custom_css": [
+        "h5 {font-weight: 700 !important;}",
+        "@media (max-width: 980px;) {.container {padding-top: 0px; }}"
+      ],
+      "settings": {
+        "color_scheme": "secondary",
+        "container_size": "page-width",
+        "section_spacing_top": 40,
+        "section_spacing_bottom": 63,
+        "section_layout": "carousel",
+        "title": "Browse Lookbooks",
+        "heading_size": "h2",
+        "alignment": "center",
+        "collection_list": [
+          "corporate",
+          "healthcare",
+          "hospitality",
+          "workwear",
+          "schools"
+        ],
+        "img_ratio": "default",
+        "text_style": "over-image",
+        "collection_card_content_align": "center",
+        "collection_card_heading_size": "h5",
+        "show_product_count": false,
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 20,
+        "enable_carousel_on_mobile": true,
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_navigation_on_hover": true
+      }
+    },
+    "4c48675f-6b99-4133-9c2c-7809693d06d2": {
+      "type": "slideshow",
+      "blocks": {
+        "654044b0-e0db-45f7-9dad-3b6d06904d10": {
+          "type": "split-image-banner",
+          "settings": {
+            "color_scheme": "custom-3",
+            "image_proportion": 0,
+            "content_wrapper_width": 30,
+            "desktop_right_img": "shopify:\/\/shop_images\/A03.00_00_31_09.Still017.jpg",
+            "caption": "",
+            "title": "Giving Back",
+            "text": "<p>At Yarn, we are firm believers in supporting the artists whose work we proudly display. We understand that community is everything and we strive to make a positive impact through our community partnerships and Raise programs. <\/p>",
+            "heading_size": "h1",
+            "body_size": "body2",
+            "content_max_width": 424,
+            "desktop_content_align": "left",
+            "mobile_content_align": "center",
+            "btn_text": "Learn More",
+            "btn_url": "shopify:\/\/pages\/our-community-partners",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "654044b0-e0db-45f7-9dad-3b6d06904d10"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "enable_background_around_container": false,
+        "container_size": "page-width",
+        "section_spacing_top": 40,
+        "section_spacing_bottom": 40,
+        "desktop_height": 620,
+        "mobile_height": 780,
+        "auto_adjust_height": false,
+        "enable_circle_navigation": true,
+        "enable_arrows_navigation": true,
+        "arrows_style": "corner-buttons",
+        "show_arrows_on_hover": false,
+        "transition_style": "swipe",
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_button_for_autoplay": true
+      }
+    },
+    "images_with_text_eHCLM3": {
+      "type": "images-with-text",
+      "blocks": {
+        "image_Jik8nW": {
+          "type": "image",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Trade Print Video.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "image_Jik8nW"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 50,
+        "content_layout": "right",
+        "image_layout": "collage",
+        "img_ratio": 1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "INVESTING IN INNOVATION",
+        "heading": "Fast Turnaround Branded Merch Proudly Printed In Australia",
+        "body": "<p>Over the last decade we have expanded and refined our in-house printing facilities and production capabilities. This allows us to create local jobs and training, and enables us to offer quick turnaround times for branded products.<\/p>",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 680,
+        "first_button_text": "Learn More",
+        "first_button_link": "shopify:\/\/pages\/branded-merch",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "4968e1bd-e75e-4fc8-a27c-63b1409d6a1c": {
+      "type": "collection-text",
+      "disabled": true,
+      "custom_css": [
+        ".collection-text__caption.caption {background: #106572; border-radius: 18px; color: #ffffff; font-weight: 500; font-family: \"DM Sans\"; font-size: 12px; padding: 6px 12px; width: fit-content; min-height: 2px !important;}",
+        "h5 {margin-top: 40px; font-size: 28px; font-weight: 700; line-height: 36px; letter-spacing: 0em;}",
+        "h5 strong {color: #9d2b2b;}",
+        ".btn {background: #f7c156; color: #222222;}",
+        "@media (max-width: 980px) {.btn {display: none; } .h5 {font-size: 22px; margin-top: 15px; } .collection-text__content {text-align: center; align-items: center; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "page-width",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 50,
+        "content_position": "left",
+        "collection": "best-sellers-home",
+        "icon": "none",
+        "caption": "",
+        "title": "Shop Best Sellers",
+        "text": "",
+        "heading_size": "h1",
+        "body_size": "body2",
+        "link_text": "",
+        "link_url": "",
+        "img_ratio": "default",
+        "product_card_align": "left",
+        "cards_to_show": 30,
+        "desktop_columns": 3,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_navigation_on_hover": true
+      }
+    },
+    "64d15318-d3c2-47f5-8899-4bc014eb1490": {
+      "type": "slideshow",
+      "blocks": {
+        "0dcb7162-99e5-48dc-8a57-d0bc3d8afef3": {
+          "type": "split-image-banner",
+          "settings": {
+            "color_scheme": "custom-1",
+            "image_proportion": 0,
+            "content_wrapper_width": 30,
+            "desktop_right_img": "shopify:\/\/shop_images\/rtj6dytrj_01559832-5678-4ffb-b20f-49a7926f5544.jpg",
+            "mobile_right_img": "shopify:\/\/shop_images\/dtyjdtukuktdtk.jpg",
+            "caption": "",
+            "title": "Corporate Polos With Your Own Artwork & Logo",
+            "text": "<p>Create unique uniforms for your team, organisation, school or company using your own designs.<\/p>",
+            "heading_size": "h1",
+            "body_size": "body2",
+            "content_max_width": 424,
+            "desktop_content_align": "left",
+            "mobile_content_align": "center",
+            "btn_text": "Design Your Own",
+            "btn_url": "shopify:\/\/collections\/design-your-own-polo",
+            "btn_style": "solid",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "0dcb7162-99e5-48dc-8a57-d0bc3d8afef3"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "custom-2",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 30,
+        "section_spacing_bottom": 0,
+        "desktop_height": 620,
+        "mobile_height": 780,
+        "auto_adjust_height": false,
+        "enable_circle_navigation": true,
+        "enable_arrows_navigation": true,
+        "arrows_style": "corner-buttons",
+        "show_arrows_on_hover": false,
+        "transition_style": "swipe",
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_button_for_autoplay": true
+      }
+    },
+    "images_with_text_aMBwYM": {
+      "type": "images-with-text",
+      "blocks": {
+        "image_AUMrhk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Image-1_b293073a-9055-4f24-9988-d5f39e77d757.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_AUMrhk"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 50,
+        "content_layout": "right",
+        "image_layout": "collage",
+        "img_ratio": 1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "Let Us Tell Your Story",
+        "heading": "Yarn Bespoke",
+        "body": "<p>Need a more hands-on approach during your journey? Look no further that our experienced team of consultants who can guide you step by step in creating the perfect solution for your needs.<\/p>",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 680,
+        "first_button_text": "Find Out More",
+        "first_button_link": "https:\/\/corporate.yarn.com.au\/pages\/bespoke",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "53d67819-721d-46dc-889c-50c5eafb46fc": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-0": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "NEWSLETTER"
+          }
+        },
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-1": {
+          "type": "title",
+          "settings": {
+            "title": "Want 10% off your first order?",
+            "heading_size": "h2"
+          }
+        },
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-2": {
+          "type": "text",
+          "settings": {
+            "text": "Subscribe now and get <strong>10% OFF<\/strong> on your first order. Be the first to access pre-order & new product releases, get exclusive deals and receive our latest catalogues.",
+            "body_size": "body3"
+          }
+        },
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-3": {
+          "type": "subscribe",
+          "settings": {
+            "input_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-0",
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-1",
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-2",
+        "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-3"
+      ],
+      "custom_css": [
+        "input::placeholder,input {color: #808080 !important;}",
+        "@media (max-width: 980px) {.newsletter__content {padding-bottom: 40px; padding-top: 40px; } {margin-top: 0px; } h2.h4 {padding-right: 0.5em; padding-left: 0.5em; }}"
+      ],
+      "settings": {
+        "color_scheme": "custom-2",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 28,
+        "section_spacing_bottom": 0,
+        "desktop_height": 240,
+        "mobile_height": 400,
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "desktop_content_position": "align-items: center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 1024,
+        "content_spacing": 24,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none"
+      }
+    }
+  },
+  "order": [
+    "35abde66-b33a-4178-b3ef-5bba319784ba",
+    "image_banner_KpxNLg",
+    "multiple_collections_QBmQjC",
+    "multicolumn_3rUdkR",
+    "collage_TiWdGN",
+    "multiple_collections_7Jq9jp",
+    "7d7f3b78-a198-4be2-814c-fd3197e33a88",
+    "560e895f-009c-43b9-acef-236cd697c102",
+    "collage_KFPN4Q",
+    "instagram_jUpE7D",
+    "slideshow_gwCVi4",
+    "multicolumn_8mKJDq",
+    "66d677db-f419-4997-9d31-680b9b2a3fb9",
+    "images_with_text_ixVJ97",
+    "instagram_NxJxwz",
+    "0aca6547-2879-4883-8a69-56bfce5dfe5c",
+    "4c48675f-6b99-4133-9c2c-7809693d06d2",
+    "images_with_text_eHCLM3",
+    "4968e1bd-e75e-4fc8-a27c-63b1409d6a1c",
+    "64d15318-d3c2-47f5-8899-4bc014eb1490",
+    "images_with_text_aMBwYM",
+    "53d67819-721d-46dc-889c-50c5eafb46fc"
+  ]
+}

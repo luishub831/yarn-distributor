@@ -1,0 +1,308 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "xsmall",
+        "section_spacing_top": 96,
+        "section_spacing_bottom": 96,
+        "show_heading": true
+      }
+    },
+    "2e29ed44-f160-4a44-8fb6-59878ce9ac09": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16929730527446__2e29ed44-f160-4a44-8fb6-59878ce9ac09-column_with_icon-1": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "FREE SHIPPING",
+            "text": "<ul><li>FREE STANDARD SHIPPING with every order valued over $125</li><li>OR Standard Shipping for $6.95 for orders valued under $125</li></ul><p>*Free standard shipping excludes International locations.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "template--16929730527446__2e29ed44-f160-4a44-8fb6-59878ce9ac09-column_with_icon-2": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "STANDARD SHIPPING",
+            "text": "<p>Cost: $6.95 OR Free if order value over $125 (excl. International Shipping*)Delivery Time: Australian Standard Shipping is estimated up to 3-5 business days for dispatch, 1-5 business days (rural area: 3-14 business days) for transit.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "template--16929730527446__2e29ed44-f160-4a44-8fb6-59878ce9ac09-column_with_icon-3": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "EXPRESS SHIPPING",
+            "text": "<p>Cost: $14.95Delivery Time: Australian Express Shipping is estimated up to 3 business day for dispatch, 1-3 business days for transit to Metropolitan areas or up to 5 business days for remote areas.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "88030399-fc64-4ed1-8264-189f242bec67": {
+          "type": "column",
+          "settings": {
+            "desktop_image_width": 100,
+            "mobile_image_width": 100,
+            "image_ratio": 1,
+            "title": "*INTERNATIONAL SHIPPING",
+            "text": "<p>Cost: Calculated at checkout by Australia Post.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "57127146-772c-4757-b65f-97cc6de31ee3": {
+          "type": "column",
+          "settings": {
+            "desktop_image_width": 100,
+            "mobile_image_width": 100,
+            "image_ratio": 1,
+            "title": "*INTERNATIONAL SHIPPING",
+            "text": "<p>Cost: Calculated at checkout by Australia Post.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "9381e54a-c631-4483-a512-d3e364ef0b46": {
+          "type": "column",
+          "settings": {
+            "desktop_image_width": 100,
+            "mobile_image_width": 100,
+            "image_ratio": 1,
+            "title": "PICK UP ORDERS (ONLINE ONLY)",
+            "text": "<p>We offer local pickup during the checkout process for collection from our Brisbane warehouse. Generally orders are ready to pickup within 2 hrs but we ask that you not arrive before receiving the confirmation email.</p><p>Orders received before 12:00pm will be ready for pickup same day.Our operating hours are Monday to Friday, 9am to 4pm.</p><p>Our warehouse address for pickup is:</p><p>YARN Marketplace  </p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16929730527446__2e29ed44-f160-4a44-8fb6-59878ce9ac09-column_with_icon-1",
+        "template--16929730527446__2e29ed44-f160-4a44-8fb6-59878ce9ac09-column_with_icon-2",
+        "template--16929730527446__2e29ed44-f160-4a44-8fb6-59878ce9ac09-column_with_icon-3",
+        "88030399-fc64-4ed1-8264-189f242bec67",
+        "57127146-772c-4757-b65f-97cc6de31ee3",
+        "9381e54a-c631-4483-a512-d3e364ef0b46"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn__details .h4 {color: #106572;}",
+        "> div {padding-left: 1.5em; padding-right: 1.5em;}",
+        "p {line-height: 22px;}",
+        "@media only screen and (min-width: 1017px) {.card-grid {display: flex; flex-wrap: wrap; } .card-grid .multicolumn__column {width: calc((100% / var(--gsc-columns)) - var(--gsc-space-between-cards)); flex-grow: 1; } .multicolumn__content .h1 {font-size: 34px; }}",
+        "@media only screen and (min-width: 1017px) and (max-width: 1200px) {.card-grid .multicolumn__column {width: calc((100% / 4) - var(--gsc-space-between-cards)); flex-grow: 1; }}"
+      ],
+      "settings": {
+        "classcss": "shipping-others",
+        "color_scheme": "secondary",
+        "enable_background_around_container": false,
+        "container_size": "page-width",
+        "section_spacing_top": 8,
+        "section_spacing_bottom": 24,
+        "section_mobile_spacing_top": 30,
+        "section_mobile_spacing_bottom": 30,
+        "title": "Shipping",
+        "title_icon": "shopify://shop_images/Frame2.svg",
+        "title_icon_alignment": "right",
+        "title_icon_size": 51,
+        "text": "",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "center",
+        "column_heading_size": "h4",
+        "column_body_size": "body4",
+        "column_alignment": "left",
+        "column_title_color": "",
+        "desktop_columns": 5,
+        "desktop_space_between_cards": 24,
+        "mobile_space_between_cards": 16,
+        "content_spacing": 24,
+        "show_column_background": true,
+        "enable_carousel_on_mobile": false,
+        "btn_text": "",
+        "btn_url": "",
+        "btn_style": "outline"
+      }
+    },
+    "e820965c-969e-4ab8-a00b-22e50810c580": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16929730527446__e820965c-969e-4ab8-a00b-22e50810c580-column_with_icon-2": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Returns",
+            "text": "<p>Please ensure that you choose your designs and sizes carefully, as we do not offer returns or exchanges for items ordered in the wrong size or for changes of mind. It's important to double-check your selections to avoid any issues, as our policy does not cover these types of returns. If you have any questions or need assistance with sizing or design choices, our customer service team is always here to help you make the best decision. We appreciate your understanding and cooperation in helping us maintain our high standards of service and product quality.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "template--16929730527446__e820965c-969e-4ab8-a00b-22e50810c580-column_with_icon-1": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Wrong Order",
+            "text": "<p>At Yarn Corp, we work diligently to ensure that our artwork is accurate and meets the highest standards. We take pride in setting and maintaining top-quality design standards.</p><p>We kindly ask that you carefully review the artwork sent for your approval, as Yarn Corp will not be liable for any mistakes found after production that have been approved (either signed or confirmed via email) by the customer on the Artwork Proof.</p><p>Our suppliers have been carefully selected to ensure we deliver the highest quality products possible. If the supplied product or decoration differs from what was approved (either signed or confirmed via email) by the customer, Yarn Corp will take full responsibility and either issue a full refund or reprint your products free of charge.</p><p>Claims must be made within a week of receiving your product, and an outcome will be agreed upon by both parties within two weeks of the complaint being received.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "template--16929730527446__e820965c-969e-4ab8-a00b-22e50810c580-column_with_icon-3": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Faulty Products",
+            "text": "<p>At Yarn Corp, we are committed to delivering the highest quality products. However, in the rare event of a manufacturer’s fault, we are prepared to offer a full replacement or refund. To initiate this process, claims must be made within one week of receiving the item. Additionally, we may require the faulty item to be returned to us within two weeks of the claim, in the same condition it was received. Unfortunatelly, we cannot accommodate claims made outside of these time frames. We appreciate your understanding and cooperation. If you have any questions or need assistance, please contact our customer service team.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "af8cb7bb-3128-4eb5-9a12-9ff626b2816c": {
+          "type": "column_with_icon",
+          "settings": {
+            "icon": "none",
+            "icon_size": 64,
+            "title": "Cancellation Fee",
+            "text": "<p>At Yarn Corp, we understand that unforeseen circumstances may necessitate the cancellation of an order. We are committed to handling such situations with understanding and flexibility, aiming to keep any associated cancellation fees as low as possible. The exact fees will be determined at the time of cancellation, taking into account the specific circumstances of your order. </p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16929730527446__e820965c-969e-4ab8-a00b-22e50810c580-column_with_icon-2",
+        "template--16929730527446__e820965c-969e-4ab8-a00b-22e50810c580-column_with_icon-1",
+        "template--16929730527446__e820965c-969e-4ab8-a00b-22e50810c580-column_with_icon-3",
+        "af8cb7bb-3128-4eb5-9a12-9ff626b2816c"
+      ],
+      "custom_css": [
+        "{margin-top: 40px;}",
+        "> div {padding: 0px 1.5em;}",
+        ".rte p {line-height: 22px; font-size: 14px;}",
+        ".multicolumn__content .h1 {font-size: 34px;}",
+        ".multicolumn__details .h4 {color: #106572;}",
+        ".rte.multicolumn__text {max-width: 780px; line-height: 22px;}",
+        ".icon_right {background: transparent;}",
+        "@media only screen and (min-width: 768px) {.multicolumn__content > * + * {margin: 3.2rem 0 0; }}"
+      ],
+      "settings": {
+        "classcss": "shipping-others",
+        "color_scheme": "secondary",
+        "enable_background_around_container": false,
+        "container_size": "page-width",
+        "section_spacing_top": 24,
+        "section_spacing_bottom": 24,
+        "section_mobile_spacing_top": 30,
+        "section_mobile_spacing_bottom": 30,
+        "title": "Returns",
+        "title_icon": "shopify://shop_images/Frame.svg",
+        "title_icon_alignment": "right",
+        "title_icon_size": 51,
+        "text": "At Yarn Corp, we take pride in our commitment to quality and customer satisfaction. We meticulously ensure that all our products meet the highest standards. Our policy includes providing a replacement or refund if the product has a significant issue. However, please note that refunds and replacements are not applicable in all situations.",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "center",
+        "column_heading_size": "h4",
+        "column_body_size": "body1",
+        "column_alignment": "left",
+        "column_title_color": "",
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 24,
+        "mobile_space_between_cards": 16,
+        "content_spacing": 24,
+        "show_column_background": true,
+        "enable_carousel_on_mobile": false,
+        "btn_text": "",
+        "btn_url": "",
+        "btn_style": "outline"
+      }
+    },
+    "91899a23-04d4-4091-855d-9bb357687ccd": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "medium",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 48,
+        "custom_liquid": "<iframe src=\"https://app.shiphero.com/returns/5029/?language=en\" width=\"100%\" height=\"500\" frameborder=\"0\" allowfullscreen style=\"margin-bottom:20px;\"></iframe>"
+      }
+    },
+    "c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16929730527446__c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5-title-1": {
+          "type": "title",
+          "settings": {
+            "title": "Want 10% off yout order?",
+            "heading_size": "h1"
+          }
+        },
+        "template--16929730527446__c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Get 10% off yout next online purchase, when you sign up to our VIP Newsletter today!",
+            "body_size": "body3"
+          }
+        },
+        "template--16929730527446__c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5-subscribe-1": {
+          "type": "subscribe",
+          "settings": {
+            "input_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16929730527446__c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5-title-1",
+        "template--16929730527446__c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5-text-1",
+        "template--16929730527446__c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5-subscribe-1"
+      ],
+      "settings": {
+        "color_scheme": "custom-2",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "desktop_height": 320,
+        "mobile_height": 420,
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "desktop_content_position": "align-items: center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 804,
+        "content_spacing": 16,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none"
+      }
+    }
+  },
+  "order": [
+    "page",
+    "2e29ed44-f160-4a44-8fb6-59878ce9ac09",
+    "e820965c-969e-4ab8-a00b-22e50810c580",
+    "91899a23-04d4-4091-855d-9bb357687ccd",
+    "c68a56e9-af8e-4fb1-a94c-3a8d9997c7d5"
+  ]
+}

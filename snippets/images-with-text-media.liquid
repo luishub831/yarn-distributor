@@ -1,0 +1,9 @@
+{%- if video != blank -%}
+  {% render 'video-with-alt', video: video, class: 'images-with-text__image-list-item-media' %}
+{%- elsif image != blank -%}
+  <img
+    class='images-with-text__image-list-item-media lazyload'
+    data-parent-fit='cover'
+    {% render 'image-attributes', image: image %}
+  >
+{%- endif -%}

@@ -1,0 +1,21 @@
+{%- if image != blank -%}
+  <a
+    class='unstyled-link {{ class }}'
+    href='{{ routes.root_url }}'
+    aria-label='{{ 'general.logo.aria_label_for_logo_link' | t }}'
+  >
+    <img
+      class='logo-img lazyload'
+      {{ attrs }}
+      {% render 'image-attributes', image: image, size: 'medium' %}
+    >
+  </a>
+{%- elsif logo_text != blank -%}
+  <a
+    class='logo-text {{ class }}'
+    href='{{ routes.root_url }}'
+    aria-label='{{ 'general.logo.aria_label_for_logo_link' | t }}'
+  >
+    {{- shop.name -}}
+  </a>
+{%- endif -%}

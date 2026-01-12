@@ -1,0 +1,195 @@
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "(07) 3902 3200"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "sales@theprintgarage.com.au"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "2/338 Lytton Rd, Morningside QLD, Australia"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_main",
+      "label": "Main Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_partner1",
+      "label": "Partner Logo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_partner2",
+      "label": "Partner Logo 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer"
+    }
+  ]
+}
+{% endschema %}
+
+<footer class="custom-footer">
+  <div class="footer-top">
+    <div class="contact-info">
+        <h3>Contact Us</h3>
+
+        <p>
+            <span class="icon">
+            <!-- Phone SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+                <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/>
+            </svg>
+            </span>
+            {{ section.settings.phone }}
+        </p>
+
+        <p>
+            <span class="icon">
+            <!-- Email SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.236l8 6.764 8-6.764V18H4z"/>
+            </svg>
+            </span>
+            {{ section.settings.email }}
+        </p>
+
+        <p>
+            <span class="icon">
+            <!-- Address SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+                <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+            </svg>
+            </span>
+            <span style="color:#85bbce;">
+            {{ section.settings.address }}
+            </span>
+        </p>
+    </div>
+
+  </div>
+
+  <div class="footer-logos">
+    {% if section.settings.logo_main != blank %}
+      <img src="{{ section.settings.logo_main | image_url }}" alt="Main Logo">
+    {% endif %}
+    {% if section.settings.logo_partner1 != blank %}
+      <img src="{{ section.settings.logo_partner1 | image_url }}" alt="Partner 1">
+    {% endif %}
+    {% if section.settings.logo_partner2 != blank %}
+      <img src="{{ section.settings.logo_partner2 | image_url }}" alt="Partner 2">
+    {% endif %}
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ 'now' | date: '%Y' }} The Print Garage, All rights reserved</p>
+    <div class="footer-links">
+      <a href="/policies/privacy-policy">Privacy Policy</a>
+      <a href="/policies/terms-of-service">Terms of Service</a>
+      <a href="/policies/refund-policy">Refund Policy</a>
+      <a href="/policies/shipping-policy">Shipping Policy</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+.custom-footer {
+  background: #06131f;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 100px;
+}
+.footer-top {
+  margin-bottom: 30px;
+}
+.contact-info h3 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+.contact-info p {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  font-size: 2rem;
+}
+
+.contact-info .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.contact-info .icon svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  fill: #fff; /* white icons */
+}
+
+/* ✅ Full-width logo row with equal spacing */
+.footer-logos {
+  display: flex;
+  justify-content: space-between; /* ✅ even spacing without big outer gaps */
+  align-items: center;
+  margin: 30px 0;
+  flex-wrap: nowrap; /* ✅ keep in one row */
+  gap: 40px; /* small controlled gap between logos */
+  margin: 0 20px;
+  margin-bottom:40px;
+}
+
+.footer-logos img {
+  max-height: 90px; /* ✅ make logos bigger */
+  {% comment %} max-width: 220px; {% endcomment %}
+  object-fit: contain;
+}
+
+
+.footer-bottom {
+  border-top: 1px solid #fff;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+}
+.footer-links a {
+  margin-left: 15px;
+  color: #fff;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+/* ✅ Responsive: stack logos on mobile */
+@media (max-width: 768px) {
+  .footer-logos {
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px; /* smaller gap when stacked */
+  }
+
+  .footer-logos img {
+    max-height: 80px;
+    max-width: 70%;
+  }
+}
+</style>

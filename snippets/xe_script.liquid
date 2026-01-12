@@ -1,0 +1,161 @@
+<script type=text/javascript>
+    var prntTypes = '';
+  var rvno = '';
+  var strUrl = '';
+    var pvid = '';
+    var custID = '';
+    var base_url = "https://designer.yarn.com.au/designer/";
+    var thisVendor = '';
+    var secretKeyData = '';
+    {% assign vendor = product.vendor %}
+    thisVendor = "{{ vendor }}";
+   {% if customer %}
+      custID = {{ customer.id}} ;
+    {% else %}
+        custID = 0 ;
+   {% endif %}
+   // for template based product
+   var productCat = '';
+   var pbti = 0;
+   {% for c in product.collections %}
+      productCat += {{ c.id}};
+         {% if forloop.last != true %}
+        productCat += ',';
+        {% endif %}
+   {% endfor %}
+    
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    var refID = 0;
+   
+   {% unless product.metafields.Pre-Deco.imprint_design_id == blank %}  
+    refID = {{ product.metafields.Pre-Deco.imprint_design_id }};
+    $( "#AddToCart" ).replaceWith( "<button type='button' name='cust' id='custom' class='btn' onclick='addPDPtoCart({{ product.id }},"+refID+");'><span id='addPDPtext'>Add to Cart</span></button>" );
+    {% endunless %}
+
+  $(document).ready(function() {
+  //redirect to site if duplicate product is opened
+  if(thisVendor == 'imprintNext'){
+          window.location.href="/";
+        }
+  });
+  // for template based product
+  if(productCat != ''){
+      $.get(base_url+"api/v1/template-products?prodcatID="+productCat,function(data){
+    data = JSON.parse(data);
+    jQuery.each(data, function(i, item) {
+      
+      if(item != false){
+        pbti = 1;
+      }
+      });
+    });
+  }
+  $.get(base_url+'api/v1/secretkey',function(html){
+    secretKeyData = JSON.parse(html);
+  });
+  /**
+  * Get encrypted order data string.
+  *
+  * @param {string} urlToEncode - order data string
+  * @param {string} secretKey - secret key
+  */
+  function encrypt(urlToEncode, secretKey) {
+    let enCodedBit, encryptedTxt = '', cipherKey = '5';
+    urlToEncode += secretKey;
+     for (let i = 0; i < urlToEncode.length; i++) {
+      enCodedBit = String.fromCharCode(urlToEncode[i].charCodeAt(0) + cipherKey.charCodeAt(0));
+      encryptedTxt += enCodedBit;
+      }
+      encryptedTxt = (btoa(encryptedTxt))
+      return encryptedTxt;
+    }
+  
+function customize_product(pid, cid) {
+    var url = "";
+    var baseurl = "";
+    // get the variant id from imprintnext
+    let color = $(`#product_form_${pid} .single-option-selector[name='color' i] option`).filter(":selected").val();
+    $.ajax({
+        url: `${base_url}api/v1/product-options/${pid}/first-variant?color=${color}`,
+        type: 'GET',
+        dataType: 'json',
+        async: false
+    }).done(function (response) {
+        if (response.status == 1) {
+            pvid = response.variant_id;
+        } else {
+          // get current variant id
+          pvid = window.location.search.split('variant=')[1];
+          if (pvid == null || pvid === ''){
+            pvid = "{{product.selected_or_first_available_variant.id}}";
+          }
+        }
+    });
+  
+    if (pvid == '') {
+      alert('This color is not customizable please select another.');
+      return false;
+    }
+    var qty =0;
+    if(document.getElementById('Quantity-product-template')){
+        qty = document.getElementById('Quantity-product-template').value;
+    } else if(document.getElementsByName('quantity')){
+        qty = document.getElementsByName('quantity').value;
+    } else if(document.getElementById('qty')){
+        qty = document.getElementById('qty').value;
+    } else {
+        qty = document.getElementById('Qty').value;
+    }
+
+    //     get current variant id
+    //  if(document.getElementById('Quantity-product-template').style.display == 'none'|| qty === 0){
+    //  if(!document.getElementById('stockOut'))
+    //  $("<span id='stockOut' style='color: red; font-size: small; padding-left: 12px;'>Out of Stock !!!</span>").insertAfter("#Quantity-product-template");
+    //         return;
+    //  }
+
+    var urlparam = "customer=" + cid +"&id=" + pid + strUrl +"&qty=" + qty +"&vid=" + pvid +"&pbti=" + pbti;
+    if(refID && refID > 0){
+        urlparam += "&dpid=" + refID;
+        //baseurl = baseurl + "&dpid=" + refID;
+    }
+    var encryptUrl = encrypt(urlparam, secretKeyData);
+    if(pvid){
+      var url = base_url+"mobile/index.html?" + encryptUrl ;
+      var baseurl = "/pages/designer-studio?" + encryptUrl ;
+    }
+    
+    if (isMobile || navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) {
+        window.location.href=url;
+    } else {
+      window.location.href=baseurl;
+    }
+}
+    
+function addPDPtoCart(pid,refID) {
+    $('#addPDPtext').text('Adding to Cart...');
+      var qty =0;
+    if(document.getElementById('quantity')) {
+      qty = document.getElementById('quantity').value;
+    } else if(document.getElementById('Quantity')) {
+       qty = document.getElementById('Quantity').value;
+    } else if(document.getElementById('qty')) {
+       qty = document.getElementById('qty').value;
+    } else {
+       qty = document.getElementById('Qty').value;
+    }
+
+    //   get current variant id
+    pvid = window.location.search.split('variant=')[1];
+    if (pvid == null || pvid === ''){
+      pvid = "{{product.selected_or_first_available_variant.id}}";
+    }
+    if(pvid && pvid != ''){
+      var cartURL = '/cart?view=refitem&ref='+refID+'-'+pvid+'-'+qty;
+      window.location.href=cartURL;
+    } else {
+       alert('Something went wrong. Please try another product.');
+    }
+}
+</script>

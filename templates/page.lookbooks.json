@@ -1,0 +1,706 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "xsmall",
+        "section_spacing_top": 96,
+        "section_spacing_bottom": 96,
+        "show_heading": true
+      }
+    },
+    "dd09c266-0731-4de5-a620-d4b5c3498cd0": {
+      "type": "collage",
+      "blocks": {
+        "template--16931909730518__dd09c266-0731-4de5-a620-d4b5c3498cd0-collection-1": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": true,
+            "overlay_opacity": 20,
+            "link_text": "Link label",
+            "content_position": "bottom-left"
+          }
+        },
+        "ff1f0ae6-2ab2-4b11-8630-cc03921333c3": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": true,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "image": "shopify://shop_images/div.split-image-banner__container_1.png",
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "template--16931909730518__dd09c266-0731-4de5-a620-d4b5c3498cd0-image-2": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": true,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 3,
+            "image": "shopify://shop_images/div.media2.jpg",
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "753ea28c-dcb1-4166-9172-091804153132": {
+          "type": "rich-text",
+          "settings": {
+            "color_scheme": "primary",
+            "desktop_columns": 1,
+            "desktop_rows": 3,
+            "caption": "PLACEHOLDER",
+            "title": "Lookbook Placeholder",
+            "text": "<p>We now have all of your wardrobe essential needs sorted with Yarn Basics. Create full outfits by matching beautiful vibrant Indigenous designs from Aneura, Lore Clothing Co, Traka Outdoor and Custodian Streetwear with items from the Yarn Basics range - because we all know pattern on pattern is a lot!</p>",
+            "text2": "Share information about your brand with your customers. Describe a product, make announcements or welcome customers to your store.",
+            "heading_size": "h1",
+            "body_size": "body3",
+            "content_align": "center",
+            "btn_text": "See more",
+            "btn_url": "shopify://pages/lookbook-collection",
+            "btn_style": "link"
+          }
+        },
+        "801d2af1-e3a8-4967-944a-a735d8692e94": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": true,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 3,
+            "image": "shopify://shop_images/div.media.jpg",
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "template--16931909730518__dd09c266-0731-4de5-a620-d4b5c3498cd0-collection-2": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": true,
+            "overlay_opacity": 20,
+            "link_text": "Link label",
+            "content_position": "bottom-left"
+          }
+        },
+        "b02e27fe-8072-4b0e-881a-98f650a86cae": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 1,
+            "overlay_opacity": 20,
+            "caption": "IMAGE",
+            "title": "Image with text",
+            "text": "<p>Fill in the text to tell customers by what your products are inspired.</p>",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "Link label",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909730518__dd09c266-0731-4de5-a620-d4b5c3498cd0-collection-1",
+        "ff1f0ae6-2ab2-4b11-8630-cc03921333c3",
+        "template--16931909730518__dd09c266-0731-4de5-a620-d4b5c3498cd0-image-2",
+        "753ea28c-dcb1-4166-9172-091804153132",
+        "801d2af1-e3a8-4967-944a-a735d8692e94",
+        "template--16931909730518__dd09c266-0731-4de5-a620-d4b5c3498cd0-collection-2",
+        "b02e27fe-8072-4b0e-881a-98f650a86cae"
+      ],
+      "custom_css": [
+        ".caption {background: #106572; border-radius: 18px; color: #ffffff; font-size: 13px; padding: 6px 12px 6px 12px;}",
+        ".collage__item,.rich-text {background: transparent !important; color: #222222 !important;}",
+        "h5 {margin-top: 17px;}",
+        ".rich-text__truncate-text-wrapper {margin-top: 32px;}",
+        ".collage__blocks .rich-text__btns {margin-top: 47px;}",
+        "@media only screen and (max-width: 767px) {h5, .rich-text__truncate-text-wrapper {margin-top: 24px; } .collage__blocks .rich-text__btns {margin-top: 29px; } .rich-text {padding: 0; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 48,
+        "title": "",
+        "heading_size": "h5",
+        "alignment": "left",
+        "columns": 3,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false
+      }
+    },
+    "4fc587a0-d650-4e16-853a-c9bc45e8db55": {
+      "type": "collage",
+      "blocks": {
+        "template--16931909730518__4fc587a0-d650-4e16-853a-c9bc45e8db55-image-1": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "image": "shopify://shop_images/srthsrthsrth.png",
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "shopify://pages/lookbook-collection",
+            "content_position": "center-center"
+          }
+        },
+        "template--16931909730518__4fc587a0-d650-4e16-853a-c9bc45e8db55-image-2": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "image": "shopify://shop_images/div.shape_1.jpg",
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "shopify://pages/collction-2023",
+            "content_position": "center-center"
+          }
+        },
+        "3d8475f6-d25e-4a92-b92e-10147fbb42e9": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "79ed5592-f41e-467f-b0b1-237cb99300f8": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "c341af2f-f225-4ae0-9071-dd21e3ddc302": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "d56ee9a6-3c4f-4369-8fba-8fa8404b3b6e": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "4a1e422d-6c1e-45a4-a5d9-d2cdb71ecdd3": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "2f344d30-4559-44f9-84e0-80dae36fccd3": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909730518__4fc587a0-d650-4e16-853a-c9bc45e8db55-image-1",
+        "template--16931909730518__4fc587a0-d650-4e16-853a-c9bc45e8db55-image-2",
+        "3d8475f6-d25e-4a92-b92e-10147fbb42e9",
+        "79ed5592-f41e-467f-b0b1-237cb99300f8",
+        "c341af2f-f225-4ae0-9071-dd21e3ddc302",
+        "d56ee9a6-3c4f-4369-8fba-8fa8404b3b6e",
+        "4a1e422d-6c1e-45a4-a5d9-d2cdb71ecdd3",
+        "2f344d30-4559-44f9-84e0-80dae36fccd3"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 16,
+        "title": "",
+        "heading_size": "h5",
+        "alignment": "left",
+        "columns": 4,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false
+      }
+    },
+    "b61eaa1a-66f9-4323-a875-98213c7501f0": {
+      "type": "collage",
+      "blocks": {
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-collection-1": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": true,
+            "overlay_opacity": 20,
+            "link_text": "Link label",
+            "content_position": "bottom-left"
+          }
+        },
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-image-1": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-collection-2": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": true,
+            "overlay_opacity": 20,
+            "link_text": "Link label",
+            "content_position": "bottom-left"
+          }
+        },
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-image-2": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "c221526b-4f70-4b7c-854d-e2f8d907b7c4": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-collection-1",
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-image-1",
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-collection-2",
+        "template--16931909730518__b61eaa1a-66f9-4323-a875-98213c7501f0-image-2",
+        "c221526b-4f70-4b7c-854d-e2f8d907b7c4"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 16,
+        "title": "",
+        "heading_size": "h5",
+        "alignment": "left",
+        "columns": 3,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false
+      }
+    },
+    "b2b55407-6500-4f07-a204-bd9ab82ae65f": {
+      "type": "collage",
+      "blocks": {
+        "template--16931909730518__b2b55407-6500-4f07-a204-bd9ab82ae65f-image-1": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "template--16931909730518__b2b55407-6500-4f07-a204-bd9ab82ae65f-image-2": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "02c756b5-6143-45a1-a1eb-4f75dfc8f55d": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "3ddb184d-9e5c-495f-8af5-8e5fb7b7d9a2": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "4c333516-c6d2-4c95-aaa9-04d9f84fc475": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "e7e3ef61-44ff-4b71-b2af-ae38e4372109": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "7a2adf0b-4d37-47ee-9f81-85f2e1eb2aee": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909730518__b2b55407-6500-4f07-a204-bd9ab82ae65f-image-1",
+        "template--16931909730518__b2b55407-6500-4f07-a204-bd9ab82ae65f-image-2",
+        "02c756b5-6143-45a1-a1eb-4f75dfc8f55d",
+        "3ddb184d-9e5c-495f-8af5-8e5fb7b7d9a2",
+        "4c333516-c6d2-4c95-aaa9-04d9f84fc475",
+        "e7e3ef61-44ff-4b71-b2af-ae38e4372109",
+        "7a2adf0b-4d37-47ee-9f81-85f2e1eb2aee"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 48,
+        "title": "",
+        "heading_size": "h5",
+        "alignment": "left",
+        "columns": 4,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false
+      }
+    },
+    "3983da24-6cae-4243-ac7c-42b200d23707": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16931909730518__3983da24-6cae-4243-ac7c-42b200d23707-title-1": {
+          "type": "title",
+          "settings": {
+            "title": "Want 10% off yout order?",
+            "heading_size": "h1"
+          }
+        },
+        "template--16931909730518__3983da24-6cae-4243-ac7c-42b200d23707-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Get 10% off yout next online purchase, when you sign up to our",
+            "body_size": "body3"
+          }
+        },
+        "template--16931909730518__3983da24-6cae-4243-ac7c-42b200d23707-subscribe-1": {
+          "type": "subscribe",
+          "settings": {
+            "input_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909730518__3983da24-6cae-4243-ac7c-42b200d23707-title-1",
+        "template--16931909730518__3983da24-6cae-4243-ac7c-42b200d23707-text-1",
+        "template--16931909730518__3983da24-6cae-4243-ac7c-42b200d23707-subscribe-1"
+      ],
+      "settings": {
+        "color_scheme": "custom-2",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "desktop_height": 320,
+        "mobile_height": 420,
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "desktop_content_position": "align-items: center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 694,
+        "content_spacing": 16,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none"
+      }
+    }
+  },
+  "order": [
+    "page",
+    "dd09c266-0731-4de5-a620-d4b5c3498cd0",
+    "4fc587a0-d650-4e16-853a-c9bc45e8db55",
+    "b61eaa1a-66f9-4323-a875-98213c7501f0",
+    "b2b55407-6500-4f07-a204-bd9ab82ae65f",
+    "3983da24-6cae-4243-ac7c-42b200d23707"
+  ]
+}

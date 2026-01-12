@@ -1,0 +1,58 @@
+{% layout 'landing' %}
+
+
+<div class="flyer-page">
+
+
+  <!-- Flyer Background -->
+  <div class="flyer-background">
+    <img src="{{ 'Bottle_Printing01_1.png' | file_url  }}" alt="Bottle Printing Flyer" width="100%" height="100%" />
+  </div>
+
+  <!-- Rotating Bottle Video -->
+  <div class="rotating-bottle-video">
+    <video autoplay loop muted playsinline>
+      <source src="{{ 'rotating-bottle.webm' | asset_url }}" type="video/webm">
+      <source src="{{ 'rotating-bottle.mp4' | asset_url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Flyer Background -->
+  <div class="flyer-background2">
+    <img src="{{ 'Bottle_Printing02_1.png' | file_url  }}" alt="Bottle Printing Flyer" width="100%" height="100%" />
+  </div>
+
+</div>
+
+<style>
+.flyer-page {
+  position: relative;
+  max-width: 700px; /* adjust to flyer width */
+  margin: 0 auto;
+}
+
+.flyer-background img {
+  width: 100%;
+  display: block;
+}
+
+/* Overlay bottle video */
+.rotating-bottle-video {
+  position: absolute;
+  top: 120px;   /* adjust to match flyer */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px; /* adjust size */
+  z-index: 10;
+}
+
+.rotating-bottle-video video {
+  width: 100%;
+  height: auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  object-fit: contain;
+}
+</style>

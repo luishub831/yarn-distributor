@@ -1,0 +1,95 @@
+<div class="thank-you container container--large section-spacing">
+    <div class="thank-you-des">
+        <h1>{{ section.settings.heading }}</h1>
+        <div class="thank-you-content">{{ section.settings.description }}</div>
+    </div>
+    <div class="thank-you-meeting">
+        {{ section.settings.liquid }}
+    </div>
+</div>
+
+<style>
+.thank-you-section {
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.thank-you {
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+}
+.thank-you-des {
+    width: 50%;
+    padding-right: 100px;
+}
+.thank-you-des h1 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.thank-you-content {
+
+}
+.thank-you-meeting {
+    width: 50%;
+}
+
+@media only screen and (max-width: 980px) {
+    .thank-you-section {
+        width: 100%;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .thank-you {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    .thank-you-des {
+        width: 100%;
+        padding-right: 0px;
+    }
+    .thank-you-des h1 {
+
+    }
+    .thank-you-content {
+
+    }
+    .thank-you-meeting {
+        width: 100%;
+    }
+}
+
+</style>
+
+{% schema %}
+{
+    "name": "Thank You",
+    "tag": "section",
+    "class": "thank-you-section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "liquid",
+            "id": "liquid",
+            "label": "Embed snippet"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Thank You"
+        }
+    ]
+}
+{% endschema %}

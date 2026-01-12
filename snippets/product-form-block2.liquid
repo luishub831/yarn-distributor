@@ -1,0 +1,525 @@
+{%- liquid
+  assign options = block.settings
+  assign enable_pickup_availability = options.enable_pickup_availability
+  assign show_pickup_availability = false
+  assign selected_variant = product.selected_or_first_available_variant
+  assign available = selected_variant.available
+  assign product_form_id = 'product-form-' | append: product.id | append: '-' | append: sectionId
+  assign pick_up_locations = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true
+  assign pick_up_availabilities = false
+  assign add_to_cart_label = 'products.product.add_to_cart' | t
+  assign sold_out_label = 'products.product.sold_out' | t
+
+  for location in pick_up_locations
+    if location.available == true
+      assign pick_up_availabilities = true
+    endif
+  endfor
+
+  assign enable_gift_card = false
+  if options.enable_gift_card and product.gift_card?
+    assign enable_gift_card = true
+  endif
+
+  assign show_dynamic_checkout = false
+  if options.show_dynamic_checkout and enable_gift_card == false
+    assign show_dynamic_checkout = true
+  endif
+
+  if product.template_suffix contains 'pre-order'
+    assign show_dynamic_checkout = false
+    assign add_to_cart_label = 'products.product.pre_order' | t
+  endif
+
+  if enable_pickup_availability and pick_up_availabilities == true
+    unless product.template_suffix contains 'pre-order'
+      assign show_pickup_availability = true
+    endunless
+  endif
+-%}
+
+{% unless product.metafields.custom.product1 != blank  %}
+
+{%- if product != blank -%}
+  <div class='' {{ block.shopify_attributes }}>
+    <product-form data-product-id='{{ product.id }}' id='product-form-component-{{ product.id }}-{{ sectionId }}'>
+      {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'product-form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+        {% if enable_gift_card %}
+          {% render 'gift-card-recipient-form', product: product, form: form, section: section, block: block %}
+        {% endif %}
+
+        <input
+          type='hidden'
+          name='id'
+          value='{{ selected_variant.id }}'
+          data-product-form-variant
+          id='{{ product_form_id }}-IdInput-{{ form.id }}'
+        >
+        {{ form | payment_terms }}
+        <div class='product-form__btns'>
+          {% if template.name == 'product' and sectionId contains '---MainSection' %}
+            <div>
+              <div class='product-form__btn-wrapper'>
+                <button
+                  type='submit'
+                  name='add'
+                  id='product-buy-btn-{{ product.id }}-{{ sectionId }}'
+                  class='product-form__btn btn btn--lg {% if show_dynamic_checkout == true %}btn--outline{% else %}btn--solid{% endif %}'
+                  {% if available == false %}
+                    disabled
+                  {% endif %}
+                  aria-label='{%- if available -%}{{ add_to_cart_label }}{%- else -%}{{ sold_out_label }}{%- endif -%}'
+                >
+                  <span data-button-text>
+                    {%- if available -%}
+                      {{ add_to_cart_label }}
+                    {%- else -%}
+                      {{ sold_out_label }}
+                    {%- endif -%}
+                  </span>
+                  {% render 'icon', icon_name: 'spinner', class: 'loading-spinner btn__loading-spinner' %}
+                </button>
+              </div>
+            </div>
+
+            <product-form-button class='product-form__mobile-sticky-button'>
+              <div
+                class='product-form__btn-wrapper product-form__btn-wrapper--sticky-mobile-button'
+              >
+                <button
+                  type='submit'
+                  name='add'
+                  id='sticky-product-buy-btn-{{ product.id }}-{{ sectionId }}'
+                  class='product-form__btn btn btn--lg btn--solid'
+                  {% if available == false %}
+                    disabled
+                  {% endif %}
+                  data-product-form-button
+                  aria-label='{%- if available -%}{{ add_to_cart_label }}{%- else -%}{{ sold_out_label }}{%- endif -%}'
+                >
+                  <span data-button-text>
+                    {%- if available -%}
+                      {{ add_to_cart_label }}
+                    {%- else -%}
+                      {{ sold_out_label }}
+                    {%- endif -%}
+                  </span>
+                  {% render 'icon', icon_name: 'spinner', class: 'loading-spinner btn__loading-spinner' %}
+                </button>
+              </div>
+            </product-form-button>
+          {%- else -%}
+            <button
+              type='submit'
+              name='add'
+              id='product-buy-btn-{{ product.id }}-{{ sectionId }}'
+              class='product-form__btn btn btn--lg {% if show_dynamic_checkout == true %}btn--outline{% else %}btn--solid{% endif %}'
+              {% if available == false %}
+                disabled
+              {% endif %}
+              aria-label='{%- if available -%}{{ add_to_cart_label }}{%- else -%}{{ sold_out_label }}{%- endif -%}'
+            >
+              <span data-button-text>
+                {%- if available -%}
+                  {{ add_to_cart_label }}
+                {%- else -%}
+                  {{ sold_out_label }}
+                {%- endif -%}
+              </span>
+              {% render 'icon', icon_name: 'spinner', class: 'loading-spinner btn__loading-spinner' %}
+            </button>
+          {% endif %}
+
+          {%- if show_dynamic_checkout == true -%}
+            <div class='dynamic-checkout-buttons'>
+              {{ form | payment_button }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endform -%}
+    </product-form>
+
+    {%- if show_pickup_availability == true -%}
+      <pickup-availability
+        class='pickup-availability body-font-weight-from-global-settings'
+        data-base-url='{{ shop.url }}{{ routes.root_url }}'
+        data-variant-id='{{ selected_variant.id }}'
+        data-has-only-default-variant='{{ product.has_only_default_variant }}'
+        id='product-pickup-availability-{{ product.id }}-{{ sectionId }}'
+      >
+        <pickup-availability-content class='pickup-availability-info'> </pickup-availability-content>
+      </pickup-availability>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+
+{% else %}
+
+{% comment %}
+
+<form action="#" method="post" enctype="multipart/form-data" id="multi-product-form">
+  <table>
+    <thead>
+      <tr>
+        <th>Sizes</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for variant in product.variants %}
+      <tr>
+        <td>{{ variant.title }}</td>
+        <td>
+          <button type="button" data-variant-id="{{ variant.id }}" onclick="decreaseQuantity(this)">-</button>
+          <input type="number" min="0" name="quantity-{{ variant.id }}" id="quantity-{{ variant.id }}" value="0">
+          <button type="button" data-variant-id="{{ variant.id }}" onclick="increaseQuantity(this)">+</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <button type="button" disabled id="add-to-cart-btn" onclick="addToCartMulti()">Añadir al carrito</button>
+</form>
+<!-- Mantenemos el mismo HTML -->
+
+<script>
+  function checkTotalUnits() {
+    let totalUnits = 0;
+    const quantities = document.querySelectorAll('input[id^="quantity-"]');
+
+    quantities.forEach(input => {
+      totalUnits += parseInt(input.value, 10) || 0;
+    });
+
+    const addToCartButton = document.getElementById('add-to-cart-btn');
+    if (totalUnits >= 15) {
+      addToCartButton.disabled = false;
+    } else {
+      addToCartButton.disabled = true;
+    }
+  }
+
+  function decreaseQuantity(button) {
+    const variantId = button.getAttribute('data-variant-id');
+    const input = document.getElementById(`quantity-${variantId}`);
+    if (input.value > 0) {
+      input.value = parseInt(input.value, 10) - 1;
+    }
+    checkTotalUnits();
+  }
+
+  function increaseQuantity(button) {
+    const variantId = button.getAttribute('data-variant-id');
+    const input = document.getElementById(`quantity-${variantId}`);
+    input.value = parseInt(input.value, 10) + 1;
+    checkTotalUnits();
+  }
+
+  function addToCartSequentially(variantsToAdd, index) {
+    if (index < variantsToAdd.length) {
+      const variant = variantsToAdd[index];
+      const data = {
+        'id': variant.id,
+        'quantity': variant.quantity
+      };
+      
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        // If successful, proceed to the next variant
+        addToCartSequentially(variantsToAdd, index + 1);
+      })
+      .catch(error => {
+        console.error('There was an error adding the item to the cart:', error);
+      });
+    } else {
+      // If all variants have been processed, reload the page
+      location.reload();
+    }
+  }
+
+  function addToCartMulti() {
+    const quantities = document.querySelectorAll('input[id^="quantity-"]');
+    const variantsToAdd = [];
+
+    quantities.forEach(input => {
+      const variantId = input.id.replace('quantity-', '');
+      const quantity = parseInt(input.value);
+
+      if (quantity > 0) {
+        variantsToAdd.push({
+          id: variantId,
+          quantity: quantity
+        });
+      }
+    });
+
+    addToCartSequentially(variantsToAdd, 0);
+  }
+
+  // Inicializa la función para verificar las unidades cuando la página se carga
+  document.addEventListener("DOMContentLoaded", function() {
+    checkTotalUnits();
+    const quantities = document.querySelectorAll('input[id^="quantity-"]');
+    quantities.forEach(input => {
+      input.addEventListener("input", checkTotalUnits);
+    });
+  });
+</script>
+
+{% endcomment %}
+<style>
+  .typesex {
+  background: #106572;
+  border-radius: 18px !important;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "DM Sans";
+  font-size: 12px;
+  padding: 6px 12px 6px 12px;
+  min-height: 2px !important;
+}
+  .size_guide {
+  text-decoration:underline;
+  color: #222222;
+  font-size: 12px;
+  
+  }
+  </style>
+
+  {% assign price_quantity_metafield = product.metafields.custom.price_quantity.value %}
+
+{% if price_quantity_metafield.pricing != empty %}
+  <table>
+    <thead>
+      <tr>
+        <th>Minimum Quantity</th>
+        <th>Price Per Item</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for price_bracket in price_quantity_metafield.pricing %}
+        <tr>
+          <td>{{ price_bracket.minimum_qty }}</td>
+          <td>{{ price_bracket.price_per_item }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+
+
+  
+<form action="#" method="post" enctype="multipart/form-data" id="multi-product-form">
+  {% assign p1 = product.metafields.custom.product1.value.handle %}
+    {% assign p2 = product.metafields.custom.product2.value.handle %}
+
+  <div style="margin-bottom:30px;">
+   <div style="margin-bottom:20px;">
+     <span class="typesex">MALE</span> <span class="size_guide">SIZE GUIDE</span></div>
+  <h6>{{ product.metafields.custom.product1.value.title }}</h6>
+  {% assign product1 = all_products[p1] %}
+    <table>
+  {% for variant in product1.variants %}
+
+  <tr>
+    <th>{{ variant.title }} </th>
+     
+   
+    
+<th>  <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="decreaseQuantity(this)">-</button>
+          <input type="number" min="0" name="quantity-{{ variant.id }}-product1" id="quantity-{{ variant.id }}-product1"  value="0">
+          <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="increaseQuantity(this)">+</button>
+</th>
+</tr>
+  {% endfor %}
+    </table>
+
+
+  </div>
+
+  <div style="margin-bottom:30px;">
+   <div style="margin-bottom:20px;">
+     <span class="typesex">Female</span> <span class="size_guide">SIZE GUIDE</span></div>
+  <h6>{{ product.metafields.custom.product2.value.title }}</h6>
+  {% assign product2 = all_products[p2] %}
+    <table>
+  {% for variant in product2.variants %}
+
+  <tr>
+    <th>{{ variant.title }} </th>
+     
+   
+    
+<th>  <button type="button" data-variant-id="{{ variant.id }}-product2" onclick="decreaseQuantity(this)">-</button>
+          <input type="number" min="0" name="quantity-{{ variant.id }}-product2" id="quantity-{{ variant.id }}-product2"  value="0">
+          <button type="button" data-variant-id="{{ variant.id }}-product2" onclick="increaseQuantity(this)">+</button>
+</th>
+</tr>
+  {% endfor %}
+    </table>
+  </div>
+  
+  <button type="button" onclick="addToCartMulti()" class="product-form__btn btn btn--lg btn--outline">Añadir al carrito</button>
+</form>
+<script>
+function addToCartSequentially(variantsToAdd, index) {
+    if (index < variantsToAdd.length) {
+        const variant = variantsToAdd[index];
+        const data = {
+            'id': variant.id,
+            'quantity': variant.quantity
+        };
+      
+        fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response;
+        })
+        .then(response => {
+            addToCartSequentially(variantsToAdd, index + 1);
+        })
+        .catch(error => {
+            console.error('Error al añadir al carrito:', error);
+            // Aquí puedes agregar lógica para reintentar si lo deseas
+        });
+    } else {
+        // Aquí puedes dar feedback visual al usuario, por ejemplo, mostrar un spinner
+        fetchCartAndUpdateDrawer();
+    }
+}
+
+function fetchCartAndUpdateDrawer() {
+    fetch('/cart.js')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(cart => {
+            updateCartDrawer(cart);  // Update the cart drawer with the new data
+            // Aquí puedes quitar el feedback visual si has mostrado uno antes
+        })
+        .catch(error => {
+            console.error('Error fetching the cart data:', error);
+            // Aquí puedes agregar lógica para reintentar si lo deseas
+        });
+}
+
+
+  function decreaseQuantity(button) {
+    const variantId = button.getAttribute('data-variant-id');
+    const input = document.getElementById(`quantity-${variantId}`);
+    if (input.value > 0) {
+      input.value = parseInt(input.value, 10) - 1;
+    }
+    checkTotalUnits();
+  }
+
+  function increaseQuantity(button) {
+    const variantId = button.getAttribute('data-variant-id');
+    const input = document.getElementById(`quantity-${variantId}`);
+    input.value = parseInt(input.value, 10) + 1;
+    checkTotalUnits();
+  }
+
+function addToCartMulti() {
+    const quantities1 = document.querySelectorAll('input[id^="quantity-"][id$="-product1"]');
+    const quantities2 = document.querySelectorAll('input[id^="quantity-"][id$="-product2"]');
+    const variantsToAdd = [];
+
+    function gatherVariants(quantities) {
+        quantities.forEach(input => {
+            const variantId = input.id.split('-')[1];
+            const quantity = parseInt(input.value);
+            if (quantity > 0) {
+                variantsToAdd.push({
+                    id: variantId,
+                    quantity: quantity
+                });
+            }
+        });
+    }
+
+    gatherVariants(quantities1);
+    gatherVariants(quantities2);
+
+    addToCartSequentially(variantsToAdd, 0);
+}
+function addToCartMulti() {
+    const quantities1 = document.querySelectorAll('input[id^="quantity-"][id$="-product1"]');
+    const quantities2 = document.querySelectorAll('input[id^="quantity-"][id$="-product2"]');
+    const variantsToAdd = [];
+    
+    const MIN_QUANTITY = 15;
+
+    function gatherVariants(quantities, productId) {
+        let allValid = true; // asumimos que todas las cantidades son válidas al principio
+        
+        quantities.forEach(input => {
+            const variantId = input.id.split('-')[1];
+            const quantity = parseInt(input.value);
+
+            // Si la cantidad es mayor que 0 pero menor que el mínimo, es inválido
+            if (quantity > 0 && quantity < MIN_QUANTITY) {
+                allValid = false;
+                // Podemos agregar código adicional aquí para resaltar el input inválido o mostrar un mensaje cerca de él
+            }
+
+            if (quantity > 0) {
+                variantsToAdd.push({
+                    id: variantId,
+                    quantity: quantity
+                });
+            }
+        });
+
+        if (!allValid) {
+            document.getElementById(`error-${productId}`).style.display = 'block';
+            return false; // Al menos una entrada no cumple con el mínimo
+        } else {
+            document.getElementById(`error-${productId}`).style.display = 'none';
+        }
+        
+        return true; // Todas las entradas cumplen con el mínimo
+    }
+
+    const product1Valid = gatherVariants(quantities1, 'product1');
+    const product2Valid = gatherVariants(quantities2, 'product2');
+
+    // Si todas las entradas de ambos productos cumplen con el mínimo, proceder a agregar al carrito
+    if (product1Valid && product2Valid) {
+        addToCartSequentially(variantsToAdd, 0);
+    }
+}
+
+</script>
+<p>*You must add at least 15 items</p>
+<p id="error-product1" style="color: red; display: none;">El mínimo de unidades para Producto 1 es 15.</p>
+<p id="error-product2" style="color: red; display: none;">El mínimo de unidades para Producto 2 es 15.</p>
+
+{% endunless %}
+
+

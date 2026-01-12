@@ -1,0 +1,66 @@
+
+<style>
+  .product-artist  {
+    text-decoration:none !important;
+  }
+  .product-artist img  {
+    border-radius: 50%;
+    margin: 0 10px 10px 0;
+    width: 52px;
+  }
+ .product-artist img:hover,  .product-artist img.active {
+    box-shadow: 0 0 0 2px #106572;
+}
+  
+  .container-product-artist {
+    margin:20px 0px;
+  }
+</style>
+<div class="container-product-artist">
+
+
+
+  
+
+              {% for collection in product.collections %}
+
+                {% if collection.handle contains 'swatch_' %}
+                  {%- assign collection = collections[collection.handle] -%}
+                  {% break %}
+                {% endif %}
+
+
+              {% endfor %}
+
+
+  
+  {%- for product1 in collection.products  -%}
+    {% if product1.tags contains 'novisible'%}
+   
+      {% else %}
+  {% assign image_found = false %}
+  {% assign selected_image = product1.images.first %} 
+
+
+  {%- for image in product1.images -%}
+    {% if image.alt contains 'swatch' %}
+      {% assign selected_image = image %}
+      {% assign image_found = true %}
+      {% break %} <!-- Dejamos de buscar si encontramos una imagen con 'swatch' en el alt -->
+    {% endif %}
+  {%- endfor -%}
+
+
+  {% if selected_image and product1.featured_image %}
+    <a href="{{ product1.url }}" class="product-artist" >
+      <img src="{{ selected_image | img_url: '100x100' }}"
+        {% if product1.title == product.title %}class="active"{% endif %}>
+    </a>
+  {% endif %}
+        {% endif %}
+{%- endfor -%}
+
+
+  
+
+</div>

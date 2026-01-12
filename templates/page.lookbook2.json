@@ -1,0 +1,404 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "xsmall",
+        "section_spacing_top": 96,
+        "section_spacing_bottom": 96,
+        "show_heading": true
+      }
+    },
+    "fe7fbd94-273d-4763-8467-5b3ae4758cb1": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-icon-1": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon": "none"
+          }
+        },
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-caption-1": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "RICH TEXT"
+          }
+        },
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-heading-1": {
+          "type": "heading",
+          "settings": {
+            "title": "2023 collection",
+            "heading_size": "h1"
+          }
+        },
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements or welcome customers to your store.</p>",
+            "text_2": "",
+            "text_3": "",
+            "body_size": "body3"
+          }
+        },
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-buttons-1": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "btn_text": "Button label",
+            "btn_url": "",
+            "btn_style": "link",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-icon-1",
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-caption-1",
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-heading-1",
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-text-1",
+        "template--16931909763286__fe7fbd94-273d-4763-8467-5b3ae4758cb1-buttons-1"
+      ],
+      "custom_css": [
+        ".rich-text__container--with-aside-spacing {padding-top: 24px; padding-bottom: 44px;}",
+        "@media only screen and (max-width: 767px) {.rich-text__container--with-aside-spacing {padding-top: 0; padding-bottom: 0; } .rich-text__content .rte.h1 {font-size: 24px; font-style: normal; font-weight: 700; line-height: 34px; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "enable_background_around_container": false,
+        "container_size": "page-width",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "section_mobile_spacing_top": 30,
+        "section_mobile_spacing_bottom": 30,
+        "content_align": "center",
+        "mobile_content_align": "center"
+      }
+    },
+    "e8168486-94b4-4b07-a414-ffac3fd06598": {
+      "type": "collage",
+      "blocks": {
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-collection-1": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": true,
+            "overlay_opacity": 20,
+            "link_text": "Link label",
+            "content_position": "bottom-left"
+          }
+        },
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-image-1": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 1,
+            "image": "shopify://shop_images/div.shape_2.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-collection-2": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": true,
+            "overlay_opacity": 20,
+            "link_text": "Link label",
+            "content_position": "bottom-left"
+          }
+        },
+        "e167039d-3757-4324-92ab-abbdfe1969f4": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "image": "shopify://shop_images/div.shape_4.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-image-2": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 1,
+            "image": "shopify://shop_images/div.shape_1.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "909db02c-58b3-4bae-b1ab-2b4941443e7b": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 1,
+            "image": "shopify://shop_images/div.shape_3.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        },
+        "68d149ad-8b26-4417-be48-321a04959dbb": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 1,
+            "image": "shopify://shop_images/div.shape_b15c670e-587b-47aa-a20a-2f7f25643aba.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "",
+            "text": "",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-collection-1",
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-image-1",
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-collection-2",
+        "e167039d-3757-4324-92ab-abbdfe1969f4",
+        "template--16931909763286__e8168486-94b4-4b07-a414-ffac3fd06598-image-2",
+        "909db02c-58b3-4bae-b1ab-2b4941443e7b",
+        "68d149ad-8b26-4417-be48-321a04959dbb"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 48,
+        "title": "",
+        "heading_size": "h5",
+        "alignment": "left",
+        "columns": 4,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false
+      }
+    },
+    "e70123e5-22a5-4f28-973e-2f9f2660bf50": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-icon-1": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon": "none"
+          }
+        },
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-caption-1": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "RICH TEXT"
+          }
+        },
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-heading-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "Tell about your brand",
+            "heading_size": "h5"
+          }
+        },
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The nostalgia for Y2K (turn-of-the-millennium) trends have definitely been in the works for a while, thanks to Gen Z discovering and showcasing them on Tik Tok. So, today we’re bringing you iconic streetwear looks from early naughts for inspiration to style our NAIDOC 2021 range. Get styling and stand out this NAIDOC Week!</p><p>When you think of the Y2K fashion aesthetic, there are probably a few things that come to mind: denim on denim, mini handbags, ‘retro’ tees, boho-western details, and platform sneakers. These throwback pieces are getting a second chance, and an entirely new generation of fashionistas. We’ve styled a look that says boho-western meets urban chic. So, we give you our retro inspired NAIDOC Heart Womens Rose Tee paired with a white denim trucker jacket. The ‘fresh’ appeal of the jacket makes the white NAIDOC logo pop, and the tan top-stitching details provide a contrasting ‘western’ look. For the rest of the look, we’ve paired some light-wash, cut-off mum jeans with a Y2K-essential chunky tan ‘cowgirl’ belt and mini tan leather Sampson<br/>Embroidered Handbag - the bag’s embroidered flower shapes were literally on everything Y2K fashion. Lastly, we can’t forget the chunky white platform sneakers to top off the look with an urban feel.</p>",
+            "text_2": "",
+            "text_3": "",
+            "body_size": "body3"
+          }
+        },
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-buttons-1": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "btn_text": "Button label",
+            "btn_url": "",
+            "btn_style": "link",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-icon-1",
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-caption-1",
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-heading-1",
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-text-1",
+        "template--16931909763286__e70123e5-22a5-4f28-973e-2f9f2660bf50-buttons-1"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "enable_background_around_container": false,
+        "container_size": "small",
+        "section_spacing_top": 100,
+        "section_spacing_bottom": 100,
+        "section_mobile_spacing_top": 30,
+        "section_mobile_spacing_bottom": 30,
+        "content_align": "left",
+        "mobile_content_align": "center"
+      }
+    },
+    "abf92747-860e-45aa-bc6f-de2e00c2e98d": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".product-card__price + .text-center,.product-card__price .product-card-sale-amount-badge {display: none;}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "page-width",
+        "section_spacing_top": 96,
+        "section_spacing_bottom": 70,
+        "section_layout": "carousel-overflow",
+        "title": "Shop this styles",
+        "heading_size": "h3",
+        "alignment": "center",
+        "collection": "bed-bath-2",
+        "featured_products": [],
+        "img_ratio": "default",
+        "product_card_align": "left",
+        "cards_to_show": 16,
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false,
+        "enable_autoplay": false,
+        "autoplay_interval": 3,
+        "show_navigation_on_hover": true
+      }
+    },
+    "7e5e1484-3d55-4d66-87cd-0c8a55f89002": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16940700893398__7e5e1484-3d55-4d66-87cd-0c8a55f89002-title-1": {
+          "type": "title",
+          "settings": {
+            "title": "Want 10% off yout order?",
+            "heading_size": "h1"
+          }
+        },
+        "template--16940700893398__7e5e1484-3d55-4d66-87cd-0c8a55f89002-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Get 10% off yout next online purchase, when you sign up to our VIP Newsletter today!",
+            "body_size": "body3"
+          }
+        },
+        "template--16940700893398__7e5e1484-3d55-4d66-87cd-0c8a55f89002-subscribe-1": {
+          "type": "subscribe",
+          "settings": {
+            "input_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16940700893398__7e5e1484-3d55-4d66-87cd-0c8a55f89002-title-1",
+        "template--16940700893398__7e5e1484-3d55-4d66-87cd-0c8a55f89002-text-1",
+        "template--16940700893398__7e5e1484-3d55-4d66-87cd-0c8a55f89002-subscribe-1"
+      ],
+      "settings": {
+        "color_scheme": "custom-2",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "desktop_height": 320,
+        "mobile_height": 420,
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "desktop_content_position": "align-items: center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 804,
+        "content_spacing": 16,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none"
+      }
+    }
+  },
+  "order": [
+    "page",
+    "fe7fbd94-273d-4763-8467-5b3ae4758cb1",
+    "e8168486-94b4-4b07-a414-ffac3fd06598",
+    "e70123e5-22a5-4f28-973e-2f9f2660bf50",
+    "abf92747-860e-45aa-bc6f-de2e00c2e98d",
+    "7e5e1484-3d55-4d66-87cd-0c8a55f89002"
+  ]
+}

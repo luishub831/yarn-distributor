@@ -1,0 +1,339 @@
+{%- liquid
+  assign options = section.settings
+  assign section_spacing_top = options.section_spacing_top
+  assign section_spacing_bottom = options.section_spacing_bottom
+  assign section_mobile_spacing_top = options.section_mobile_spacing_top
+  assign section_mobile_spacing_bottom = options.section_mobile_spacing_bottom
+  assign color_scheme = options.color_scheme
+  assign container_size = options.container_size
+-%}
+
+{% capture css %}
+  {% style %}
+  .section-{{section.id}} {
+        --gsc-section-spacing-top: {{ section_spacing_top }}px;
+        --gsc-section-spacing-bottom: {{ section_spacing_bottom }}px;
+    }
+
+    @media only screen and (min-width:768px) and (max-width:1199px) {
+        .section-{{section.id}} {
+              --gsc-section-spacing-top: {{ section_spacing_top | times: 0.50 }}px;
+              --gsc-section-spacing-bottom: {{ section_spacing_bottom | times: 0.50 }}px;
+          }
+      }
+
+    @media only screen and (max-width:767px) {
+      .section-{{section.id}} {
+            --gsc-section-spacing-top: {{ section_mobile_spacing_top }}px;
+            --gsc-section-spacing-bottom: {{ section_mobile_spacing_bottom }}px;
+        }
+    }
+
+    
+  {% endstyle %}
+{% endcapture %}
+
+{% render 'inline-css-minifier', css: css %}
+
+<div class='section section-spacing artist_list_section color-{{ color_scheme }} section-{{ section.id }} '>
+  <div class='container container--{{ container_size }}'>
+    {%- for block in section.blocks -%}
+    {%- liquid
+    assign options = block.settings
+    -%}
+    {%- case block.type -%}
+    {% when 'sort_by_letter' %}
+    <div class="sort_by_letter text-{{ options.text_align }}" {{ block.shopify_attributes }}>
+      {% if options.title != blank %}
+      <h3 class="sort_by_letter_title">
+        {{ options.title }}
+      </h3>
+      {% endif %}
+      {% assign alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | split: '' %}
+      <ul class="letter_list">
+        {% for letter in alphabet %}
+        <li letter="{{ letter }}">{{ letter }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% when 'artist_list' %}
+      {% style %}
+        .artist_list_title {
+          color: {{ options.color }};
+        }
+        .tag {
+          background-color: {{ options.color }};
+        }
+      {% endstyle %}
+    <div class="artist_list_main" {{ block.shopify_attributes }}>
+      {% for letter in alphabet %}
+      {% assign has_artist = false %}
+      {% for artist in shop.metaobjects.artist.values %}
+      {% assign artist_name_first_letter = artist.name | slice: 0, 1 | upcase %}
+      {% if artist_name_first_letter == letter %}
+      {% assign has_artist = true %}
+      {% break %}
+      {% endif %}
+      {% endfor 
+      %}
+      {% if has_artist %}
+      <div class="artist_list_row">
+        <div class="artist_list_title">
+          {{ letter }}
+        </div>
+        <div class="artist_list">
+          <div class="card-grid"
+            style="--gsc-columns: {{ options.columns }}; --gsc-space-between-cards: {{ options.columns_gap }}px">
+            {% for artist in shop.metaobjects.artist.values %}
+            {% assign artist_name_first_letter = artist.name | slice: 0, 1 | upcase %}
+            {% if artist_name_first_letter == letter %}
+            <div class="artist_card">
+              <a href="{{ artist.system.url }}">
+              <div class="artist_img">
+                <img src="{{ artist.image | img_url: 'master' }}" alt="{{ artist.name }}">
+              </div> </a>
+              <div class="artist_data">
+                <div class="tag">{{ artist.tag }}</div>
+                <h3>{{ artist.name | link_to: artist.system.url }}</h3>
+                <p>{{ artist.slogan }}</p>
+                <div class="card_link">
+                  <a href="{{ artist.system.url }}" class="link">
+                    <span class="link__text">Read more</span>
+                    {%- render 'icon', icon_name: 'link-chevron', class: 'link__chevron' -%}
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let letter_lists = document.querySelectorAll('.letter_list li');
+    letter_lists.forEach((letter_list, index) => {
+      letter_list.addEventListener('click', () => {
+        letter_lists.forEach(item => {
+          item.classList.remove('active');
+        });
+        letter_list.classList.add('active');
+        const selected_letter_list_text = letter_list.textContent;
+        const artist_list_titles = document.querySelectorAll('.artist_list_title');
+        artist_list_titles.forEach(artist_list_title => {
+          if (artist_list_title.textContent.includes(selected_letter_list_text)) {
+            artist_list_title.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }
+        })
+      });
+      if (index === 0) {
+        letter_lists[0].classList.add('active');
+      }
+    })
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Directory artist",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.general_section_settings.color_scheme_option_default_label"
+        },
+        {
+          "value": "primary",
+          "label": "t:sections.general_section_settings.color_scheme_option_primary_label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.general_section_settings.color_scheme_option_secondary_label"
+        },
+        {
+          "value": "custom-1",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_1_label"
+        },
+        {
+          "value": "custom-2",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_2_label"
+        },
+        {
+          "value": "custom-3",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_3_label"
+        }
+      ],
+      "default": "default",
+      "label": "t:sections.general_section_settings.color_scheme_label",
+      "info": "t:sections.general_section_settings.color_scheme_tip"
+    },
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:sections.general_section_settings.container_size.page_width_option"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.general_section_settings.container_size.large_width_option"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.general_section_settings.container_size.medium_width_option"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.general_section_settings.container_size.small_width_option"
+        },
+        {
+          "value": "xsmall",
+          "label": "t:sections.general_section_settings.container_size.extra_small_width_option"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.general_section_settings.container_size.label"
+    },
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "t:sections.general_section_settings.section_spacing_top.unit",
+      "label": "t:sections.general_section_settings.section_spacing_top.label"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "t:sections.general_section_settings.section_spacing_bottom.unit",
+      "label": "t:sections.general_section_settings.section_spacing_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_mobile_spacing_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "t:sections.general_section_settings.section_spacing_top.unit",
+      "label": "t:sections.general_section_settings.section_spacing_top.label"
+    },
+    {
+      "type": "range",
+      "id": "section_mobile_spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "t:sections.general_section_settings.section_spacing_bottom.unit",
+      "label": "t:sections.general_section_settings.section_spacing_bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sort_by_letter",
+      "name": "Sort by letter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Sort by letter",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "center",
+          "label": "Text align"
+        }
+      ],
+      "limit": 1
+    },
+    {
+      "type": "artist_list",
+      "name": "Artist list",
+      "settings": [
+        {
+          "type": "range",
+          "id": "columns",
+          "min": 2,
+          "max": 5,
+          "step": 1,
+          "default": 4,
+          "label": "Columns per row"
+        },
+        {
+          "type": "range",
+          "id": "columns_gap",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "default": 16,
+          "unit": "px",
+          "label": "Columns gap"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "default": "#106572",
+          "label": "Color"
+        }
+      ],
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Directory artist",
+      "blocks": [
+        {
+          "type": "sort_by_letter"
+        },
+        {
+          "type": "artist_list"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

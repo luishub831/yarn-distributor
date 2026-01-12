@@ -1,0 +1,110 @@
+{{ 'handlebars.min.js' | asset_url | script_tag }}
+<script src="https://maps.googleapis.com/maps/api/js?key={{ section.settings.api_key }}"></script>
+{{ 'snazzy-info-window.js' | asset_url | script_tag }}
+{{ 'snazzy-info-window.min.css' | asset_url | stylesheet_tag }}
+{{ 'map-styles.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+    DO NOT EDIT THE CURLY BRACKETS IN SCRIPT BELOW
+{% endcomment %}
+
+<script id="marker-content-template" type="text/x-handlebars-template">
+    {% raw %}
+        <div class="custom-img" style="background-image: url('{{ bgImg }}');"></div>
+        <section class="custom-content">
+            <div class="custom-header">
+                <img src="{{ pinImg }}" alt="Profile Image" class="profile-image">
+                <div class="text-content">
+                    <h3>{{ title }}</h3>
+                    <small>{{ subtitle }}</small>
+                    <div class="custom-body">{{{ body }}}
+                        <span><a href="{{ link_url }}" target="_blank">{{ link_text }}</a></span>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    {% endraw %}
+</script>
+
+<div class="map-canvas"></div>
+
+{% schema %}
+    {
+        "name": "Map Location",
+        "settings": [
+            {
+                "type": "text",
+                "id": "api_key",
+                "label": "Google Maps API Key",
+                "default": "AIzaSyAHt7Dr6Mski5zRbhsohPRbkev4cVng1AA"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "location",
+                "name": "Location",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "latitude",
+                        "label": "Latitude",
+                        "default": "-25.2744"
+                    },
+                    {
+                        "type": "text",
+                        "id": "longitude",
+                        "label": "Longitude",
+                        "default": "133.7751"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title",
+                        "default": "Location Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "subtitle",
+                        "label": "Subtitle",
+                        "default": "Location Subtitle"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_url",
+                        "label": "Link URL"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_text",
+                        "label": "Link Text",
+                        "default": "Learn more"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "bg_img",
+                        "label": "Background Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "pin_img",
+                        "label": "Pinpoint Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Map Location",
+                "category": "Custom"
+            }
+        ]
+    }
+{% endschema %}
+    
+{% render 'map-script' %}

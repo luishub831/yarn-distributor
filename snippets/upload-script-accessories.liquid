@@ -1,0 +1,97 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    updateSimpleProductATCButtonState();
+    document.querySelector('#product-buy-btn-{{ product.id }}-{{ sectionId }}').addEventListener('click', function(event) {
+        event.preventDefault();
+        addToCartSimpleProduct();
+    });
+
+    document.querySelectorAll('input[type="number"][id^="Quantity-"]').forEach(input => {
+        input.addEventListener('change', updateSimpleProductATCButtonState);
+    });
+
+    document.addEventListener('upload:added', function(e) {
+        const file = e.detail;
+        if (file.url && file.path) {
+            uploadedFilesSimple[file.path] = { url: file.url };
+        }
+        updateSimpleProductATCButtonState();
+    });
+
+    document.addEventListener('upload:removed', function(e) {
+        const file = e.detail;
+        if (file.url && file.path && uploadedFilesSimple[file.path]) {
+            delete uploadedFilesSimple[file.path];
+        }
+        updateSimpleProductATCButtonState();
+    });
+});
+
+let uploadedFilesSimple = {};
+
+function addToCartSimpleProduct() {
+    const productForm = document.querySelector('form.product-form');
+    if (!productForm) {
+        console.error('Product form not found.');
+        return;
+    }
+
+    const formData = new FormData(productForm);
+    const quantityInput = document.querySelector('#Quantity-{{ product.id }}-{{ sectionId }}');
+    if (quantityInput && (quantityInput.value.trim() === '' || parseInt(quantityInput.value, 10) < 1)) {
+        alert('Please select a valid quantity before adding to cart.');
+        return;
+    }
+
+    const additionalDetails = document.getElementById('additional-details') ? document.getElementById('additional-details').value.trim() : '';
+    formData.append('properties[Additional Details]', additionalDetails);
+
+    Object.keys(uploadedFilesSimple).forEach(key => {
+        formData.append(`properties[${key}]`, uploadedFilesSimple[key].url);
+    });
+
+    const fetchOptions = {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    };
+
+    fetch('/cart/add.js', fetchOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Product added:', data);
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('Error adding product to cart:', error);
+        });
+}
+
+function updateSimpleProductATCButtonState() {
+    const addToCartButton = document.querySelector('#product-buy-btn-{{ product.id }}-{{ sectionId }}');
+    const quantityInput = document.querySelector('#Quantity-{{ product.id }}-{{ sectionId }}');
+    const totalQuantity = quantityInput ? parseInt(quantityInput.value) || 0 : 0;
+    const hasUploads = Object.keys(uploadedFilesSimple).length > 0;
+
+    const MIN_QUANTITY = {{ product.metafields.custom.min_qty | json }} || 15;
+    addToCartButton.disabled = totalQuantity < MIN_QUANTITY || !hasUploads;
+
+    const errorContainer = document.getElementById('error-message-container');
+    if (errorContainer) {
+        if (addToCartButton.disabled) {
+            errorContainer.textContent = noVariantTagExists ? "Please ensure you've met the minimum quantity" : "Please ensure you've met the minimum quantity and completed all required uploads.";
+            errorContainer.style.display = 'block';
+        } else {
+            errorContainer.style.display = 'none';
+        }
+    }
+}
+</script>

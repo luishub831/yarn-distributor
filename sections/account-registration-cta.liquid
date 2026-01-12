@@ -1,0 +1,116 @@
+{% schema %}
+{
+  "name": "CTA Registration Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Heading",
+      "default": "CTA FOR ACCOUNT REGISTRATION"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Register"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Registration Banner"
+    }
+  ]
+}
+{% endschema %}
+<section 
+  class="cta-registration-banner" 
+  style="
+    {% if section.settings.background_image != blank %}
+      background: url('{{ section.settings.background_image | image_url: width: 1600 }}') no-repeat center/cover;
+      height: auto;
+    {% else %}
+      background: #d21f43;
+    {% endif %}
+  "
+>
+  {% if section.settings.background_image != blank %}
+    <img 
+      src="{{ section.settings.background_image | image_url: width: 1600 }}" 
+      alt="CTA Background" 
+      class="cta-bg-helper"
+      loading="lazy"
+    >
+  {% endif %}
+
+  <div class="cta-content">
+    <h2>{{ section.settings.cta_heading }}</h2>
+  </div>
+
+  <a href="{{ section.settings.button_link | default: '/account/register' }}" class="cta-btn">
+    {{ section.settings.button_text }}
+  </a>
+</section>
+
+<style>
+.cta-registration-banner {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  border-radius: 20px;
+  margin: 0px 20px;
+}
+
+/* Hidden img ensures section takes image height */
+.cta-bg-helper {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cta-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  color: #fff;
+}
+
+.cta-content h2 {
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+  line-height: 55px;
+}
+
+.cta-btn {
+  position: absolute;
+  bottom: 25px;   /* ✅ Always 50px from bottom of section */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #8a6caf;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.cta-btn:hover {
+  background: #4b45d6;
+}
+</style>

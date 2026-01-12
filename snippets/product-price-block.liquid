@@ -1,0 +1,166 @@
+{%- liquid
+  assign options = block.settings
+  assign show_tax_status = options.show_tax_status
+  assign taxes_included = cart.taxes_included
+-%}
+<div class='product-general-info-block block-{{ block.id }}' {{ block.shopify_attributes }}>
+
+  {% if customer %}
+    <product-block
+      class='product-price-wrapper'
+      id='product-price-{{ product.id }}-{{ sectionId }}'
+    >
+      {%- for variant in product.variants -%}
+        {% assign price = variant.price | default: 0 %}
+
+        <template data-product-block-template='{{ variant.id }}'>
+          <div class='product-price__content' data-product-block-item>
+            <div class='product-price__cost'>
+              <div class='product-price__current-price {% if block.settings.highlight_sale_price and variant.compare_at_price > variant.price %} product-price__current-price--highlight-sale{% endif %}'>
+                {%- assign new_pricing = product.metafields.custom.new_pricing -%}
+                {%- if new_pricing -%}
+                  {{ new_pricing }}
+                {%- else -%}
+                  {{ variant.price | money }}
+                {%- endif -%}
+            
+                {%- if variant.unit_price_measurement -%}
+                  ({{ variant.unit_price | money }}
+                  <span aria-hidden='true'>/</span>
+                  {%- if variant.unit_price_measurement.reference_value != 1 -%}
+                    {{- variant.unit_price_measurement.reference_value -}}
+                  {%- endif -%}
+                  {{ variant.unit_price_measurement.reference_unit }})
+                {%- endif -%}
+              </div>
+              {%- if variant.compare_at_price > variant.price -%}
+                <div class='product-price__old-price {% if block.settings.highlight_sale_price and variant.compare_at_price > variant.price %} product-price__old-price--highlight-sale{% endif %}'>
+                  {{ variant.compare_at_price | money }}
+                </div>
+              {%- endif -%}
+            </div>
+          
+
+            {%- if variant.compare_at_price > price and variant.available and block.settings.show_sale_amount_badge -%}
+              <div class='product-sale-amount-badge'>
+                {% render 'sale-amount-badge-text', price: variant.price, old_price: variant.compare_at_price %}
+              </div>
+            {%- endif -%}
+          </div>
+        </template>
+      {%- endfor -%}
+      {%- liquid
+        assign variant = product.selected_or_first_available_variant
+        assign compare_at_price = variant.compare_at_price | default: 0
+        assign price = variant.price | default: 0
+      -%}
+      <div class='product-price' data-product-block-container >
+        <div class='product-price__content' data-product-block-item>
+          <div class='product-price__cost' bss-b2b-product-id="{{ product.id }}" bss-b2b-product-price bss-b2b-variant-price bss-b2b-variant-id="{{ product.selected_or_first_available_variant.id }}" bss-b2b-featured-product>
+            <div class='product-price__current-price {% if block.settings.highlight_sale_price and variant.compare_at_price > price %} product-price__current-price--highlight-sale{% endif %}'>
+              {%- assign new_pricing = product.metafields.custom.new_pricing -%}
+              {%- if new_pricing -%}
+                {{ new_pricing }}
+              {%- else -%}
+                {{ price | money }}
+              {%- endif -%}
+          
+              {%- if variant.unit_price_measurement -%}
+                ({{ variant.unit_price | money }}
+                <span aria-hidden='true'>/</span>
+                {%- if variant.unit_price_measurement.reference_value != 1 -%}
+                  {{- variant.unit_price_measurement.reference_value -}}
+                {%- endif -%}
+                {{ variant.unit_price_measurement.reference_unit }})
+              {%- endif -%}
+            </div>
+            {%- if compare_at_price > price -%}
+              <div class='product-price__old-price {% if block.settings.highlight_sale_price %} product-price__old-price--highlight-sale{% endif %}'>
+                {{ compare_at_price | money }}
+              </div>
+            {%- endif -%}
+          </div>
+          {%- if variant.compare_at_price > price and variant.available and block.settings.show_sale_amount_badge -%}
+            <div class='product-sale-amount-badge'>
+              {% render 'sale-amount-badge-text', price: variant.price, old_price: variant.compare_at_price %}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- if show_tax_status -%}
+        <div class='product-price__tax-status'>
+          {%- if taxes_included -%}
+            {{ 'products.product.include_taxes' | t }}
+          {%- else -%}
+            {{ 'products.product.no_include_taxes' | t }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </product-block>
+  {% else %}
+    
+    <p style="color: #00aaff; margin: 20px 0; text-decoration: underline">
+      <a href="/account/login?return_url={{ shop.url }}{{ product.url }}" class="price-login-link">Login for prices.</a>
+    </p>
+  {% endif %}
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        let priceDiv = document.querySelector('.product-price__current-price');
+
+        if (!priceDiv) {
+            return;
+        }
+
+        if (priceDiv.querySelector('.dollar-sign') || priceDiv.querySelector('.dot')) {
+            return;
+        }
+
+        let priceText = priceDiv.textContent.trim();
+
+        if (!priceText.includes('.')) {
+            priceText += '.00';
+        }
+
+        let priceMatch = priceText.match(/\$?(\d+(?:\.\d{1,2})?)/);
+        if (!priceMatch) {
+            return;
+        }
+
+        let numericPrice = priceMatch[1];
+
+        if (!numericPrice.includes('.')) {
+            numericPrice += '.00';
+        } else if (numericPrice.split('.')[1].length === 1) {
+            numericPrice += '0';
+        }
+
+        let parts = numericPrice.split('.');
+        let dollars = parts[0];
+        let cents = parts[1];
+
+        let newContent = `<span class="dollar-sign">$</span>${dollars}<span class="dot">.</span><span class="cents">${cents}</span>`;
+
+        priceDiv.innerHTML = newContent;
+        priceDiv.classList.add('price-formatted');
+    }, 100);
+});
+</script>
+<style>
+  .product-price__current-price {
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+
+  .product-price__current-price.price-formatted {
+    opacity: 1;
+  }
+
+  .product-price__current-price .dollar-sign,
+  .product-price__current-price .dot,
+  .product-price__current-price .cents {
+    font-size: 14px;
+    margin-top: -10px;
+  }
+</style>

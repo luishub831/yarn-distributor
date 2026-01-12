@@ -1,0 +1,579 @@
+{%- liquid
+  assign options = section.settings
+  assign title = options.title
+  assign text = options.text
+  assign text_align = options.text_align
+  assign input_style = options.input_style
+  assign show_captcha = options.show_captcha
+  assign show_phone = options.show_phone
+  assign color_scheme = options.color_scheme
+  assign section_spacing_top = options.section_spacing_top
+  assign section_spacing_bottom = options.section_spacing_bottom
+  assign section_mobile_spacing_top = options.section_mobile_spacing_top
+  assign section_mobile_spacing_bottom = options.section_mobile_spacing_bottom
+  assign container_size = options.container_size
+  assign heading_size = options.heading_size
+  assign enable_background_around_container = options.enable_background_around_container
+  assign body_size = options.body_size
+  assign klaviyo_list_id = options.klaviyo_list_id
+-%}
+
+{% capture css %}
+  {% style %}
+    .section-{{section.id}} {
+        --gsc-text-align: {{ text_align }};
+        --gsc-section-spacing-top: {{ section_spacing_top }}px;
+        --gsc-section-spacing-bottom: {{ section_spacing_bottom }}px;
+    }
+
+    @media only screen and (min-width: 769px) {
+      .field-group {
+        display: flex;
+        gap: 20px;
+      }
+
+      .field-group .column-one, 
+      .field-group .column-two {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .textarea.textarea--large {
+        height: 13.5rem;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      .field-group {
+        display: block;
+      }
+      input.input.input--large.input--solid {
+        margin: 10px 0;
+      }
+      textarea.textarea.textarea--solid {
+        margin: 20px 0;
+      }
+      .field.contact__field {
+        margin-bottom: 10px;
+      }
+
+      .field.contact__field.contact__field_right.rcl.tc {
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+
+    .custom-app-block textarea.spr-form-input, .textarea {
+      height: 21rem;
+      resize: none;
+      display: block;
+    }
+
+    .field.contact__field.contact__field_right.rcl {
+      margin-top: 2rem;
+    }
+
+    .field.contact__field.contact__field_right.rcl .upload-container {
+      display: none;
+    }
+
+    .field.contact__field.contact__field_right.rcl.tc {
+      gap: 10px;
+    }
+
+    .field.contact__field.contact__field_right.rcl.tc label {
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 480px) {
+      .column-two {
+        margin-top: -20px;
+      }
+    }
+  {% endstyle %}
+{% endcapture %}
+
+{% render 'inline-css-minifier', css: css %}
+
+<div class='contact section section-{{ section.id }} {% unless enable_background_around_container %} section color-{{ color_scheme }}{% endunless %}'>
+  <div class='contact__container container {% if enable_background_around_container == false %} container--{{ container_size }} {% endif %} section-spacing'>
+    <div class="contact-container {% if enable_background_around_container %} rich-text__container--with-aside-spacing section color-{{ color_scheme }}{% endif %}">
+      <div class="{% if enable_background_around_container == true %} container container--{{ container_size }} {% endif %}">
+
+        {%- if title != blank or text != blank -%}
+          <div class='contact__content'>
+            {%- if title != blank -%}
+              <h5 class='contact__title {{ heading_size }}'>{{ title }}</h5>
+            {%- endif -%}
+            {%- if text != blank -%}
+              <div class='rte contact__text body-font-weight-from-global-settings {{ body_size }}'>
+                {{ text }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- form 'contact', id: 'ContactForm', class: 'contact__form' -%}
+            {%- if form.posted_successfully? -%}
+              <script>
+                window.addEventListener('load', () => {
+                  window.bodyElement.notification.show('Message has been sent', 'success')
+                })
+              </script>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+              {%- assign error = form.errors.translated_fields.email
+                | capitalize
+                | append: ' '
+                | append: form.errors.messages.email
+              -%}
+              <script>
+                window.addEventListener('load', () => {
+                  window.bodyElement.notification.show('{{ error }}', 'warning')
+                })
+              </script>
+            {%- endif -%}
+            <div class='field-group contact__field-group'>
+              <div class="column-one">
+                <!-- Company Name -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    autocomplete='organization'
+                    type='text'
+                    name='contact[company_name]'
+                    placeholder='Company name *'
+                    required
+                  >
+                </div>
+                
+                <!-- Contact Name -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    autocomplete='name'
+                    type='text'
+                    name='contact[contact_name]'
+                    placeholder='Contact name *'
+                    required
+                  >
+                </div>
+                
+                <!-- Website -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    autocomplete='url'
+                    type='url'
+                    name='contact[website]'
+                    placeholder='Website *'
+                    required
+                  >
+                </div>
+                
+                <!-- Number of Team Members -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    autocomplete='number'
+                    type='number'
+                    name='contact[team_members]'
+                    placeholder='Number of Team Members *'
+                    required
+                  >
+                </div>
+                
+                <!-- Contact Email -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    type='email'
+                    name='contact[email]'
+                    placeholder='Contact email *'
+                    required
+                  >
+                </div>
+                
+                <!-- Socials -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    autocomplete='socials'
+                    type='text'
+                    name='contact[socials]'
+                    placeholder='Socials IG, FB, LinkedIn *'
+                    required
+                  >
+                </div>
+              </div>
+              
+              <div class="column-two">
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large rcl'
+                    type='text'
+                    name='contact[state]'
+                    placeholder='State *'
+                    required
+                  >
+                </div>
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    type='text'
+                    name='contact[industry]'
+                    placeholder='Industry *'
+                    required
+                  >
+                </div>
+                <!-- What Does Your Team Do -->
+                <div class='field contact__field'>
+                  <textarea
+                    class='textarea textarea--large'
+                    name='contact[team_do]'
+                    placeholder='What does your team do *'
+                    required
+                  ></textarea>
+                </div>
+                
+                <!-- Tell Us Why Your Team Is Great -->
+                <div class='field contact__field'>
+                  <textarea
+                    class='textarea textarea--large'
+                    name='contact[team_great]'
+                    placeholder='Tell us why your team is so great *'
+                    required
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Hidden Field for Message Body -->
+            <input
+              type='hidden'
+              name='contact[body]'
+              id='ContactBody'
+            >
+            
+            <!-- JavaScript to Combine Textarea Values -->
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const form = document.getElementById('ContactForm');
+              const teamDoField = form.querySelector('textarea[name="contact[team_do]"]');
+              const teamGreatField = form.querySelector('textarea[name="contact[team_great]"]');
+              const contactBodyField = form.querySelector('input[name="contact[body]"]');
+              
+              form.addEventListener('submit', function() {
+                contactBodyField.value =
+                  'What does your team do:\n' + teamDoField.value +
+                  '\n\nTell us why your team is so great:\n' + teamGreatField.value;
+              });
+            });
+            </script>
+            
+            <!-- Terms & Conditions Checkbox -->
+            <div class='field contact__field contact__field_right rcl tc'>
+              <input
+                type='checkbox'
+                id='terms-{{ section.id }}'
+                required
+                name='contact[terms_agreement]'
+              >
+              <label for='terms-{{ section.id }}'>
+                I have read and agree to the 
+                <a href='/pages/terms-and-conditions-team-threads' target='_blank'>Terms and Conditions</a>
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="field contact__field contact__field_right rcl">
+              <button
+                type='submit'
+                class='btn btn--solid btn--lg contact__btn'
+                aria-label='Send Enquiry'
+              >
+                Apply Now
+              </button>
+            </div>
+        {%- endform -%}
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "New Contact Form",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.general_section_settings.color_scheme_option_default_label"
+        },
+        {
+          "value": "primary",
+          "label": "t:sections.general_section_settings.color_scheme_option_primary_label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.general_section_settings.color_scheme_option_secondary_label"
+        },  
+        {
+          "value": "custom-1",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_1_label"
+        },
+        {
+          "value": "custom-2",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_2_label"
+        },
+        {
+          "value": "custom-3",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_3_label"
+        }
+      ],
+      "default": "default",
+      "label": "t:sections.general_section_settings.color_scheme_label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_background_around_container",
+      "default": false,
+      "label": "t:sections.general_section_settings.enable_background_around_container_label"
+    },
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        {
+          "value": "full-screen",
+          "label": "Full screen"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.general_section_settings.container_size.page_width_option"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.general_section_settings.container_size.large_width_option"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.general_section_settings.container_size.medium_width_option"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.general_section_settings.container_size.small_width_option"
+        },
+        {
+          "value": "xsmall",
+          "label": "t:sections.general_section_settings.container_size.extra_small_width_option"
+        }
+      ],
+      "default": "xsmall",
+      "label": "t:sections.general_section_settings.container_size.label"
+    },
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 96,
+      "unit": "t:sections.general_section_settings.section_spacing_top.unit",
+      "label": "t:sections.general_section_settings.section_spacing_top.label"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 96,
+      "unit": "t:sections.general_section_settings.section_spacing_bottom.unit",
+      "label": "t:sections.general_section_settings.section_spacing_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_mobile_spacing_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "t:sections.general_section_settings.section_spacing_top.unit",
+      "label": "t:sections.general_section_settings.section_spacing_top.label"
+    },
+    {
+      "type": "range",
+      "id": "section_mobile_spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "t:sections.general_section_settings.section_spacing_bottom.unit",
+      "label": "t:sections.general_section_settings.section_spacing_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact_form.content_settings_header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.contact_form.title_label",
+      "default": "Contact us"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "default": "Fill in the text to remind customers to fill in the form correctly so that your support team could contact them to help with the issues and answer all the questions.",
+      "label": "t:sections.contact_form.text_label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.general_section_settings.label_for_heading_size_setting",
+      "options": [
+        {
+          "value": "h0",
+          "label": "t:sections.general_section_settings.heading_size_0_option"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.general_section_settings.heading_size_1_option"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.general_section_settings.heading_size_2_option"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.general_section_settings.heading_size_3_option"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.general_section_settings.heading_size_4_option"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.general_section_settings.heading_size_5_option"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.general_section_settings.heading_size_6_option"
+        },
+        {
+          "value": "h7",
+          "label": "t:sections.general_section_settings.heading_size_7_option"
+        }
+      ],
+      "default": "h5"
+    },
+    {
+      "type": "select",
+      "id": "body_size",
+      "label": "t:sections.general_section_settings.label_for_body_size_setting",
+      "options": [
+        {
+          "value": "body0",
+          "label": "t:sections.general_section_settings.body_size_0_option"
+        },
+        {
+          "value": "body1",
+          "label": "t:sections.general_section_settings.body_size_1_option"
+        },
+        {
+          "value": "body2",
+          "label": "t:sections.general_section_settings.body_size_2_option"
+        },
+        {
+          "value": "body3",
+          "label": "t:sections.general_section_settings.body_size_3_option"
+        },
+        {
+          "value": "body4",
+          "label": "t:sections.general_section_settings.body_size_4_option"
+        },
+        {
+          "value": "body5",
+          "label": "t:sections.general_section_settings.body_size_5_option"
+        },
+        {
+          "value": "body6",
+          "label": "t:sections.general_section_settings.body_size_6_option"
+        }
+      ],
+      "default": "body3"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:sections.general_section_settings.content_alignment_label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.general_section_settings.alignment_option_left_label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.general_section_settings.alignment_option_center_label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact_form.form_settings_header"
+    },
+    {
+      "type": "select",
+      "id": "input_style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:sections.contact_form.input_style_option_solid_label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.contact_form.input_style_option_outline_label"
+        }
+      ],
+      "default": "solid",
+      "label": "t:sections.contact_form.input_style_label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "default": false,
+      "label": "t:sections.contact_form.show_phone_label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_captcha",
+      "default": true,
+      "label": "t:sections.contact_form.show_captcha_label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Contact Form"
+    }
+  ]
+}
+{% endschema %}

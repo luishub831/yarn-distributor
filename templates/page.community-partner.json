@@ -1,0 +1,968 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "xsmall",
+        "section_spacing_top": 96,
+        "section_spacing_bottom": 96,
+        "show_heading": true
+      }
+    },
+    "hero_banner_qi7VaL": {
+      "type": "hero-banner",
+      "settings": {
+        "hero_desktop_img": "shopify://shop_images/Community-partner-image_04c626d5-3a76-49d9-b7de-892b57c602c0.jpg",
+        "hero_mobile_img": "shopify://shop_images/etyjetyjketuketuk_9431e49c-1d80-4246-8549-196ed632d390.jpg",
+        "hero_banner_link": ""
+      }
+    },
+    "5e8f65bb-2deb-47c3-83c9-0823316c8780": {
+      "type": "image-banner",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "white",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 15,
+        "desktop_img": "shopify://shop_images/Community-partner-image.jpg",
+        "mobile_img": "shopify://shop_images/etyjetyjketuketuk.jpg",
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "caption": "",
+        "title": "",
+        "text": "",
+        "heading_size": "h2",
+        "body_size": "body3",
+        "desktop_content_position": "align-items:center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 528,
+        "content_spacing": 116,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none",
+        "btn_text": "",
+        "btn_url": "",
+        "btn_style": "solid",
+        "extra_btn_text": "",
+        "extra_btn_url": "",
+        "extra_btn_style": "solid"
+      }
+    },
+    "f7a2a28a-861f-4c7b-b5e5-9122cb204b8a": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-icon-1": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon": "none"
+          }
+        },
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-caption-1": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "RICH TEXT"
+          }
+        },
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-heading-1": {
+          "type": "heading",
+          "settings": {
+            "title": "Yarn's Mission of Positive Impact",
+            "heading_size": "h1"
+          }
+        },
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Yarn Corp, we are firm believers in ethical sourcing and supporting the artists whose work we proudly display. Every purchase you make pays royalties directly to the artist, allowing you to not only promote your brand but also contribute positively to the community. Our mission goes beyond creating impactful products; we are also dedicated to empowering Indigenous individuals through employment and training opportunities.  </p>",
+            "text_2": "<p>Our diverse collection showcases ethically sourced First Nations designs, spanning from contemporary to traditional styles. This ensures that you can find the ideal uniforms and workwear to promote your brand while contributing economically to the rich tapestry of First Nations cultures.</p>",
+            "text_3": "",
+            "body_size": "body3"
+          }
+        },
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-buttons-1": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "btn_text": "Button label",
+            "btn_url": "",
+            "btn_style": "link",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-icon-1",
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-caption-1",
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-heading-1",
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-text-1",
+        "template--16929731182806__f7a2a28a-861f-4c7b-b5e5-9122cb204b8a-buttons-1"
+      ],
+      "custom_css": [
+        ".rte.rich-text__text {text-align: left;}",
+        "@media only screen and (max-width: 767px) {.rich-text__container {padding-top: 4rem; padding-bottom: 4rem; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "enable_background_around_container": false,
+        "container_size": "large",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "section_mobile_spacing_top": 32,
+        "section_mobile_spacing_bottom": 32,
+        "content_align": "center",
+        "mobile_content_align": "center"
+      }
+    },
+    "e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b": {
+      "type": "images-with-text",
+      "blocks": {
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/strhsthst.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-1",
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-2",
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-3",
+        "template--16929731182806__e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b-image-4"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 1200px) {.images-with-text__content {margin: 0 auto !important; } .images-with-text__image-list-wrapper {width: inherit; flex: 1; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 30,
+        "section_spacing_bottom": 30,
+        "content_layout": "right",
+        "image_layout": "collage",
+        "img_ratio": 1.1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "",
+        "heading": "Yarn Raise",
+        "body": "<p>Yarn Raise is our program to partner with not-for-profits, charities, and organisations who make important contributions to First Nations families, communities and culture. </p><p>We curate unique collections that capture the values of our Raise partners and donate a portion of the sales back to their important work. We use the campaign to raise awareness of the work they do, the issues they address, and the impact of their efforts. These campaigns not only raise funding for the organisation, they increase their profile and reach through added exposure and an additional platform for their message. </p>",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 460,
+        "first_button_text": "Visit Site",
+        "first_button_link": "https://www.yarn.com.au/pages/yarn-raise",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "images_with_text_3fKdni": {
+      "type": "images-with-text",
+      "blocks": {
+        "image_wtDm4J": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_XT9Wzd": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_BJBktE": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_6C8Dyz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/srtyjdsytrjdtyj.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_wtDm4J",
+        "image_XT9Wzd",
+        "image_BJBktE",
+        "image_6C8Dyz"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 30,
+        "content_layout": "left",
+        "image_layout": "collage",
+        "img_ratio": 1.1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "Case Study",
+        "heading": "First Languages: ALNF x Yarn",
+        "body": "<p>A collection in support of the Australian Literacy & Numeracy Foundation (ALNF) and their programs that contribute to the maintenance and revitalisation of Indigenous First Languages. </p><p>The ALNF is a national charity dedicated to raising language and literacy standards. Their Living First Language Platform is an app that transforms spoken language into learning resources. Community Elders indicate the correct pronunciation of words and this is then used to guide a written representation of the language. Spoken First Language elements are transformed into reading and writing resources such as dictionaries, pronunciation guides, and reading and writing games. It is a tool to support communities in their teaching and learning of Language and to safeguard Languages that might be vulnerable. </p><p>Inspired by ALNF’s slogan, we asked some of our collaborating artists to choose a word in their Language that represents what literacy means to them, and they designed their responses into a piece that we featured on a T-Shirt. Our goal was to showcase just some of the First Languages of Australia and how valuable and resilient these languages are, while increasing awareness of the incredible programs ALNF is running to support the communities who use these Languages.  </p>",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 460,
+        "first_button_text": "View Campaign",
+        "first_button_link": "https://www.yarn.com.au/pages/first-languages",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "images_with_text_AqGfK8": {
+      "type": "images-with-text",
+      "blocks": {
+        "image_eeYL7N": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_bh3iUW": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_PdfUim": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_kQe7DD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sterhsrthsrthtrh.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_eeYL7N",
+        "image_bh3iUW",
+        "image_PdfUim",
+        "image_kQe7DD"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 30,
+        "content_layout": "right",
+        "image_layout": "collage",
+        "img_ratio": 1.1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "Case Study",
+        "heading": "My Dreaming, My Future: Gunawirra x Yarn",
+        "body": "<p>In celebration of Aboriginal and Torres Strait Islander Children's Day 2022 Yarn visited Dalaigur, a pre-school in NSW that Gunawirra supports. We brought paints, paper and plain t-shirts and the kids sat around together to explore. We encouraged them to paint the future they dreamed of, have a play, paint each other, make a mess and have fun.</p><p>Using their artworks we created a unique collection that speaks to the power, freedom and joy of being raised with strong cultural connections. <strong>$2 per product sold from this collection goes directly to Gunawirra and their programs</strong>. </p>",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 460,
+        "first_button_text": "View Campaign",
+        "first_button_link": "https://www.yarn.com.au/pages/my-dreaming-my-future",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "rich_text_4w9DGB": {
+      "type": "rich-text",
+      "blocks": {
+        "icon_GwE4nk": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon": "none"
+          }
+        },
+        "caption_Yz68G7": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "RICH TEXT"
+          }
+        },
+        "heading_4HLmWK": {
+          "type": "heading",
+          "settings": {
+            "title": "Our Community Partners",
+            "heading_size": "h1"
+          }
+        },
+        "text_FX3hdN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The reach of Yarn's diverse audience gives us the amazing opportunity to partner with organisations from around Australia. </p><p>We support our Community Partners through project funding, sponsorship of events and providing custom merchandise, marketing and promotion services and have chosen each of them because of their significant contributions to Indigenous communities. Their practice is in line with our mission to cultivate appreciation of Indigenous art and culture while supporting Indigenous artists and communities.</p>",
+            "text_2": "",
+            "text_3": "",
+            "body_size": "body3"
+          }
+        },
+        "buttons_keTHDD": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "btn_text": "Button label",
+            "btn_url": "",
+            "btn_style": "link",
+            "extra_btn_text": "",
+            "extra_btn_url": "",
+            "extra_btn_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "icon_GwE4nk",
+        "caption_Yz68G7",
+        "heading_4HLmWK",
+        "text_FX3hdN",
+        "buttons_keTHDD"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "enable_background_around_container": false,
+        "container_size": "large",
+        "section_spacing_top": 0,
+        "section_spacing_bottom": 0,
+        "section_mobile_spacing_top": 32,
+        "section_mobile_spacing_bottom": 32,
+        "content_align": "center",
+        "mobile_content_align": "center"
+      }
+    },
+    "0be342ad-b938-4921-9a04-9c744293f804": {
+      "type": "logo-list",
+      "blocks": {
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Logo_1.png",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-2": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Gunawirra-Logo_240x240_6552a29b-dfbb-4ff9-85cc-9eb69db6115e.png",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ALNF_Logo_240x240_ce43fb1e-f4e0-448e-af5e-a3999ead7fd9.png",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/f28c77_dede6594f6194023adaa04d4cc4c62f3_mv2.png",
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-5": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-6": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-7": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image_width": 100,
+            "link": ""
+          }
+        },
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-8": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image_width": 100,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-1",
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-2",
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-3",
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-4",
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-5",
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-6",
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-7",
+        "template--16929731182806__0be342ad-b938-4921-9a04-9c744293f804-logo-8"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 1300px) {.logo-list__carousel {column-gap: 10.4rem; max-width: 100%; width: 100%; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "page-width",
+        "section_spacing_top": 30,
+        "section_spacing_bottom": 80,
+        "title": "",
+        "heading_size": "h5",
+        "alignment": "center",
+        "section_layout": "carousel",
+        "desktop_columns": 4,
+        "desktop_space_between_cards": 26,
+        "mobile_space_between_cards": 12
+      }
+    },
+    "21aacd08-8f2f-4bad-9830-5ff994f881c7": {
+      "type": "collage",
+      "blocks": {
+        "a26b30c4-9ec0-4889-b0be-39c61a9445be": {
+          "type": "rich-text",
+          "settings": {
+            "color_scheme": "primary",
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "caption": "",
+            "title": "Gunawirra",
+            "text": "Gunawirra makes valuable contributions to the lives of Aboriginal and Torres Strait Islander mothers, families and young children through focussing upon the importance of early childhood development. Many of the programs they run incorporate art therapy and other creative, cultural and healing informed practices. They help families break through the cycle of transgenerational trauma and vulnerability, which then enables a safe, positive and healthy life.\n\nWe support Gunawirra’s Mothers Group which works with young Aboriginal mothers and children to help them through trauma with the use of art therapy. Yarn currently provides the mothers group with art supplies and other necessary resources. Here at Yarn we admire the important work Gunawirra does. Our values align closely with Gunawirra through our love and respect for art and belief in its power to heal and bring people together. Gunawirra helps share appreciation of Indigenous art and culture, something we are incredibly passionate at Yarn.",
+            "text2": "",
+            "heading_size": "h1",
+            "body_size": "body3",
+            "content_align": "left",
+            "btn_text": "Find Out More About Gunawirra",
+            "btn_url": "",
+            "btn_style": "link"
+          }
+        },
+        "730fb340-b96e-4073-9935-dc6cd7396205": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "primary",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 2,
+            "overlay_opacity": 20,
+            "caption": "IMAGE",
+            "title": "Image with text",
+            "text": "<p>Fill in the text to tell customers by what your products are inspired.</p>",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "Link label",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "a26b30c4-9ec0-4889-b0be-39c61a9445be",
+        "730fb340-b96e-4073-9935-dc6cd7396205"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 30,
+        "section_spacing_bottom": 30,
+        "title": "",
+        "heading_size": "h5",
+        "alignment": "left",
+        "columns": 4,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": false
+      }
+    },
+    "images_with_text_EfCiyR": {
+      "type": "images-with-text",
+      "blocks": {
+        "image_eXG4xA": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_rmpe89": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_q3bUfP": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_xyLhcy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/wild-caught-marine-collagen-scales-texture3.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_eXG4xA",
+        "image_rmpe89",
+        "image_q3bUfP",
+        "image_xyLhcy"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 30,
+        "section_spacing_bottom": 30,
+        "content_layout": "right",
+        "image_layout": "collage",
+        "img_ratio": 1.1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "",
+        "heading": "Gunawirra",
+        "body": "<p>Gunawirra makes valuable contributions to the lives of Aboriginal and Torres Strait Islander mothers, families and young children through focussing upon the importance of early childhood development. Many of the programs they run incorporate art therapy and other creative, cultural and healing informed practices. They help families break through the cycle of transgenerational trauma and vulnerability, which then enables a safe, positive and healthy life.</p><p>We support Gunawirra’s Mothers Group which works with young Aboriginal mothers and children to help them through trauma with the use of art therapy. Yarn currently provides the mothers group with art supplies and other necessary resources. Here at Yarn we admire the important work Gunawirra does. Our values align closely with Gunawirra through our love and respect for art and belief in its power to heal and bring people together. Gunawirra helps share appreciation of Indigenous art and culture, something we are incredibly passionate at Yarn.</p><p>Find out more about Gunawirra here.</p>",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 460,
+        "first_button_text": "",
+        "first_button_link": "",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57": {
+      "type": "images-with-text",
+      "blocks": {
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/wild-caught-marine-collagen-scales-texture1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-1",
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-2",
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-3",
+        "template--16929731182806__ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57-image-4"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 1200px) {.images-with-text__content {margin: 0 auto !important; } .images-with-text__image-list-wrapper {width: inherit; flex: 1; }}"
+      ],
+      "settings": {
+        "color_scheme": "secondary",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 50,
+        "content_layout": "left",
+        "image_layout": "collage",
+        "img_ratio": 1.1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "",
+        "heading": "Nutrition Plus",
+        "body": "<p>Nutrition Plus are non-for-profit dedicated to improving the health and wellbeing of Indigenous Children. They not only work to improve physical health, but also the cultural wellbeing of children living in remote communities. Access to fresh fruit and vegetables is the key issue that Indigenous communities face, especially in remote communities. Some of the issues related to this include physical access due to remote locations, lack of education about the importance of eating healthy, and the costs of supply. These are hurdles that Nutrition Plus works to help communities and schools overcome.</p><p>One of Nutrition Plus’s upcoming programs are their school cultural camps for years 4-6 where they integrate hands-on education about nutrition. Yarn is currently in the process of designing and producing some awesome shirts for the camps. A key part of our mission here at Yarn is to support the wellbeing of Indigenous communities, it is for this reason that we proudly support Nutrition Plus. They make incredible contributions to the wellbeing of Indigenous through helping children make healthy decisions from a young age.</p><p>Find out more about Nutrition Plus here.</p>",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 460,
+        "first_button_text": "",
+        "first_button_link": "",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "b47ae12a-ab29-4c97-9b0b-006cd378797d": {
+      "type": "images-with-text",
+      "blocks": {
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/wild-caught-marine-collagen-scales-texture2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-1",
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-2",
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-3",
+        "template--16929731182806__b47ae12a-ab29-4c97-9b0b-006cd378797d-image-4"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 1200px) {.images-with-text__content {margin: 0 auto !important; } .images-with-text__image-list-wrapper {width: inherit; flex: 1; }}"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 50,
+        "content_layout": "right",
+        "image_layout": "collage",
+        "img_ratio": 1.1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "",
+        "heading": "Australian Literacy and Numeracy Foundation",
+        "body": "<p>Australian Literacy and Numeracy Foundation (ALNF) is an organisation that makes significant contributions to Indigenous children’s lives through working with families, communities and schools to improve literacy and numeracy skills.</p><p>“It is clear that some of the most marginalised children in our nation continue to be left behind when it comes to literacy and education. That is why Yarn and ALNF have partnered to help break the cycle of illiteracy and disadvantage for young Aboriginal and Torres Strait Islander children and communities. Founded in 1999, ALNF exists to raise language, literacy and numeracy standards in Australia, with a specific focus on Indigenous, refugee and disadvantaged communities. We believe that literacy is freedom - literacy allows individuals to access education, participate meaningfully in our society and to have a voice. It is a basic human right.” - ALNFYarn strongly believes in equal opportunity for all; it is for this reason that we support ALNF. </p><p>They provide marginalized communities with the resources and opportunities that kids need to thrive. We are incredibly proud to assist them in significant work.</p><p>Find out more about ALNF here.</p>",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 460,
+        "first_button_text": "",
+        "first_button_link": "",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "35893535-d59a-4d65-8051-087a8d4e8e67": {
+      "type": "images-with-text",
+      "blocks": {
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/wild-caught-marine-collagen-scales-texture1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-1",
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-2",
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-3",
+        "template--16929731182806__35893535-d59a-4d65-8051-087a8d4e8e67-image-4"
+      ],
+      "custom_css": [
+        ".images-with-text__text {max-width: 460px;}",
+        "@media only screen and (min-width: 1200px) {.images-with-text__content {margin: 0 auto !important; } .images-with-text__image-list-wrapper {width: inherit; flex: 1; }}"
+      ],
+      "settings": {
+        "color_scheme": "secondary",
+        "container_size": "large",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 50,
+        "content_layout": "left",
+        "image_layout": "collage",
+        "img_ratio": 1.1,
+        "rotate_images": false,
+        "icon": "none",
+        "subheading": "",
+        "heading": "Surat Aboriginal Corporation",
+        "body": "<p>Surat Aboriginal Corporation (SAC) is based in the community of Surat, QLD and take responsibility of Indigenous cultural development in the Maranao region. They are committed to the preservation, promotion and development of Indigenous culture and also support sustainability of Indigenous communities and physical and mental health of Indigenous people across South West Queensland. They run a number of programs including their Indigenous Cultural Support program which advocates the healing process for Indigenous people through maintaining, protecting and promoting Indigenous culture. Their Safety and Wellbeing program aims to improve the health, social and emotional wellbeing of Indigenous people through mental health support, drug and alcohol awareness and community safety support. Lastly their Children and Schooling program supports children and their families through playgroups, a mum and bubs reading group, providing healthy lunches and an after school homework club.As a start Yarn will be supporting Surat Aboriginal Corporation with our marketing resources and we will also be creating some gorgeous custom shirts and merchandise for their upcoming Bamba Gii Festival. SAC are instrumental in maintaining the health and wellbeing of the Surat community. It is for this reason that we proudly support them and their amazing programs.Find out more about Surat Aboriginal Corporation here.</p>",
+        "heading_size": "h1",
+        "body_size": "body3",
+        "content_alignment": "left",
+        "desktop_content_width": 480,
+        "first_button_text": "",
+        "first_button_link": "",
+        "first_button_style": "solid",
+        "second_button_text": "",
+        "second_button_link": "",
+        "second_button_style": "solid"
+      }
+    },
+    "collage_t6ajQy": {
+      "type": "collage",
+      "blocks": {
+        "collection_JDfiiV": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": false,
+            "overlay_opacity": 20,
+            "link_text": "",
+            "content_position": "bottom-left"
+          }
+        },
+        "image_w69xMp": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "image": "shopify://shop_images/ththrth_1f82b4b0-6540-4b24-8e7c-e428a54d64bb.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "SHOP SCRUBS",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body6",
+            "link_text": "",
+            "link": "shopify://collections/scrubs",
+            "content_position": "bottom-center"
+          }
+        },
+        "image_wKFaLt": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "image": "shopify://shop_images/strhsrtj_5134576c-34c3-4461-a5ed-b95c5897b06f.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "SCHOOLS",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body6",
+            "link_text": "",
+            "link": "shopify://collections/schools",
+            "content_position": "bottom-center"
+          }
+        },
+        "image_dJ8qGR": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "image": "shopify://shop_images/sehet_2c4005e8-f2ed-4d60-9912-35ea157f9a1e.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "title": "SHOP POLOS",
+            "text": "",
+            "heading_size": "h2",
+            "body_size": "body6",
+            "link_text": "",
+            "link": "shopify://collections/polos",
+            "content_position": "bottom-center"
+          }
+        },
+        "collection_EcHG8j": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "desktop_columns": 1,
+            "desktop_rows": 2,
+            "collection": "",
+            "heading_size": "h6",
+            "show_product_count": false,
+            "overlay_opacity": 20,
+            "link_text": "",
+            "content_position": "bottom-left"
+          }
+        },
+        "image_6L4qXV": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "white",
+            "onlydesktop": false,
+            "onlymobile": false,
+            "desktop_columns": 2,
+            "desktop_rows": 1,
+            "overlay_opacity": 20,
+            "caption": "IMAGE",
+            "title": "Image with text",
+            "text": "<p>Fill in the text to tell customers by what your products are inspired.</p>",
+            "heading_size": "h6",
+            "body_size": "body3",
+            "link_text": "Link label",
+            "link": "",
+            "content_position": "center-center"
+          }
+        }
+      },
+      "block_order": [
+        "collection_JDfiiV",
+        "image_w69xMp",
+        "image_wKFaLt",
+        "image_dJ8qGR",
+        "collection_EcHG8j",
+        "image_6L4qXV"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 48,
+        "title": "DISCOVER MORE",
+        "heading_size": "h2",
+        "alignment": "center",
+        "columns": 3,
+        "desktop_row_height": 340,
+        "mobile_row_height": 500,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 16,
+        "enable_carousel_on_mobile": true
+      }
+    },
+    "62750f69-40ea-4196-be3c-941d11663015": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16929731182806__62750f69-40ea-4196-be3c-941d11663015-title-1": {
+          "type": "title",
+          "settings": {
+            "title": "Want 10% Off your first order?",
+            "heading_size": "h1"
+          }
+        },
+        "template--16929731182806__62750f69-40ea-4196-be3c-941d11663015-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Subscribe now and get <strong>10% OFF</strong> on your first order. Be the first to access pre-order & new product releases, get exclusive deals and receive our latest catalogues.",
+            "body_size": "body3"
+          }
+        },
+        "template--16929731182806__62750f69-40ea-4196-be3c-941d11663015-subscribe-1": {
+          "type": "subscribe",
+          "settings": {
+            "input_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16929731182806__62750f69-40ea-4196-be3c-941d11663015-title-1",
+        "template--16929731182806__62750f69-40ea-4196-be3c-941d11663015-text-1",
+        "template--16929731182806__62750f69-40ea-4196-be3c-941d11663015-subscribe-1"
+      ],
+      "settings": {
+        "color_scheme": "custom-2",
+        "enable_background_around_container": false,
+        "container_size": "full-screen",
+        "section_spacing_top": 50,
+        "section_spacing_bottom": 0,
+        "desktop_height": 320,
+        "mobile_height": 420,
+        "desktop_overlay_opacity": 20,
+        "mobile_overlay_opacity": 20,
+        "desktop_content_position": "align-items: center;justify-content:center;",
+        "desktop_content_align": "center",
+        "content_max_width": 804,
+        "content_spacing": 16,
+        "mobile_content_position": "align-items:center;justify-content:center;",
+        "mobile_content_align": "center",
+        "desktop_content_background": "none",
+        "mobile_content_background": "none"
+      }
+    }
+  },
+  "order": [
+    "page",
+    "hero_banner_qi7VaL",
+    "5e8f65bb-2deb-47c3-83c9-0823316c8780",
+    "f7a2a28a-861f-4c7b-b5e5-9122cb204b8a",
+    "e1ec8e7f-cfbf-405e-9679-2007fd6a9b7b",
+    "images_with_text_3fKdni",
+    "images_with_text_AqGfK8",
+    "rich_text_4w9DGB",
+    "0be342ad-b938-4921-9a04-9c744293f804",
+    "21aacd08-8f2f-4bad-9830-5ff994f881c7",
+    "images_with_text_EfCiyR",
+    "ccfaf113-a772-4b19-9e8e-0b4e9d8b7c57",
+    "b47ae12a-ab29-4c97-9b0b-006cd378797d",
+    "35893535-d59a-4d65-8051-087a8d4e8e67",
+    "collage_t6ajQy",
+    "62750f69-40ea-4196-be3c-941d11663015"
+  ]
+}

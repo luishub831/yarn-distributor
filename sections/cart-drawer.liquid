@@ -1,0 +1,214 @@
+<style>
+.custom-sidebar-cart {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.custom-sidebar-cart__title {
+  margin: 0;
+}
+
+.custom-sidebar-cart__close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.custom-sidebar-cart__close-btn.loading {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.custom-sidebar-cart__body {
+  overflow-y: auto;
+  padding: 20px;
+  height: 100%;
+}
+
+.custom-sidebar-cart__items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-sidebar-cart__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.custom-sidebar-cart__item-image {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.custom-sidebar-cart__item-details {
+  flex: 1;
+}
+
+.custom-sidebar-cart__item-title,
+.custom-sidebar-cart__item-price {
+  margin: 0;
+}
+
+.custom-sidebar-cart__item-qty {
+  display: flex;
+  align-items: center;
+}
+
+.custom-sidebar-cart__qty-input {
+  width: 50px;
+}
+
+.custom-sidebar-cart_cost-wrap {
+  width: 100%;
+}
+
+button.custom-sidebar-cart__qty-btn.cart-item-quantity__button {
+  border: 0;
+}
+
+.custom-sidebar-cart__remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-sidebar-cart__footer {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e1e1e1;
+}
+
+.custom-sidebar-cart__subtotal-label,
+.custom-sidebar-cart__subtotal-value {
+  display: block;
+  text-align: center;
+}
+
+.custom-sidebar-cart__checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.custom-sidebar-cart_svg svg {
+  text-align: center;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.custom-sidebar-cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.cart-open {
+  display: none;
+  overflow: hidden;
+}
+
+.loading-spinner-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+
+.custom-sidebar-cart__footer {
+  position: relative; 
+}
+</style>
+
+<div class="custom-sidebar-cart-container">
+  <aside class="custom-sidebar-cart sidebar-cart__body" style="transform: translateX(100%);" data-opened="false">
+    <div class="custom-sidebar-cart__header">
+      <div class="sidebar-cart__header-title">Cart &nbsp;
+        {%- if cart.item_count > 0 -%}
+          <span class='sidebar-cart__header-product-count'>
+            {{- 'general.sidebar_cart.title_count' | t: count: cart.item_count -}}
+          </span>
+        {%- endif -%}
+      </div>
+      <button class="custom-sidebar-cart__close-btn" onclick="closeCartDrawer()">
+        <span class="close-button-with-scale-hover sidebar-cart__close-button"></span>
+      </button>
+    </div>
+    <div class="custom-sidebar-cart__body cart-item__body">
+      <div class="custom-sidebar-cart__container">
+        <div class="custom-sidebar-cart__items-list">
+          {% render 'custom_cart_body' %}
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-cart__footer" data-sidebar-cart-footer>
+      <div class="sidebar-cart__subtotal-wrapper">
+        {%- render 'subtotal', inside_sidebar: true -%}
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="cart-open">
+  <div class="custom-sidebar-cart-overlay"></div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const cartElement = document.querySelector('.custom-sidebar-cart');
+  const cartOpenOverlay = document.querySelector('.cart-open');
+  cartOpenOverlay.addEventListener('click', function() {
+    cartElement.setAttribute('data-opened', 'false');
+    closeCartDrawer();
+  });
+  cartOpenOverlay.style.display = 'none';
+
+  function toggleCartOpenOverlay() {
+      if (cartElement.getAttribute('data-opened') === 'true') {
+          cartOpenOverlay.style.display = 'block';
+      } else {
+          cartOpenOverlay.style.display = 'none';
+      }
+  }
+
+  const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'data-opened') {
+              toggleCartOpenOverlay(); 
+          }
+      });
+  });
+
+  observer.observe(cartElement, {
+      attributes: true 
+  });
+
+  toggleCartOpenOverlay();
+});
+</script>

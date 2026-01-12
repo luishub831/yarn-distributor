@@ -1,0 +1,815 @@
+{%- liquid
+  assign options = block.settings
+  assign enable_pickup_availability = options.enable_pickup_availability
+  assign show_pickup_availability = false
+  assign selected_variant = product.selected_or_first_available_variant
+  assign available = selected_variant.available
+  assign product_form_id = 'product-form-' | append: product.id | append: '-' | append: sectionId
+  assign pick_up_locations = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true
+  assign pick_up_availabilities = false
+  assign add_to_cart_label = 'products.product.add_to_cart' | t
+  assign sold_out_label = 'products.product.sold_out' | t
+
+  for location in pick_up_locations
+    if location.available == true
+      assign pick_up_availabilities = true
+    endif
+  endfor
+
+  assign enable_gift_card = false
+  if options.enable_gift_card and product.gift_card?
+    assign enable_gift_card = true
+  endif
+
+  assign show_dynamic_checkout = false
+  if options.show_dynamic_checkout and enable_gift_card == false
+    assign show_dynamic_checkout = true
+  endif
+
+  if product.template_suffix contains 'pre-order'
+    assign show_dynamic_checkout = false
+    assign add_to_cart_label = 'products.product.pre_order' | t
+  endif
+
+  if enable_pickup_availability and pick_up_availabilities == true
+    unless product.template_suffix contains 'pre-order'
+      assign show_pickup_availability = true
+    endunless
+  endif
+-%}
+
+{% comment %} <div class="saso-volumes"></div> {% endcomment %}
+
+{% if template contains 'product' %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.querySelector('[data-sidebar-button]');
+
+    // Revisa la posición al cargar la página
+    if (window.scrollY !== 0 && btn) {
+      btn.setAttribute('visible', '');
+    }
+  });
+</script>
+{% endif %}
+
+{% assign has_accessories = false %}
+
+{% for collection in product.collections %}
+{% if product.variants.size < 2  %}
+{% assign has_accessories = true %}
+{% break %}
+{% endif %}
+{% endfor %}
+
+
+
+{% unless product.metafields.custom.product1 != blank  %}
+
+
+
+{%- if product != blank -%}
+{% unless has_accessories and product.metafields.custom.product1 == blank   %}
+{% assign price_quantity_metafield = product.metafields.custom.price_quantity.value %}
+
+{% if price_quantity_metafield.pricing != blank and price_quantity_metafield.pricing != '' %}
+<div class="divminprice">
+  <table class="minprice" style="">
+    <thead>
+      <tr>
+        <th><span class="minprice-title">Minimum Quantity</span></th>
+        <th><span class="minprice-title">Price Per Item</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for price_bracket in price_quantity_metafield.pricing %}
+      <tr>
+        <td>{{ price_bracket.minimum_qty }}</td>
+        <td>{{ price_bracket.price_per_item }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+<form action="#" method="post" enctype="multipart/form-data" id="multi-product-form">
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  <div class='bss-b2b-qb-table-here'></div>
+  <div class="custom-variant-quantity div-size1" style="background: transparent!important;">
+    <div class="container-quantity"  bss-b2b-quantity-block>
+        <button type="button" data-variant-id="{{ selected_variant.id }}-product1" onclick="decreaseQuantity(this)" bss-b2b-btn-down-quantity>-</button>
+        <input type="number" 
+                min="0" 
+                name="quantity-{{ selected_variant.id }}-product1" 
+                id="quantity-{{ selected_variant.id }}-product1" 
+                class="quantity-selector"
+                value="0"
+                data-max-inventory="{{ max_inventory }}"
+                oninput="checkMaxInventoryPDP(this)">
+        <button type="button" data-variant-id="{{ selected_variant.id }}-product1" onclick="increaseQuantity(this)" bss-b2b-btn-up-quantity>+</button>
+    </div>
+    <div class="qty-label">QTY</div>
+  </div>
+  {% comment %} <div style="margin-bottom:30px;" class="div-size1">
+    <accordeon-component
+      class="accordeon-plus-v2 accordeon-plus accordeon-plus--bottom-bordered accordeon-plus--top-bordered product-content-tab product-content-tab--collapsible-row"
+      data-aria-expanded="true">
+      <accordeon-btn class="accordeon-plus__btn accordeon-plus__btn--small product-content-tab__btn" tabindex="0">
+
+        <div style="margin-bottom:10px;">
+          {% if product.metafields.custom.male_female_or_kids  %}
+          <span class="typesex">{{ product.metafields.custom.male_female_or_kids }}</span>
+          {% endif %}
+
+
+          <span class="size_guide">
+            <sidebar-button style="display: inline-block;">
+              <button class='' data-sidebar-id='product-information-sidebar-size1' aria-label='  open modal'
+                data-sidebar-button>
+                SIZE GUIDE
+              </button>
+            </sidebar-button>
+          </span>
+        </div>
+
+        <h6>{{ product.title }}</h6>
+        <div class="icon-chevron">
+          <svg class="accordeon-plus__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.5 7L14.5 12L9.5 17" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+      </accordeon-btn>
+      <div class="accordeon-plus__content-wrap" data-accordeon-content-wrapper="" style="max-height: 0px;">
+        <div class="accordeon-plus__content product-content-tab__content" data-accordeon-content="">
+          {% assign product1 = product %}
+          {% assign has_tracked_inventory = false %}
+          {% for variant in product1.variants %}
+            {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+              {% assign has_tracked_inventory = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          <table>
+            <tr class="variant-table">
+              <th>Size</th>
+              {% if has_tracked_inventory %}
+                <th>Stock</th>
+              {% endif %}
+              <th>QTY</th>
+            </tr>
+            {% for variant in product1.variants %}
+              {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+                {% assign max_inventory = variant.inventory_quantity %}
+              {% else %}
+                {% assign max_inventory = 'untracked' %}
+              {% endif %}
+          
+              <tr class="variant-table">
+                <th class="variant-title">{{ variant.title }} </th>
+                {% if has_tracked_inventory %}
+                  {% if max_inventory == 0 %}
+                    <th class="variant-stock oos">Out of stock</th>
+                  {% else %}
+                    <th class="variant-stock">{{ max_inventory }}</th>
+                  {% endif %}
+                {% endif %}
+                <th class="variant-quantity">
+                  <div class="container-quantity"> 
+                    <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="decreaseQuantity(this)">-</button>
+                    <input type="number"
+                           min="0" 
+                           name="quantity-{{ variant.id }}-product1" 
+                           id="quantity-{{ variant.id }}-product1" 
+                           value="0" 
+                           data-max-inventory="{{ max_inventory }}"
+                           data-product-name="{{ product.metafields.custom.product1.value.title }}" 
+                           data-variant-name="{{ variant.title }}"
+                           oninput="checkMaxInventoryPDP(this)">
+                    <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="increaseQuantity(this)">+</button>
+                  </div>
+                </th>              
+              </tr>
+            {% endfor %}
+          </table>
+
+        </div>
+      </div>
+    </accordeon-component>
+  </div> {% endcomment %}
+
+  <button type="button" onclick="addToCartMulti()" class="product-form__btn btn btn--lg btn--solid">Add To Cart</button>
+
+</form>
+
+{% render 'upload-script' %}
+{% render 'upload-script-bc' %}
+
+<div id="error-message-container" style="display: none; color: red;"></div>
+<p>*You must add at least {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }}
+  {% else %}15 {% endif %} items</p>
+<p id="error-product1" style="color: red; display: none;">You must add at least
+  {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items</p>
+
+
+
+{% else %}
+{%- if product != blank -%}
+<div class='' {{ block.shopify_attributes }} style="margin: 0;">
+
+  <form action="#" method="post" enctype="multipart/form-data" id="multi-product-form">
+    {% comment %} <div class='bss-b2b-qb-table-here'></div> {% endcomment %}
+    {% comment %} <div class='bss-b2b-qb-table'></div> {% endcomment %}
+     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+     <div class="custom-variant-quantity div-size1" style="background: transparent!important;">
+        <div class="container-quantity"  bss-b2b-quantity-block>
+            <button type="button" data-variant-id="{{ selected_variant.id }}-product1" onclick="decreaseQuantity(this)" bss-b2b-btn-down-quantity>-</button>
+            <input type="number" 
+                    min="0" 
+                    name="quantity-{{ selected_variant.id }}-product1" 
+                    id="quantity-{{ selected_variant.id }}-product1" 
+                    class="quantity-selector"
+                    value="0"
+                    data-max-inventory="{{ max_inventory }}"
+                    oninput="checkMaxInventoryPDP(this)">
+            <button type="button" data-variant-id="{{ selected_variant.id }}-product1" onclick="increaseQuantity(this)" bss-b2b-btn-up-quantity>+</button>
+        </div>
+        <div class="qty-label">QTY</div>
+      </div>
+    {% comment %} <div style="margin-bottom:30px; background: transparent!important;" class="div-size1">
+
+      {% assign product1 = product %}
+      <table>
+        {% for variant in product1.variants %}
+
+        {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+          {% assign max_inventory = variant.inventory_quantity %}
+        {% else %}
+          {% assign max_inventory = 'untracked' %}
+        {% endif %}
+
+        {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+        <tr class="variant-table">
+          <th>Stock</th>
+          <th>QTY</th>
+        </tr>
+
+        <tr class="variant-table">
+          <th class="variant-stock">{{ max_inventory }}</th>
+          <th class="variant-quantity">
+            <div class="container-quantity">
+              <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="decreaseQuantity(this)">-</button>
+              <input type="number" 
+                      min="0" 
+                      name="quantity-{{ variant.id }}-product1" 
+                      id="quantity-{{ variant.id }}-product1" 
+                      value="0"
+                      data-max-inventory="{{ max_inventory }}"
+                      oninput="checkMaxInventoryPDP(this)">
+              <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="increaseQuantity(this)">+</button>
+            </div>
+          </th>
+        </tr>
+        {% else %}
+        <tr>
+          <th class="quantity-title" style="text-align: left;">Quantity</th>
+          <th class="variant-quantity">
+            <div class="container-quantity">
+              <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="decreaseQuantity(this)">-</button>
+              <input type="number" 
+                      min="0" 
+                      name="quantity-{{ variant.id }}-product1" 
+                      id="quantity-{{ variant.id }}-product1" 
+                      value="0"
+                      data-max-inventory="{{ max_inventory }}"
+                      oninput="checkMaxInventoryPDP(this)">
+              <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="increaseQuantity(this)">+</button>
+            </div>
+          </th>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table> 
+
+    </div> {% endcomment %}
+
+    <button type="button" onclick="addToCartMulti()" class="product-form__btn btn btn--lg btn--solid">Add To Cart</button>
+
+  </form>
+
+  {% render 'upload-script' %}
+  {% render 'upload-script-bc' %}
+
+  <div id="error-message-container" style="display: none; color: red;"></div>
+  <p>*You must add at least {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }}
+    {% else %}15 {% endif %} items</p>
+  <p id="error-product1" style="color: red; display: none;">You must add at least
+    {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items
+  </p> 
+
+
+
+  {%- if show_pickup_availability == true -%}
+  <pickup-availability class='pickup-availability body-font-weight-from-global-settings'
+    data-base-url='{{ shop.url }}{{ routes.root_url }}' data-variant-id='{{ selected_variant.id }}'
+    data-has-only-default-variant='{{ product.has_only_default_variant }}'
+    id='product-pickup-availability-{{ product.id }}-{{ sectionId }}'>
+    <pickup-availability-content class='pickup-availability-info'> </pickup-availability-content>
+  </pickup-availability>
+  {%- endif -%}
+</div>
+{%- endif -%}
+{% else %}
+
+<span class="size_guide">
+  <sidebar-button style="display: inline-block;">
+    <button class='' data-sidebar-id='product-information-sidebar-size1' aria-label='  open modal' data-sidebar-button
+      style="background: #efefef;
+                padding: 10px;
+                display: block;
+                text-decoration: none;
+                border: 0px;
+                border-radius: 8px;
+                margin-left: 0px;
+                margin-top: 20px;">
+      SIZE GUIDE
+    </button>
+  </sidebar-button>
+</span>
+
+
+
+
+<div class='' {{ block.shopify_attributes }}>
+  <product-form data-product-id='{{ product.id }}' id='product-form-component-{{ product.id }}-{{ sectionId }}'>
+    {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'product-form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+    {% if enable_gift_card %}
+    {% render 'gift-card-recipient-form', product: product, form: form, section: section, block: block %}
+    {% endif %}
+
+    <input type='hidden' name='id' value='{{ selected_variant.id }}' data-product-form-variant
+      id='{{ product_form_id }}-IdInput-{{ form.id }}'>
+    {{ form | payment_terms }}
+    <div class='product-form__btns test2'>
+
+      {% if template.name == 'product' and sectionId contains '---MainSection' %}
+      <div>
+        <div class='product-form__btn-wrapper'>
+          <button type='submit' name='add' id='product-buy-btn-{{ product.id }}-{{ sectionId }}'
+            class='product-form__btn btn btn--lg {% if show_dynamic_checkout == true %}btn--outline{% else %}btn--solid{% endif %}'
+            {% if available == false %} disabled {% endif %}
+            aria-label='{%- if available -%}{{ add_to_cart_label }}{%- else -%}{{ sold_out_label }}{%- endif -%}'>
+            <span data-button-text>
+              {%- if available -%}
+              {{ add_to_cart_label }}
+              {%- else -%}
+              {{ sold_out_label }}
+              {%- endif -%}
+            </span>
+            {% render 'icon', icon_name: 'spinner', class: 'loading-spinner btn__loading-spinner' %}
+          </button>
+          <br><br>
+          {% render 'customizeButton' %}
+        </div>
+      </div>
+
+      <product-form-button class='product-form__mobile-sticky-button'>
+        <div class='product-form__btn-wrapper product-form__btn-wrapper--sticky-mobile-button'>
+          <button type='submit' name='add' id='sticky-product-buy-btn-{{ product.id }}-{{ sectionId }}'
+            class='product-form__btn btn btn--lg btn--solid' {% if available == false %} disabled {% endif %}
+            data-product-form-button
+            aria-label='{%- if available -%}{{ add_to_cart_label }}{%- else -%}{{ sold_out_label }}{%- endif -%}'>
+            <span data-button-text>
+              {%- if available -%}
+              {{ add_to_cart_label }}
+              {%- else -%}
+              {{ sold_out_label }}
+              {%- endif -%}
+            </span>
+            {% render 'icon', icon_name: 'spinner', class: 'loading-spinner btn__loading-spinner' %}
+          </button>
+        </div>
+      </product-form-button>
+      {%- else -%}
+      <button type='submit' name='add' id='product-buy-btn-{{ product.id }}-{{ sectionId }}'
+        class='product-form__btn btn btn--lg {% if show_dynamic_checkout == true %}btn--outline{% else %}btn--solid{% endif %}'
+        {% if available == false %} disabled {% endif %}
+        aria-label='{%- if available -%}{{ add_to_cart_label }}{%- else -%}{{ sold_out_label }}{%- endif -%}'>
+        <span data-button-text>
+          {%- if available -%}
+          {{ add_to_cart_label }}
+          {%- else -%}
+          {{ sold_out_label }}
+          {%- endif -%}
+        </span>
+        {% render 'icon', icon_name: 'spinner', class: 'loading-spinner btn__loading-spinner' %}
+      </button>
+      {% endif %}
+
+      {%- if show_dynamic_checkout == true -%}
+      <div class='dynamic-checkout-buttons'>
+        {{ form | payment_button }}
+      </div>
+      {%- endif -%}
+    </div>
+    {%- endform -%}
+  </product-form>
+
+  {%- if show_pickup_availability == true -%}
+  <pickup-availability class='pickup-availability body-font-weight-from-global-settings'
+    data-base-url='{{ shop.url }}{{ routes.root_url }}' data-variant-id='{{ selected_variant.id }}'
+    data-has-only-default-variant='{{ product.has_only_default_variant }}'
+    id='product-pickup-availability-{{ product.id }}-{{ sectionId }}'>
+    <pickup-availability-content class='pickup-availability-info'> </pickup-availability-content>
+  </pickup-availability>
+  {%- endif -%}
+</div>
+
+{%- endunless -%}
+
+
+{% else %}
+
+
+{% assign price_quantity_metafield = product.metafields.custom.price_quantity.value %}
+
+{% if price_quantity_metafield.pricing != blank %}
+<div class="divminprice">
+  <table class="minprice" style="display:none !important;">
+    <thead>
+      <tr>
+        <th><span class="minprice-title">Minimum Quantity</span></th>
+        <th><span class="minprice-title">Price Per Item</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for price_bracket in price_quantity_metafield.pricing %}
+      <tr>
+        <td>{{ price_bracket.minimum_qty }}</td>
+        <td>{{ price_bracket.price_per_item }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+
+<form action="#" method="post" enctype="multipart/form-data" id="multi-product-form">
+  <div class='bss-b2b-qb-table-here'></div>
+  
+
+
+  <div style="margin-bottom:30px;" class="div-size1">
+    <accordeon-component
+      class="accordeon-plus-v2 accordeon-plus accordeon-plus--bottom-bordered accordeon-plus--top-bordered product-content-tab product-content-tab--collapsible-row"
+      data-aria-expanded="true">
+      <accordeon-btn class="accordeon-plus__btn accordeon-plus__btn--small product-content-tab__btn" tabindex="0">
+
+        <div style="margin-bottom:10px;">
+          <span class="typesex">MALE</span>
+
+
+          <span class="size_guide">
+            <sidebar-button style="display: inline-block;">
+              <button class='' data-sidebar-id='product-information-sidebar-size1' aria-label='  open modal'
+                data-sidebar-button>
+                SIZE GUIDE
+              </button>
+            </sidebar-button>
+
+          </span>
+
+
+        </div>
+
+        <h6>{{ product.title }}</h6>
+        <div class="icon-chevron"><svg class="accordeon-plus__icon" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.5 7L14.5 12L9.5 17" stroke="currentColor" stroke-width="2"></path>
+          </svg> </div>
+
+      </accordeon-btn>
+      <div class="accordeon-plus__content-wrap" data-accordeon-content-wrapper="" style="max-height: 0px;">
+        <div class="accordeon-plus__content product-content-tab__content" data-accordeon-content="">
+          {% assign product1 = product %}
+          {% assign has_tracked_inventory = false %}
+          {% for variant in product1.variants %}
+            {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+              {% assign has_tracked_inventory = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          <table>
+            <tr class="variant-table">
+              <th>Size</th>
+              {% if has_tracked_inventory %}
+                <th>Stock</th>
+              {% endif %}
+              <th>QTY</th>
+            </tr>
+            {% for variant in product1.variants %}
+              {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+                {% assign max_inventory = variant.inventory_quantity %}
+              {% else %}
+                {% assign max_inventory = 'untracked' %}
+              {% endif %}
+          
+              <tr class="variant-table">
+                <th class="variant-title">{{ variant.title }} </th>
+                {% if has_tracked_inventory %}
+                  {% if max_inventory == 0 %}
+                    <th class="variant-stock oos">Out of stock</th>
+                  {% else %}
+                    <th class="variant-stock">{{ max_inventory }}</th>
+                  {% endif %}
+                {% endif %}
+                <th class="variant-quantity">
+                  <div class="container-quantity"> 
+                    <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="decreaseQuantity(this)">-</button>
+                    <input type="number"
+                           min="0" 
+                           name="quantity-{{ variant.id }}-product1" 
+                           id="quantity-{{ variant.id }}-product1" 
+                           value="0" 
+                           data-max-inventory="{{ max_inventory }}"
+                           data-product-name="{{ product.metafields.custom.product1.value.title }}" 
+                           data-variant-name="{{ variant.title }}"
+                           oninput="checkMaxInventoryPDP(this)">
+                    <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="increaseQuantity(this)">+</button>
+                  </div>
+                </th>              
+              </tr>
+            {% endfor %}
+          </table>
+
+        </div>
+      </div>
+    </accordeon-component>
+  </div>
+
+  <button type="button" onclick="addToCartMulti()" class="product-form__btn btn btn--lg btn--outline">Add to cart
+    *</button>
+</form>
+
+{% render 'upload-script' %}
+{% render 'upload-script-bc' %}
+
+<div id="error-message-container" style="display: none; color: red;"></div>
+
+<p>*You must add at least {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }}
+  {% else %}15 {% endif %} items</p>
+<p id="error-product1" style="color: red; display: none;">You must add at least
+  {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items</p>
+<p id="error-product2" style="color: red; display: none;">You must add at least
+  {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items</p>
+
+{% endif %}
+
+
+
+
+
+
+
+
+{% else %}
+
+
+{% assign price_quantity_metafield = product.metafields.custom.price_quantity.value %}
+
+{% if price_quantity_metafield.pricing != blank %}
+<div class="divminprice">
+  <table class="minprice">
+    <thead>
+      <tr>
+        <th><span class="minprice-title">Minimum Quantity</span></th>
+        <th><span class="minprice-title">Price Per Item</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for price_bracket in price_quantity_metafield.pricing %}
+      <tr>
+        <td>{{ price_bracket.minimum_qty }}</td>
+        <td>{{ price_bracket.price_per_item }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+{% assign p1 = product.metafields.custom.product1.value.handle %}
+{% assign p2 = product.metafields.custom.product2.value.handle %}
+
+
+
+
+
+<form action="#" method="post" enctype="multipart/form-data" id="multi-product-form">
+  <div class='bss-b2b-qb-table-here'></div>ss
+
+
+  <div style="margin-bottom:30px;" class="div-size1">
+    <accordeon-component
+      class="accordeon-plus-v2 accordeon-plus accordeon-plus--bottom-bordered accordeon-plus--top-bordered product-content-tab product-content-tab--collapsible-row"
+      data-aria-expanded="true">
+      <accordeon-btn class="accordeon-plus__btn accordeon-plus__btn--small product-content-tab__btn" tabindex="0">
+
+        <div style="margin-bottom:10px;">
+          {% if product.metafields.custom.male_female_or_kids  %}<span
+            class="typesex">{{ product.metafields.custom.male_female_or_kids }}</span> {% endif %}
+
+
+          <span class="size_guide">
+            <sidebar-button style="display: inline-block;">
+              <button class='' data-sidebar-id='product-information-sidebar-size1' aria-label='  open modal'
+                data-sidebar-button>
+                SIZE GUIDE
+              </button>
+            </sidebar-button>
+
+          </span>
+
+
+        </div>
+
+        <h6>{{ product.metafields.custom.product1.value.title }}</h6>
+        <div class="icon-chevron"><svg class="accordeon-plus__icon" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.5 7L14.5 12L9.5 17" stroke="currentColor" stroke-width="2"></path>
+          </svg> </div>
+
+      </accordeon-btn>
+      <div class="accordeon-plus__content-wrap" data-accordeon-content-wrapper="" style="max-height: 0px;">
+        <div class="accordeon-plus__content product-content-tab__content" data-accordeon-content="">
+          {% assign product1 = all_products[p1] %}
+          {% assign has_tracked_inventory = false %}
+          {% for variant in product1.variants %}
+            {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+              {% assign has_tracked_inventory = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          <table>
+            <tr class="variant-table">
+              <th>Size</th>
+              {% if has_tracked_inventory %}
+                <th>Stock</th>
+              {% endif %}
+              <th>QTY</th>
+            </tr>
+            {% for variant in product1.variants %}
+              {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+                {% assign max_inventory = variant.inventory_quantity %}
+              {% else %}
+                {% assign max_inventory = 'untracked' %}
+              {% endif %}
+          
+              <tr class="variant-table">
+                <th class="variant-title">{{ variant.title }} </th>
+                {% if has_tracked_inventory %}
+                  {% if max_inventory == 0 %}
+                    <th class="variant-stock oos">Out of stock</th>
+                  {% else %}
+                    <th class="variant-stock">{{ max_inventory }}</th>
+                  {% endif %}
+                {% endif %}
+                <th class="variant-quantity">
+                  <div class="container-quantity"> 
+                    <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="decreaseQuantity(this)">-</button>
+                    <input type="number"
+                           min="0" 
+                           name="quantity-{{ variant.id }}-product1" 
+                           id="quantity-{{ variant.id }}-product1" 
+                           value="0" 
+                           data-max-inventory="{{ max_inventory }}"
+                           data-product-name="{{ product.metafields.custom.product1.value.title }}" 
+                           data-variant-name="{{ variant.title }}"
+                           oninput="checkMaxInventoryPDP(this)">
+                    <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="increaseQuantity(this)">+</button>
+                  </div>
+                </th>              
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </accordeon-component>
+  </div>
+
+  <div style="margin-bottom:30px;" class="div-size1">
+    <accordeon-component
+      class="accordeon-plus-v2 accordeon-plus accordeon-plus--bottom-bordered accordeon-plus--top-bordered product-content-tab product-content-tab--collapsible-row"
+      data-aria-expanded="true">
+      <accordeon-btn class="accordeon-plus__btn accordeon-plus__btn--small product-content-tab__btn" tabindex="0">
+        <div style="margin-bottom:10px;">
+          {% if product.metafields.custom.male_female_or_kids2  %}<span
+            class="typesex">{{ product.metafields.custom.male_female_or_kids2 }}</span> {% endif %} <span
+            class="size_guide">
+            <sidebar-button style="display: inline-block;">
+              <button class='' data-sidebar-id='product-information-sidebar-size2' aria-label='  open modal'
+                data-sidebar-button>
+                SIZE GUIDE
+              </button>
+            </sidebar-button>
+          </span></div>
+        <h6>{{ product.metafields.custom.product2.value.title }}</h6>
+        <div class="icon-chevron"><svg class="accordeon-plus__icon" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.5 7L14.5 12L9.5 17" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+      </accordeon-btn>
+      <div class="accordeon-plus__content-wrap" data-accordeon-content-wrapper="" style="max-height: 570px;">
+        <div class="accordeon-plus__content product-content-tab__content" data-accordeon-content="">
+          {% assign product2 = all_products[p2] %}
+          {% assign has_tracked_inventory = false %}
+          {% for variant in product2.variants %}
+            {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+              {% assign has_tracked_inventory = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          <table>
+            <tr class="variant-table">
+              <th>Size</th>
+              {% if has_tracked_inventory %}
+                <th>Stock</th>
+              {% endif %}
+              <th>QTY</th>
+            </tr>
+            {% for variant in product2.variants %}
+              {% if variant.inventory_management == 'shopify' or variant.inventory_management == 'null' %}
+                {% assign max_inventory = variant.inventory_quantity %}
+              {% else %}
+                {% assign max_inventory = 'untracked' %}
+              {% endif %}
+          
+              <tr class="variant-table">
+                <th class="variant-title">{{ variant.title }} </th>
+                {% if has_tracked_inventory %}
+                  {% if max_inventory == 0 %}
+                    <th class="variant-stock oos">Out of stock</th>
+                  {% else %}
+                    <th class="variant-stock">{{ max_inventory }}</th>
+                  {% endif %}
+                {% endif %}
+                <th class="variant-quantity">
+                  <div class="container-quantity"> 
+                    <button type="button" data-variant-id="{{ variant.id }}-product1" onclick="decreaseQuantity(this)">-</button>
+                    <input type="number"
+                           min="0" 
+                           name="quantity-{{ variant.id }}-product2" 
+                           id="quantity-{{ variant.id }}-product2" 
+                           value="0" 
+                           data-max-inventory="{{ max_inventory }}"
+                           data-product-name="{{ product.metafields.custom.product1.value.title }}" 
+                           data-variant-name="{{ variant.title }}"
+                           oninput="checkMaxInventoryPDP(this)">
+                    <button type="button" data-variant-id="{{ variant.id }}-product2" onclick="increaseQuantity(this)">+</button>
+                  </div>
+                </th>              
+              </tr>
+            {% endfor %}
+          </table>
+          
+        </div>
+      </div>
+    </accordeon-component>
+  </div>
+
+  <button type="button" onclick="addToCartMulti()" class="product-form__btn btn btn--lg btn--outline">Add to cart
+    *</button>
+</form>
+
+{% render 'upload-script' %}
+
+<div id="error-message-container" style="display: none; color: red;"></div>
+
+<p>*You must add at least {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }}
+  {% else %}15 {% endif %} items</p>
+<p id="error-product1" style="color: red; display: none;">You must add at least
+  {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items</p>
+<p id="error-product2" style="color: red; display: none;">You must add at least
+  {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items </p>
+
+
+{% endunless %}

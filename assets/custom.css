@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'Newake';
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/Newake-Font-Regular.woff2?v=1757405267") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/Newake-Font-Regular.woff?v=1757405267") format("woff");
+  font-display: swap;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, span {
+  font-family: 'Newake' !important;
+  letter-spacing: 1px !important;
+}
+.collection__header {
+    margin: 0 0 1rem;  
+}
+.product-card__info { 
+  align-items: center;
+  text-align: center;
+}
+.product-card__price {
+  justify-content: center;
+  color: black;
+}
+.product-card__price-item{
+  color: black !important;
+  font-size:1.8rem;
+}
+.product-card__title{
+  font-size: 1.8rem;
+}
+.section-header{
+  margin-bottom: 1rem;
+}
+.product--with-desktop-media-carousel .product-desktop-media{
+  width: 38%;
+}
+.product--with-desktop-media-carousel .product__info{
+  margin: inherit;
+}
+.product__info .product-price__current-price{
+  color: #753c9e !important;
+}
+.custom-variant-quantity {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+}
+.custom-variant-quantity .qty-label{
+  font-weight: bold;
+}
+.custom-variant-quantity .container-quantity{
+  width: 50%;
+  background: #dfdfdf;
+  padding: 15px 0;
+  border-radius: 10px;
+}
+.btn--solid{
+  background: #753c9e;
+}
+.product-form__btn {
+  color: white;
+  font-size: 3rem;
+  padding: 1rem 4.8rem;
+  margin-top: 10px;
+}
+
+.filepond--drop-label label{
+  color: white !important;
+  padding: 1rem 4.8rem;
+  font-size: 3rem !important;
+}
+.product-form__btn{
+  border-radius: 12px;
+}
+.product-form__btn[disabled] {
+  background: #cbcbcb;
+  color: #9f9f9f;
+  opacity: 1;
+}
+@media screen and (min-width: 1016px) {
+    .header__logo {
+        padding: 1.5rem 0;
+    }
+}
+@media screen and (min-width: 768px) {
+  .collection__header {
+    margin: 0 0 1rem;  
+  }
+  .product__info {
+        width: 50%;
+    }
+  .theme-with-rounded-style .shopify-section-group-main-header-group {
+        margin: 0;
+    }
+    .product__info-wrapper {
+        display: flex;
+        gap: 15px;
+    }
+}
+

@@ -1,0 +1,82 @@
+
+                  <div class="artist-card" style="">
+<div class="container-img">
+<img src="{{ block.settings.image | img_url }}">
+</div>
+<div class="container-text">
+<h3>{{ block.settings.text }}</h3>
+<p>{{ block.settings.text2 }}</p>
+<a href="{{ block.settings.url }}">Go to profile page ></a>
+</div>
+</div>
+
+
+
+
+<style>
+.artist-card  img {
+border-radius:15px; 
+margin-bottom:0px !important;
+  width: 120px;
+    height: 120px;
+}
+.artist-card {
+text-align:center;
+display:grid;
+grid-template-columns:1.25fr 2fr;
+    column-gap: 1em;
+background:#F5F5F5;
+border-radius:15px;
+padding:15px;
+}
+.artist-card h3 {
+color: #222222;
+font-family: Inter;
+font-size: 14px;
+
+font-style: normal;
+font-weight: 700;
+line-height:22px; /* 157.143% */
+margin-bottom:5px;
+text-align:left;
+}
+.artist-card p {
+text-align:left;
+color: #808080;
+leading-trim: both;
+text-edge: cap;
+font-family: DM Sans;
+font-size: 10px;
+font-style: normal;
+font-weight: 700;
+line-height: 22px; /* 200% */
+margin-bottom:10px;
+}
+.artist-card a {
+margin:0 auto;
+  margin-left:0px;
+text-align:center;
+width:100%;
+text-decoration:none;
+font-family: DM Sans;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+
+gap: 4px;
+
+color:#222222;
+text-align:left;
+      width: 100%;
+    position: relative;
+    display: block;
+}
+.artist-card
+.container-text {
+margin-top:0px !important; 
+  display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+</style>

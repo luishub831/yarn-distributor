@@ -1,0 +1,74 @@
+{% comment %} CSS is added in index.css file - search 'Custom colour swatches Styles' {% endcomment %}
+
+{% if 
+    product.metafields.custom.colour_file_1 or
+    product.metafields.custom.colour_file_2 or
+    product.metafields.custom.colour_file_3 or
+    product.metafields.custom.colour_file_4 or
+    product.metafields.custom.colour_file_5
+    
+%}
+
+    <div class="CPCSB">
+        <div class="color-swatch-wrap">
+            <input type="radio"  name="custom-color-swatch--{{product.id}}" value="{{product.metafields.custom.product_default_colour_name}}" id="Original-product-color--{{product.id}}" main-image-src="{{product.featured_image | img_url: '1000x1000'}}" secondary-image-src="{{product.images[1] | img_url: '1000x1000'}}" class="productDefaultSwatch custom-colour-swatch" checked>
+            <label for="Original-product-color--{{product.id}}" class="custom-color-swatches-label" style="background: {{product.metafields.custom.product_default_colour_hex}};"></label>
+        </div>
+        {% if product.metafields.custom.colour_file_1 %}
+            <div class="color-swatch-wrap">
+                <input type="radio"  name="custom-color-swatch--{{product.id}}" value="{{product.metafields.custom.colour_hex_1}}" id="{{product.metafields.custom.colour_hex_1 |  replace: " ", "-" }}--{{product.id}}-colour_hex_1" main-image-src="{{product.metafields.custom.colour_file_1 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_1_b %}{{product.metafields.custom.colour_file_1_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                <label for="{{product.metafields.custom.colour_hex_1 |  replace: " ", "-" }}--{{product.id}}-colour_hex_1" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_1}};"></label>
+                {% comment %} <img 
+                    src="{{product.metafields.custom.colour_file_1 | img_url: '100x'}}"
+                    alt="{{product.metafields.custom.colour_hex_1}}" 
+                    class="custom-swatch-image"
+                > {% endcomment %}
+            </div>
+        {% endif %}
+        {% if product.metafields.custom.colour_file_2 %}
+            <div class="color-swatch-wrap">
+                <input type="radio"  name="custom-color-swatch--{{product.id}}" value="{{product.metafields.custom.colour_hex_2}}" id="{{product.metafields.custom.colour_hex_2 | replace: " ", "-" }}--{{product.id}}-colour_hex_2" main-image-src="{{product.metafields.custom.colour_file_2 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_2_b %}{{product.metafields.custom.colour_file_2_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                <label for="{{product.metafields.custom.colour_hex_2 | replace: " ", "-" }}--{{product.id}}-colour_hex_2" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_2}};"></label>
+                {% comment %} <img 
+                    src="{{product.metafields.custom.colour_file_2 | img_url: '100x'}}"
+                    alt="{{product.metafields.custom.colour_hex_2}}" 
+                    class="custom-swatch-image"
+                > {% endcomment %}
+            </div>
+        {% endif %}
+        {% if product.metafields.custom.colour_file_3 %}
+            <div class="color-swatch-wrap">
+                <input type="radio"  name="custom-color-swatch--{{product.id}}" value="{{product.metafields.custom.colour_hex_3}}" id="{{product.metafields.custom.colour_hex_3 | replace: " ", "-" }}--{{product.id}}-colour_hex_3" main-image-src="{{product.metafields.custom.colour_file_3 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_3_b %}{{product.metafields.custom.colour_file_3_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                <label for="{{product.metafields.custom.colour_hex_3 | replace: " ", "-" }}--{{product.id}}-colour_hex_3" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_3}};"></label>
+                {% comment %} <img 
+                    src="{{product.metafields.custom.colour_file_3 | img_url: '100x'}}" 
+                    alt="{{product.metafields.custom.colour_hex_3}}" 
+                    class="custom-swatch-image"
+                > {% endcomment %}
+            </div>
+        {% endif %}
+        {% if product.metafields.custom.colour_file_4 %}
+            <div class="color-swatch-wrap">
+                <input type="radio"  name="custom-color-swatch--{{product.id}}" value="{{product.metafields.custom.colour_hex_4}}" id="{{product.metafields.custom.colour_hex_4 | replace: " ", "-" }}--{{product.id}}-colour_hex_4" main-image-src="{{product.metafields.custom.colour_file_4 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_4_b %}{{product.metafields.custom.colour_file_4_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                <label for="{{product.metafields.custom.colour_hex_4 | replace: " ", "-" }}--{{product.id}}-colour_hex_4" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_4}};"></label>
+                {% comment %} <img 
+                    src="{{product.metafields.custom.colour_file_4 | img_url: '100x'}}" 
+                    alt="{{product.metafields.custom.colour_hex_4}}" 
+                    class="custom-swatch-image"
+                > {% endcomment %}
+            </div>
+        {% endif %}
+        {% if product.metafields.custom.colour_file_5 %}
+            <div class="color-swatch-wrap">
+                <input type="radio"  name="custom-color-swatch--{{product.id}}" value="{{product.metafields.custom.colour_hex_5}}" id="{{product.metafields.custom.colour_hex_5 | replace: " ", "-" }}--{{product.id}}-colour_hex_5" main-image-src="{{product.metafields.custom.colour_file_5 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_5_b %}{{product.metafields.custom.colour_file_5_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                <label for="{{product.metafields.custom.colour_hex_5 | replace: " ", "-" }}--{{product.id}}-colour_hex_5" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_5}};"></label>
+                {% comment %} <img 
+                    src="{{product.metafields.custom.colour_file_5 | img_url: '100x'}}" 
+                    alt="{{product.metafields.custom.colour_hex_5}}" 
+                    class="custom-swatch-image"
+                > {% endcomment %}
+            </div>
+        {% endif %}
+    </div>
+
+    {% endif %}

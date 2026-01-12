@@ -1,0 +1,246 @@
+{% comment %}
+  Distributor Signup Section with HubSpot Form + Banner Background + Absolute Mascots (Overshow)
+{% endcomment %}
+
+<section class="distributor-section">
+  <div class="distributor-banner">
+    {% if section.settings.banner_background_image != blank %}
+      <img 
+        src="{{ section.settings.banner_background_image | image_url: width: 1600 }}" 
+        alt="Banner Background"
+        class="banner-bg-helper"
+        loading="lazy"
+      >
+    {% else %}
+      <div class="banner-bg-fallback" style="background-color: {{ section.settings.banner_background_color }}"></div>
+    {% endif %}
+
+    <div class="banner-content">
+      <div class="banner-text">
+        {% if section.settings.heading != blank %}
+          <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.left_image != blank %}
+      <img class="banner-img mascot-left" src="{{ section.settings.left_image | image_url: width: 300 }}" alt="Left Mascot">
+    {% endif %}
+
+    {% if section.settings.right_image != blank %}
+      <img class="banner-img mascot-right" src="{{ section.settings.right_image | image_url: width: 300 }}" alt="Right Mascot">
+    {% endif %}
+  </div>
+
+  <div class="distributor-content container">
+    <div class="distributor-text">
+      {{ section.settings.description }}
+    </div>
+    <div class="distributor-form">
+      {% if section.settings.hubspot_form_id != blank %}
+        <!-- HubSpot Form Embed -->
+        <div id="hubspotForm-{{ section.id }}"></div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            if (window.hbspt) {
+              hbspt.forms.create({
+                region: "na1", // adjust if needed
+                portalId: "{{ section.settings.hubspot_portal_id }}",
+                formId: "{{ section.settings.hubspot_form_id }}",
+                target: "#hubspotForm-{{ section.id }}"
+              });
+            }
+          });
+        </script>
+      {% else %}
+        <p>Please enter a HubSpot form ID in the settings.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.distributor-section {
+  padding: 40px 20px;
+  background: #fafafa;
+  color: #000;
+}
+
+.distributor-banner {
+  position: relative;
+  text-align: center;
+  overflow: visible; /* ✅ allow mascots to overshow top/bottom */
+}
+
+.banner-bg-helper {
+  width: 100%;
+  min-height: 210px;
+  height: auto;
+  display: block;
+  max-height: 241px;
+}
+
+.banner-bg-fallback {
+  width: 100%;
+  height: 200px;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+  padding: 0 20px;
+  max-width: 60%;
+}
+
+.banner-text h2 {
+  font-size: clamp(3rem, 2vw + 1rem, 5.25rem);;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.banner-text p {
+  {% comment %} max-width: 70%; {% endcomment %}
+  margin: 8px auto;
+  font-size: clamp(1.25rem, 1.5vw + 0.8rem, 2.2rem);
+  font-weight: 500;
+  color: #fff;
+}
+
+.banner-img {
+  position: absolute;
+  z-index: 2;
+  max-height: 280px; /* ✅ control mascot size */
+}
+
+/* ✅ Mascots overshow both top & bottom */
+.mascot-left {
+  left: 30px;
+  top: -30px;      /* overshow top */
+  bottom: -30px;   /* overshow bottom */
+}
+
+.mascot-right {
+  right: 30px;
+  top: -30px;      /* overshow top */
+  bottom: -20px;   /* overshow bottom */
+}
+
+.distributor-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.distributor-text {
+  font-size: 3rem;
+    text-align: center;
+    line-height: 36px;
+}
+
+.distributor-form {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+@media (max-width: 1350px) {
+  
+}
+@media (max-width: 768px) {
+  .distributor-content {
+    grid-template-columns: 1fr;
+  }
+  .mascot-left,
+  .mascot-right {
+    display: none; /* hide mascots on mobile */
+  }
+  .banner-bg-helper {
+    height: 330px;
+  }
+
+}
+@media (max-width: 500px) {
+ 
+  .banner-bg-helper {
+    height: 320px;
+    max-height: 320px;
+  }
+  .banner-content{
+    max-width: 95%;
+  }
+
+}
+</style>
+
+{% schema %}
+{
+  "name": "Distributor Signup",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_background_image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "color",
+      "id": "banner_background_color",
+      "label": "Banner Background Color (fallback)",
+      "default": "#f26522"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Mascot Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Mascot Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Banner Heading",
+      "default": "Distributors: Get Exclusive Access Now"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Banner Subheading",
+      "default": "Register for a distributor account and access competitive pricing, premium products, and fast turnaround"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Left Column Text",
+      "default": "<p>Partner with us and unlock exclusive distributor benefits. Gain access to wholesale pricing, fast turnaround, and premium products ready to customize.</p>"
+    },
+    {
+      "type": "text",
+      "id": "hubspot_portal_id",
+      "label": "HubSpot Portal ID"
+    },
+    {
+      "type": "text",
+      "id": "hubspot_form_id",
+      "label": "HubSpot Form ID"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Distributor Signup"
+    }
+  ]
+}
+{% endschema %}

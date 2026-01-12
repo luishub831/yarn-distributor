@@ -1,0 +1,110 @@
+<style>
+  .custom-artwork-section {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  
+  .custom-artwork-section .artwork-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    max-width: 1250px;
+  }
+
+  .custom-artwork-section .artwork-image {
+    flex-basis: 50%;
+    max-width: 50%;
+    padding-right: 20px;
+  }
+
+  .custom-artwork-section .artwork-details {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .custom-artwork-section .artwork-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--gsc-images-with-text-section-image-border-radius,0);
+  }
+
+  .custom-artwork-section .artwork-details .story {
+    max-width: var(--gsc-content-width);
+  }
+  
+  .custom-artwork-section .artwork-details .story strong {
+      font-size: var(--gsc-heading-1-desktop-font-size);
+      line-height: var(--gsc-heading-1-desktop-line-height);
+  }
+
+  .custom-artwork-section .artwork-details .story p {
+    margin: 2rem 0 0;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0em;
+  }
+  
+  @media (max-width: 767px) {
+    .custom-artwork-section .artwork-container {
+      flex-direction: column;
+    }
+
+    .custom-artwork-section .artwork-image,
+    .custom-artwork-section .artwork-details {
+      flex-basis: 100%;
+      max-width: 100%;
+      padding-right: 0;
+    }
+  }
+</style>
+<div class="custom-artwork-section">
+  <div class="artwork-container">
+    <div class="artwork-image">
+      {% if section.settings.artwork_image %}
+        <img src="{{ section.settings.artwork_image | img_url: 'master' }}" alt="{{ section.settings.artwork_title }}">
+      {% endif %}
+    </div>
+    <div class="artwork-details">
+      <h3>{{ section.settings.artwork_title }}</h3>
+      <p class="pronunciation">{{ section.settings.artwork_pronunciation }}</p>
+      <div class="story">{{ section.settings.artwork_story }}</div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Custom Artwork Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "artwork_image",
+      "label": "Artwork Image"
+    },
+    {
+      "type": "text",
+      "id": "artwork_title",
+      "label": "Artwork Title"
+    },
+    {
+      "type": "text",
+      "id": "artwork_pronunciation",
+      "label": "Artwork Pronunciation"
+    },
+    {
+      "type": "richtext",
+      "id": "artwork_story",
+      "label": "Artwork Story"
+    }
+  ],
+  "blocks": [],
+  "presets": [{
+    "name": "Custom Artwork Section"
+  }]
+}
+{% endschema %}
+
+

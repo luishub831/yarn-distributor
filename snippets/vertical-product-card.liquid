@@ -1,0 +1,114 @@
+{% liquid
+  assign image = product.featured_image
+  assign price = product.price | default: 0
+  assign variant = product.first_available_variant
+  assign img_ratio = img_ratio | default: 'portrait'
+
+  if settings.show_currency_code
+    assign money_price = price | money_with_currency
+  else
+    assign money_price = price | money
+  endif
+%}
+
+<vertical-product-card
+  class='vertical-product-card'
+  data-url='{{ product.url }}'
+  data-id='{{ product.id }}'
+>
+  <div class='vertical-product-card__inner shape shape--{{ img_ratio }}'>
+    <a href='{{ product.url }}' aria-label='{{ product.url }}' class='vertical-product-card__link'></a>
+    <div class='vertical-product-card__image-wrapper {% if settings.enable_product_darken_background %}multiply-mode{% endif %}'>
+      {% if image != blank %}
+        <img
+          class='vertical-product-card__image lazyload {% if settings.enable_product_darken_background %}multiply-mode__target{% endif %}'
+          src='{{ image | image_url: width: 320 }}'
+          data-image-url='{{ image | image_url: width: 1 }}'
+          data-aspectratio='{{ image.aspect_ratio }}'
+          data-sizes='auto'
+          alt='{{ image.alt }}'
+          loading='lazy'
+          width='1'
+          height='1'
+          style='object-position: {{ image.presentation.focal_point }};'
+        >
+      {% else %}
+        {{- 'product-4' | placeholder_svg_tag: 'vertical-product-card__image' -}}
+      {% endif %}
+    </div>
+    {%- if settings.show_quick_view == true or settings.show_add_to_cart == true -%}
+      <div
+        class='vertical-product-card__buttons {% if settings.show_button_on_hover %} vertical-product-card__buttons--visible-on-hover {% endif %}'
+      >
+        {%- if settings.show_add_to_cart == true and product.variants.size == 1 and product.available -%}
+          <product-form>
+            {%- form 'product', product, data-type: 'add-to-cart-form' -%}
+              <input
+                type='hidden'
+                name='id'
+                value='{{ product.selected_or_first_available_variant.id }}'
+                data-product-form-variant
+                id='{{ product_form_id }}-IdInput-{{ form.id }}'
+              >
+              <button
+                type='submit'
+                name='add'
+                class='btn btn--solid btn--md vertical-product-card__button'
+                aria-label='{{- 'cards.vertical_product_card.add_to_cart_button_label' | t -}}'
+              >
+                <span>{%- render 'product-card-icon-plus', class: 'vertical-product-card__button-icon' -%}</span>
+                {% render 'icon', icon_name: 'spinner', class: 'loading-spinner btn__loading-spinner' %}
+              </button>
+            {%- endform -%}
+          </product-form>
+        {%- endif -%}
+        {%- if settings.show_quick_view == true -%}
+          <quick-view-button
+            id='product-card-quick-view-btn-{{ product.id }}'
+          >
+            <button
+              class='btn btn--solid btn--md vertical-product-card__button'
+              data-quick-view-button
+              data-product-card-quick-view-button
+              data-quick-view-id='Quick-view'
+              aria-label='{{- 'cards.vertical_product_card.quick_view_button_label' | t -}}'
+            >
+              {%- render 'product-card-icon-eye', class: 'vertical-product-card__button-icon' -%}
+            </button>
+          </quick-view-button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+  <div class='vertical-product-card__info'>
+    <a class='vertical-product-card__title' href='{{ product.url }}' aria-label='{{ product.url }}'>
+      {{- product.title -}}
+    </a>
+    <div class='vertical-product-card__price'>
+      <div class='vertical-product-card__price-item'>
+        {%- if product.price_varies -%}
+          {{ 'cards.vertical_product_card.from_price_html' | t: price: money_price }}
+        {%- else -%}
+          {{ money_price }}
+        {%- endif -%}
+        {% if variant.unit_price_measurement %}
+          ({{ variant.unit_price | money }}
+
+          <span aria-hidden='true'>/</span>
+
+          {% if variant.unit_price_measurement.reference_value != 1 %}
+            {{- variant.unit_price_measurement.reference_value -}}
+          {% endif %}
+
+          {{ variant.unit_price_measurement.reference_unit }})
+        {% endif %}
+      </div>
+
+      {%- if product.compare_at_price > price -%}
+        <div class='vertical-product-card__old-price-item'>
+          {{- product.compare_at_price | money -}}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</vertical-product-card>

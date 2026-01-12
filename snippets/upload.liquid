@@ -1,0 +1,303 @@
+{% comment %}
+    .filepond--drop-label {
+        background: #f7c156 !important;
+        color: #222222 !important;
+        border-radius: 12px;
+    }
+    .filepond--drop-label label {
+        font-family: DM Sans;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #222222 !important;
+    }
+    .filepond--panel-root {
+        background: transparent !important;
+    }
+    .btn {
+        border: 0px solid #222;
+        background: #f7c156;
+        transition: 1s all;
+    }
+    .btn:hover {
+        background: #fff;
+        border: 1px solid #222;
+        box-shadow: none;
+    }
+{% endcomment %}
+<style>
+    .filepond--drop-label {
+        background: #ff6c00!important;
+        min-height: 65px!important;
+        border-radius: 12px;
+    }
+    .filepond--drop-label label .uploadlift-btn-label{
+        color: white !important;
+        font-size:3rem !important;
+        font-weight: 500;
+    }
+
+    .custom-product-form #clxkhbamhhri .filepond--drop-label label{
+        color: white !important;
+        padding: 1rem 4.8rem;
+        font-size: 3rem !important;
+    }
+
+    .filepond--panel-root {
+        background: transparent!important;
+    }
+
+    .custom-product-form .accordion-header {
+        background-color: #105f6c;
+        font-family: 'DM Sans';
+        font-weight: 700;
+        border-radius: 12px;
+        text-align: center;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+    
+    .custom-product-form .accordion-content {
+        background: #f5f5f5;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-top: 0;
+        margin-top: -10px!important;
+        padding: 20px;
+        border-radius: 0 0px 20px 20px;
+    }
+    
+    .custom-product-form .accordion-header .arrow {
+        float: right;
+    } 
+    
+    .custom-product-form .accordion-content { 
+        display: none; 
+    }
+    
+    .custom-product-form .active .accordion-content { 
+        display: block; 
+    }
+    
+    .custom-product-form label { 
+        display: block; 
+        margin-bottom: 5px; 
+    }
+    
+    .custom-product-form input[type="text"], 
+    .custom-product-form input[type="number"] {
+        width: 100%; 
+        padding: 10px; 
+        margin-bottom: 10px; 
+    }
+    
+    .custom-product-form .accordion-header { 
+        cursor: pointer; 
+        padding: 10px; 
+        margin-top: 10px;
+        z-index: 1;
+        position: relative;
+    }
+    
+    .custom-product-form .accordion-header:hover { 
+        background-color: #f0f0f0; 
+        color: #000;
+    }
+    
+    .custom-product-form img { 
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin-bottom: 10px; 
+    }
+
+    .additional-details {
+        margin: 15px auto;
+    }
+
+    .additional-details textarea#additional-details {
+        width: 100%;
+        height: 80px;
+    }
+
+    .artwork_guide {
+        text-decoration: underline;
+        text-transform: uppercase;
+        color: #222;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .naidoc-toggle-container {
+        display: flex;
+        align-items: center;
+        margin-top: 20px; 
+    }
+
+    .naidoc-toggle-label,
+    .additional-details-label {    
+        text-transform: uppercase;
+        color: #222;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .naidoc-toggle-label {
+        margin-right: 10px; 
+    }
+
+    .naidoc-toggle {
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .naidoc-toggle input[type="radio"] {
+        display: none; 
+    }
+
+    .naidoc-toggle label {
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #f8f8f8;
+        transition: background-color 0.3s;
+    }
+
+    .naidoc-toggle input[type="radio"]:checked + label {
+        background-color: #105f6c;
+        color: white;
+    }
+    .download-template {
+        text-align: right;
+        color: #703b97;
+    }
+    .download-template a{
+        text-decoration: none;
+    }
+</style>
+
+{% if product.tags contains 'upload_logo' %}
+    <div class="custom-product-form">
+        <div class="upload-logos"></div>
+        <a class="download-template">DOWNLOAD TEMPLATE</a>
+    </div>
+{% endif %}
+
+{% if product.tags contains 'upload_artwork' %}
+    <div class="custom-product-form upload_artwork">
+        <div class="upload-logos"></div>
+        <div class="upload-artwork"></div>
+        <div class="download-template">
+            <a href="{{ product.metafields.custom.design_template | file_url }}" download >DOWNLOAD TEMPLATE</a>
+        </div>
+    </div>
+{% endif %}
+
+{% if product.tags contains 'upload_logos' %}    
+    <div class="custom-product-form">
+        <div class="accordion-upload">
+            <div class="accordion-header"><div class="custom-text">Upload Your Logo</div> <span class="arrow">&#9660;</span></div>
+            <div class="accordion-content">
+                <div class="upload-left-chest"></div>
+                <div class="upload-right-chest"></div>
+                <div class="upload-left-hand-sleeve"></div>
+                <div class="upload-right-hand-sleeve"></div> 
+                <div class="upload-centre-back"></div>
+                <div class="upload-half-moon"></div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if product.tags contains 'upload_artworks' %}    
+    
+    <div class="custom-product-form">
+        <div class="upload-front-artwork"></div>
+        <div class="upload-back-artwork"></div>
+    </div>
+{% endif %}
+
+{% if product.tags contains 'upload_logos_artwork' %}    
+    <div class="custom-product-form">
+        <div class="accordion-upload">
+            <div class="accordion-header">Upload Your Logo <span class="arrow">&#9660;</span></div>
+            <div class="accordion-content">
+                <div class="upload-left-chest"></div>
+                <div class="upload-right-chest"></div>
+                <div class="upload-left-hand-sleeve"></div>
+                <div class="upload-right-hand-sleeve"></div> 
+                <div class="upload-centre-back"></div>
+                <div class="upload-half-moon"></div>
+            </div>
+        </div>
+        <div class="upload-artwork" style="margin-top: 10px!important;"></div>
+    </div>
+{% endif %}
+
+{% comment %} <a href="https://cdn.shopify.com/s/files/1/0247/4021/files/CORPORATE_Artwork_Guidelines_Sheet.pdf?v=1679296729" 
+target="_blank" 
+style="text-decoration: underline;">
+    <span class="artwork_guide">Artwork Guidelines</span>
+</a>
+
+<div class="additional-details">
+    <label for="additional-details" class="additional-details-label">Additional Details:</label>
+    <textarea id="additional-details" name="additional-details" maxlength="300"></textarea>
+</div> {% endcomment %}
+
+{% if product.tags contains 'NaidocLogoYesNo' %}
+    <div class="naidoc-toggle-container">
+        <span class="naidoc-toggle-label">Keep NAIDOC Logos:</span>
+        <div class="naidoc-toggle">
+            <input type="radio" id="naidoc-yes" name="naidoc-logo" value="Yes" checked />
+            <label for="naidoc-yes" class="naidoc-toggle-option">Yes</label>
+            
+            <input type="radio" id="naidoc-no" name="naidoc-logo" value="No" />
+            <label for="naidoc-no" class="naidoc-toggle-option">No</label>
+        </div>
+    </div>
+{% endif %}
+
+{% if product.tags contains 'NaidocLogoNoYes' %}
+    <div class="naidoc-toggle-container">
+        <span class="naidoc-toggle-label">Add NAIDOC Logo:</span>
+        <div class="naidoc-toggle">
+            <input type="radio" id="naidoc-yes" name="naidoc-logo" value="Yes" />
+            <label for="naidoc-yes" class="naidoc-toggle-option">Yes</label>
+            
+            <input type="radio" id="naidoc-no" name="naidoc-logo" value="No" checked />
+            <label for="naidoc-no" class="naidoc-toggle-option">No</label>
+        </div>
+    </div>
+{% endif %}
+
+<script>
+if (!window.accordionInitialized) {
+    document.addEventListener("DOMContentLoaded", () => {
+        const accordionUploads = document.querySelectorAll(".accordion-upload");
+
+        accordionUploads.forEach(accordion => {
+            const header = accordion.querySelector(".accordion-header");
+            header.addEventListener("click", function() {
+                accordion.classList.toggle("active");
+
+                accordionUploads.forEach(otherAccordion => {
+                    if (otherAccordion !== accordion) {
+                        otherAccordion.classList.remove("active");
+                    }
+                });
+            });
+        });
+    });
+
+    window.accordionInitialized = true; 
+}
+document.querySelectorAll('.filepond--drop-label label')
+  .forEach(el => el.style.setProperty('color', 'white', 'important'));
+
+</script>
+

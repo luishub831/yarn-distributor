@@ -1,0 +1,227 @@
+{% if 
+    product.metafields.custom.colour_file_1 or
+    product.metafields.custom.colour_file_2 or
+    product.metafields.custom.colour_file_3 or
+    product.metafields.custom.colour_file_4 or
+    product.metafields.custom.colour_file_5
+    
+%}
+    <style>
+        .CCSS{
+            display: none;
+        }
+        .CCSS .main-title-styles {
+            color: #222222;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 22px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .CCSS .color-swatches-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .CCSS .color-swatch-wrap{
+            position: relative;
+            margin-right: 7px;
+            margin-bottom: 7px;
+        }
+        .CCSS .color-swatches-wrapper .custom-colour-swatch{
+            opacity: 0;
+            /* position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: pointer; */
+        }
+        /* .CCSS .color-swatches-wrapper .custom-swatch-image{
+            border-radius: 50%;
+            margin: 0 10px 10px 0;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            object-fit: contain;
+            background: #DDD;
+        } */
+        /* .CCSS .color-swatches-wrapper .custom-colour-swatch:hover + .custom-swatch-image,
+        .CCSS .color-swatches-wrapper .custom-colour-swatch:checked + .custom-swatch-image{
+            box-shadow: 0 0 0 2px #106572;
+        } */
+        .CCSS .color-swatches-wrapper .tool-tip-text{
+            display: none;
+            background-color: #106572 !important;
+            color: #fff;
+            text-align: center;
+            font-family: Inter;
+            padding: 2px 7px;
+            position: absolute;
+            z-index: 1;
+            font-size: 12px;
+            top: -22px;
+            border-radius: 7px;
+            min-width: 60px;
+            width: max-content;
+            margin: auto;
+            left: -16px;
+            right: 0;
+        }
+    
+        .CCSS .color-swatch-wrap:hover .tool-tip-text {
+            display: block;
+        }
+
+        .CCSS .custom-color-swatches-label{
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: block;
+            cursor: pointer;
+            box-shadow: 0 0 0 2px #ddd;
+            border-radius: 50%;
+        }
+        .CCSS .color-swatches-wrapper .custom-colour-swatch:hover + .custom-color-swatches-label,
+        .CCSS .color-swatches-wrapper .custom-colour-swatch:checked + .custom-color-swatches-label{
+            box-shadow: 0 0 0 2px #106572;
+        }
+    </style>
+
+
+    <div class="CCSS">
+        <h3 class="main-title-styles">{{block.settings.title}}</h3>
+        <div class="color-swatches-wrapper">
+            <div class="color-swatch-wrap">
+                <p class="tool-tip-text">{{product.metafields.custom.product_default_colour_name}}</p>
+                <input type="radio" hidden name="custom-color-swatch" value="{{product.metafields.custom.product_default_colour_name}}" colour-hex-code="{{product.metafields.custom.product_default_colour_hex}}" id="Original-product-color" main-image-src="{{product.featured_image | img_url: '1000x1000'}}" secondary-image-src="{{product.images[1] | img_url: '1000x1000'}}" class="custom-colour-swatch" checked>
+                <label for="Original-product-color" class="custom-color-swatches-label" style="background: {{product.metafields.custom.product_default_colour_hex}};"></label>
+            </div>
+            {% if product.metafields.custom.colour_file_1 or product.metafields.custom.colour_name_1 %}
+                <div class="color-swatch-wrap">
+                    <p class="tool-tip-text">{{product.metafields.custom.colour_name_1}}</p>
+                    <input type="radio" hidden name="custom-color-swatch" value="{{product.metafields.custom.colour_name_1}}" colour-hex-code="{{product.metafields.custom.colour_hex_1}}" id="{{product.metafields.custom.colour_hex_1 |  replace: " ", "-" }}-colour_hex_1" main-image-src="{{product.metafields.custom.colour_file_1 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_1_b %}{{product.metafields.custom.colour_file_1_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                    <label for="{{product.metafields.custom.colour_hex_1 |  replace: " ", "-" }}-colour_hex_1" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_1}};"></label>
+                    {% comment %} <img src="{{product.metafields.custom.colour_file_1 | img_url: '100x'}}" main-image-src="{{product.metafields.custom.colour_file_1 | img_url: '1000x1000'}}" alt="{{product.metafields.custom.colour_hex_1}}" class="custom-swatch-image"> {% endcomment %}
+                </div>
+            {% endif %}
+            {% if product.metafields.custom.colour_file_2 or product.metafields.custom.colour_name_2 %}
+                <div class="color-swatch-wrap">
+                    <p class="tool-tip-text">{{product.metafields.custom.colour_name_2}}</p>
+                    <input type="radio" hidden name="custom-color-swatch" value="{{product.metafields.custom.colour_name_2}}" colour-hex-code="{{product.metafields.custom.colour_hex_2}}" id="{{product.metafields.custom.colour_hex_2 | replace: " ", "-" }}-colour_hex_2" main-image-src="{{product.metafields.custom.colour_file_2 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_2_b %}{{product.metafields.custom.colour_file_2_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                    <label for="{{product.metafields.custom.colour_hex_2 | replace: " ", "-" }}-colour_hex_2" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_2}};"></label>
+                    {% comment %} <img src="{{product.metafields.custom.colour_file_2 | img_url: '100x'}}" main-image-src="{{product.metafields.custom.colour_file_2 | img_url: '1000x1000'}}" alt="{{product.metafields.custom.colour_hex_2}}" class="custom-swatch-image"> {% endcomment %}
+                </div>
+            {% endif %}
+            {% if product.metafields.custom.colour_file_3 or product.metafields.custom.colour_name_3 %}
+                <div class="color-swatch-wrap">
+                    <p class="tool-tip-text">{{product.metafields.custom.colour_name_3}}</p>
+                    <input type="radio" hidden name="custom-color-swatch" value="{{product.metafields.custom.colour_name_3}}" colour-hex-code="{{product.metafields.custom.colour_hex_3}}" id="{{product.metafields.custom.colour_hex_3 | replace: " ", "-" }}-colour_hex_3" main-image-src="{{product.metafields.custom.colour_file_3 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_3_b %}{{product.metafields.custom.colour_file_3_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                    <label for="{{product.metafields.custom.colour_hex_3 | replace: " ", "-" }}-colour_hex_3" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_3}};"></label>
+                    {% comment %} <img src="{{product.metafields.custom.colour_file_3 | img_url: '100x'}}" main-image-src="{{product.metafields.custom.colour_file_3 | img_url: '1000x1000'}}" alt="{{product.metafields.custom.colour_hex_3}}" class="custom-swatch-image"> {% endcomment %}
+                </div>
+            {% endif %}
+            {% if product.metafields.custom.colour_file_4 or product.metafields.custom.colour_name_4 %}
+                <div class="color-swatch-wrap">
+                    <p class="tool-tip-text">{{product.metafields.custom.colour_name_4}}</p>
+                    <input type="radio" hidden name="custom-color-swatch" value="{{product.metafields.custom.colour_name_4}}" colour-hex-code="{{product.metafields.custom.colour_hex_4}}" id="{{product.metafields.custom.colour_hex_4 | replace: " ", "-" }}-colour_hex_4" main-image-src="{{product.metafields.custom.colour_file_4 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_4_b %}{{product.metafields.custom.colour_file_4_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                    <label for="{{product.metafields.custom.colour_hex_4 | replace: " ", "-" }}-colour_hex_4" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_4}};"></label>
+                    {% comment %} <img src="{{product.metafields.custom.colour_file_4 | img_url: '100x'}}" main-image-src="{{product.metafields.custom.colour_file_4 | img_url: '1000x1000'}}" alt="{{product.metafields.custom.colour_hex_4}}" class="custom-swatch-image"> {% endcomment %}
+                </div>
+            {% endif %}
+            {% if product.metafields.custom.colour_file_5 or product.metafields.custom.colour_name_5 %}
+                <div class="color-swatch-wrap">
+                    <p class="tool-tip-text">{{product.metafields.custom.colour_name_5}}</p>
+                    <input type="radio" hidden name="custom-color-swatch" value="{{product.metafields.custom.colour_name_5}}" colour-hex-code="{{product.metafields.custom.colour_hex_5}}" id="{{product.metafields.custom.colour_hex_5 | replace: " ", "-" }}-colour_hex_5" main-image-src="{{product.metafields.custom.colour_file_5 | img_url: '1000x1000'}}" secondary-image-src="{% if product.metafields.custom.colour_file_5_b %}{{product.metafields.custom.colour_file_5_b | img_url: '1000x1000'}}{% endif %}" class="custom-colour-swatch">
+                    <label for="{{product.metafields.custom.colour_hex_5 | replace: " ", "-" }}-colour_hex_5" class="custom-color-swatches-label" style="background: {{product.metafields.custom.colour_hex_5}};"></label>
+                    {% comment %} <img src="{{product.metafields.custom.colour_file_5 | img_url: '100x'}}" main-image-src="{{product.metafields.custom.colour_file_5 | img_url: '1000x1000'}}" alt="{{product.metafields.custom.colour_hex_5}}" class="custom-swatch-image"> {% endcomment %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".CCSS").style.display = 'block';
+            let mediaId = null;
+            let targetImagesSlides = null;
+            let imageSrc = null;
+    
+            document.querySelectorAll(".CCSS .custom-colour-swatch").forEach((swatch) => {
+                swatch.addEventListener('change', function() {
+                    // Get the image element related to the selected swatch
+                    mediaId = document.querySelector(".product-featured-image product-modal-opener").getAttribute('data-media-id');
+    
+                    imageSrc = swatch.getAttribute('main-image-src');
+                    secondaryImageSrc = swatch.getAttribute('secondary-image-src');
+
+
+                    // Update the featured image source
+                    let featuredImage = document.querySelectorAll(".product-featured-image .product-media__image");
+                    let secondaryImage = document.querySelectorAll(".secondary-media-image .product-media__image");
+                    featuredImage.forEach(feaImg => {
+                        if (feaImg) {
+                            feaImg.setAttribute('src', imageSrc);
+                            feaImg.removeAttribute('srcset');
+                        }
+                    });
+                    secondaryImage.forEach(feaImg => {
+                        if (feaImg) {
+                            if(secondaryImageSrc){
+                                feaImg.setAttribute('src', secondaryImageSrc);
+                            }else{
+                                feaImg.setAttribute('src', imageSrc);
+                            }
+                            feaImg.removeAttribute('srcset');
+                        }
+                    });
+    
+                    document.querySelector(".dots-carousel__slide[data-dot-index='0']").click();
+                });
+            });
+    
+    
+            document.querySelectorAll(".product-mobile-media .product-featured-image product-modal-opener").forEach(modalOpener => {
+                modalOpener.addEventListener('click', function(){
+                    setTimeout(() => {
+                        targetImagesSlides = document.querySelectorAll(".carousel__slide.product-modal__slide");
+                        // targetImagesSlidesMobile = document.querySelectorAll(".carousel__slide.product-modal__slide");
+                        console.log(targetImagesSlides, imageSrc);
+                        targetImagesSlides.forEach(imageSlide => {
+                            console.log(imageSlide);
+                            let targetId = imageSlide.getAttribute('data-media-id');
+                            console.log(mediaId, targetId);
+                            if(mediaId == targetId){
+                                imageSlide.querySelector(".product-modal__image").setAttribute('src', imageSrc);
+                            }
+                        })
+                    }, 500);
+                });
+            });
+            // document.querySelectorAll(".product-mobile-media .secondary-media-image product-modal-opener").forEach(modalOpener => {
+            //     modalOpener.addEventListener('click', function(){
+            //         setTimeout(() => {
+            //             targetImagesSlides = document.querySelectorAll(".carousel__slide.product-modal__slide");
+            //             // targetImagesSlidesMobile = document.querySelectorAll(".carousel__slide.product-modal__slide");
+            //             console.log(targetImagesSlides, imageSrc);
+            //             targetImagesSlides.forEach(imageSlide => {
+            //                 console.log(imageSlide);
+            //                 let targetId = imageSlide.getAttribute('data-media-id');
+            //                 console.log(mediaId, targetId);
+            //                 if(mediaId == targetId){
+            //                     imageSlide.querySelector(".product-modal__image").setAttribute('src', imageSrc);
+            //                 }
+            //             })
+            //         }, 500);
+            //     });
+            // });
+        });
+    </script>
+{% endif %}

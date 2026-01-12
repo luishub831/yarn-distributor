@@ -1,0 +1,842 @@
+<script>
+//*********************************************
+// Global Mapping Functions
+//*********************************************
+const productTags = {{ product.tags | json }};
+const naidocLogoQuestionExists = productTags.includes('NaidocLogoYesNo') || productTags.includes('NaidocLogoNoYes');
+const noVariantTagExists = productTags.includes('no-variant');
+const noUploadTagExists = productTags.includes('no-upload');
+
+const uploadFieldsMapping = {
+  'upload_logo': ['upload-logos'],
+  'upload_artwork': ['upload-logos', 'upload-artwork' , 'upload-front-artwork', 'upload-back-artwork'],
+  'upload_logos': ['upload-centre-back', 'upload-half-moon', 'upload-right-hand-sleeve', 'upload-left-hand-sleeve', 'upload-right-chest', 'upload-left-chest'],
+  'upload_logos_artwork': ['upload-artwork', 'upload-centre-back', 'upload-half-moon', 'upload-right-hand-sleeve', 'upload-left-hand-sleeve', 'upload-right-chest', 'upload-left-chest']
+};
+var isUpdatingSubtotal = false;
+window.productVariants = [
+  {% for variant in product.variants %}
+    {{ variant.id }}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+window.productJson = {{ product | json }};
+//*********************************************
+// General Functions
+//*********************************************
+
+// function updateCartImage(){
+//   setTimeout(() => {
+//     document.querySelectorAll('.custom-sidebar-cart__item').forEach(item => {
+//       const swatchImageElement = item.querySelector('.custom-swatch-image-url-cdn');
+      
+//       // Check if the swatchImageElement exists and has the attribute
+//       if (swatchImageElement && swatchImageElement.hasAttribute('swatchImage')) {
+//         let swatchImage = swatchImageElement.getAttribute('swatchImage');
+//         console.log(swatchImage);
+        
+//         const imageElement = item.querySelector(".cart-item__image-custom");
+//         if (imageElement) {
+//           imageElement.setAttribute('src', swatchImage);
+//         }
+//       } else {
+//         console.log('Swatch image attribute not found for item:', item);
+//       }
+//     });
+//   }, 100);
+// }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const addToCartForm = document.querySelector('form.product-form');
+  const additionalDetailsInput = document.createElement('input');
+  additionalDetailsInput.type = 'hidden';
+  additionalDetailsInput.name = 'properties[Additional Details]';
+  addToCartForm.appendChild(additionalDetailsInput);
+
+  document.getElementById('product-form-component-{{ product.id }}-{{ sectionId }}').addEventListener('submit', function(e) {
+    const additionalDetailsValue = document.getElementById('additional-details').value.trim();
+    additionalDetailsInput.value = additionalDetailsValue;
+  });
+  document.getElementById('naidoc-yes').checked = true;
+
+  document.querySelector('.custom-sidebar-cart__checkout-btn').addEventListener('click', checkout);
+
+  updateCartDrawer();
+  updateSubtotal();
+  updateCartItemCount();
+  checkMOQ();
+
+  document.querySelectorAll('.quantity__input').forEach(input => {
+    input.addEventListener('change', function() {
+      checkMaxInventoryPDP(input);
+    });
+    input.addEventListener('input', function() {
+      checkMaxInventoryPDP(input);
+    });
+  });
+
+  document.querySelectorAll('.cart-item-quantity__input').forEach(input => {
+    input.addEventListener('change', function() {
+      checkMaxInventoryCart(input);
+    });
+    input.addEventListener('input', function() {
+      checkMaxInventoryCart(input);
+    });
+  });
+});
+
+function checkMaxInventoryPDP(input) {
+  const maxInventory = input.getAttribute('data-max-inventory');
+  const productName = input.getAttribute('data-product-name');
+  const variantName = input.getAttribute('data-variant-name');
+
+  if (maxInventory === 'untracked' || maxInventory === null || maxInventory === '' || isNaN(maxInventory)) {
+    return;
+  } else if (parseInt(maxInventory, 10) === 0) {
+    if (productName && variantName) {
+      alert(`${productName} (${variantName}) is out of stock.`);
+    } else {
+      alert('This item is out of stock.');
+    }
+    input.value = 0;
+  } else if (parseInt(input.value, 10) > parseInt(maxInventory, 10)) {
+    if (productName && variantName) {
+      alert(`You can only add up to ${maxInventory} of ${productName} (${variantName}) to the cart.`);
+    } else {
+      alert(`You can only add up to ${maxInventory} of this item.`);
+    }
+    input.value = parseInt(maxInventory, 10);
+  }
+}
+
+function checkMaxInventoryCart(input) {
+  const maxInventory = input.getAttribute('data-max-inventory');
+  const productName = input.getAttribute('data-product-name');
+  const variantName = input.getAttribute('data-variant-name');
+
+  if (maxInventory === 'untracked' || maxInventory === null || maxInventory === '' || isNaN(maxInventory)) {
+    return;
+  } else if (parseInt(maxInventory, 10) === 0) {
+    if (productName && variantName) {
+      alert(`${productName} (${variantName}) is out of stock.`);
+    } else {
+      alert('This item is out of stock.');
+    }
+    input.value = 0;
+  } else if (parseInt(input.value, 10) > parseInt(maxInventory, 10)) {
+    if (productName && variantName) {
+      alert(`You can only add up to ${maxInventory} of ${productName} (${variantName}) to the cart.`);
+    } else {
+      alert(`You can only add up to ${maxInventory} of this item.`);
+    }
+    input.value = parseInt(maxInventory, 10);
+  }
+}
+
+//*********************************************
+// Cart Drawer Functions
+//*********************************************
+
+function updateCartDetails() {
+  updateCartItemCount();
+  updateSubtotal();
+  checkMOQ();
+}
+function openCartDrawer() {
+  const sidebarCart = document.querySelector('.custom-sidebar-cart');
+  sidebarCart.style.transform = 'translateX(0)';
+  sidebarCart.setAttribute('data-opened', 'true');
+  updateCartDetails();
+
+  // updateCartImage();
+}
+
+function closeCartDrawer() {
+  if (!isUpdatingSubtotal) {
+    const sidebarCart = document.querySelector('.custom-sidebar-cart');
+    sidebarCart.style.transform = 'translateX(100%)';
+    sidebarCart.setAttribute('data-opened', 'false');
+  }
+}
+
+document.querySelector('.custom-sidebar-cart__close-btn').addEventListener('click', closeCartDrawer);
+
+document.querySelector('.custom-sidebar-cart-overlay').addEventListener('click', function() {
+  if (!isUpdatingSubtotal) {
+    closeCartDrawer();
+  }
+});
+
+function updateCartDrawer() {
+  fetch('/cart?view=ajax')
+      .then(response => response.text())
+      .then(html => {
+          const itemsList = document.querySelector('.custom-sidebar-cart__items-list');
+          itemsList.innerHTML = html;
+          openCartDrawer();
+          // updateCartImage();
+      })
+      .catch(error => {
+          console.error('Error updating cart drawer:', error);
+      });
+}
+
+function removeItem(key) {
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id: key, quantity: 0 })
+  })
+  .then(response => response.json())
+  .then(() => {
+    updateCartDrawer();
+    updateCartDetails();
+  });
+}
+
+function updateQuantity(key, quantity, isDirectSet = false) {
+  const input = document.querySelector(`input[data-key="${key}"]`);
+  let updatedQuantity;
+  const maxInventory = parseInt(input.getAttribute('data-max-inventory'), 10);
+
+  if (isDirectSet) {
+    updatedQuantity = parseInt(quantity, 10);
+  } else {
+    const currentQuantity = parseInt(input.value, 10);
+    updatedQuantity = currentQuantity + parseInt(quantity, 10);
+  }
+
+  const minQuantity = parseInt(input.getAttribute('data-min-qty'), 10);
+  if (updatedQuantity < minQuantity) {
+    console.error('Quantity must meet the minimum requirement');
+    updatedQuantity = minQuantity;
+  }
+
+  if (updatedQuantity > maxInventory) {
+    alert(`You can only add up to ${maxInventory} of this item.`);
+    updatedQuantity = maxInventory;
+  }
+
+  input.value = updatedQuantity;
+
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: key,
+      quantity: updatedQuantity
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to update quantity: ' + response.statusText);
+      input.value = currentQuantity;
+    }
+    return response.json();
+  })
+  .then(cart => {
+    updateCartDrawer();
+    updateCartDetails();
+  })
+  .catch(error => {
+    console.error('Failed to update quantity:', error);
+    input.value = currentQuantity;
+  });
+}
+
+function updateSubtotal() {
+  const subtotalContainer = document.querySelector('.sidebar-cart__footer');
+  const subtotalElement = document.querySelector('[data-subtotal-price]');
+  const closeButton = document.querySelector('.custom-sidebar-cart__close-btn');
+
+  isUpdatingSubtotal = true;
+
+  closeButton.disabled = true;
+  closeButton.classList.add('loading');
+
+  const existingSpinner = document.querySelector('.loading-spinner-overlay');
+  if (existingSpinner) {
+    existingSpinner.remove();
+  }
+
+  const loadingSpinner = `
+    <div class="loading-spinner-overlay">
+      <svg class="custom-sidebar-cart_svg loading-spinner" width="4.5rem" height="4.5rem" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle stroke="currentColor" fill="none" stroke-width="3" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+      </svg>
+      <div class="custom-sidebar-cart__subtotal-loading">
+        <p style="font-size:small; font-weight: 800; color:#895152;">Please wait while we update the cart</p>
+      </div>
+    </div>
+  `;
+
+  subtotalContainer.insertAdjacentHTML('beforeend', loadingSpinner);
+  subtotalContainer.classList.add('loading');
+
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(data => {
+      const updatedSubtotal = (data.total_price / 100).toLocaleString('en-US', { style: 'currency', currency: 'AUD' }).replace('A', '');
+      subtotalElement.textContent = updatedSubtotal;
+      subtotalElement.setAttribute('data-subtotal-price', updatedSubtotal);
+
+      isUpdatingSubtotal = false;
+
+      closeButton.disabled = false;
+      closeButton.classList.remove('loading');
+
+      document.querySelector('.loading-spinner-overlay').remove();
+      subtotalContainer.classList.remove('loading');
+
+      setupSubtotalObserver();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      const fallbackSubtotal = subtotalElement.getAttribute('data-subtotal-price');
+      subtotalElement.textContent = fallbackSubtotal ? fallbackSubtotal : 'Error updating subtotal';
+
+      isUpdatingSubtotal = false;
+
+      closeButton.disabled = false;
+      closeButton.classList.remove('loading');
+
+      document.querySelector('.loading-spinner-overlay').remove();
+      subtotalContainer.classList.remove('loading');
+    });
+}
+
+function setupSubtotalObserver() {
+  const subtotalPriceElements = document.querySelectorAll('.subtotal__price');
+  const bssQbCartSubtotalElements = document.querySelectorAll('.bss-qb-cart-subtotal');
+
+  if (subtotalPriceElements.length > 0 && bssQbCartSubtotalElements.length > 0) {
+    console.log('Setting up observer for subtotal elements.');
+
+    const subtotalObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        subtotalPriceElements.forEach((subtotalPriceElement, index) => {
+          if (index < bssQbCartSubtotalElements.length) {
+            const bssElement = bssQbCartSubtotalElements[index];
+
+            if (subtotalPriceElement.textContent.trim() === bssElement.textContent.trim()) {
+              bssElement.style.display = 'none';
+            } else {
+              bssElement.style.display = 'block';
+            }
+          }
+        });
+      });
+    });
+
+    const config = { childList: true, characterData: true, subtree: true };
+
+    subtotalPriceElements.forEach((element) => {
+      subtotalObserver.observe(element, config);
+    });
+    bssQbCartSubtotalElements.forEach((element) => {
+      subtotalObserver.observe(element, config);
+    });
+
+    console.log('Observer has been set up.');
+  }
+}
+
+function updateCartItemCount() {
+  const cartItemCountElement = document.querySelector('.sidebar-cart__header-product-count');
+  const cartCountElement = document.getElementById('CartCount');
+  const stickyCartCountElement = document.getElementById('StickyCartCount');
+
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(data => {
+      const itemCount = data.item_count;
+      cartItemCountElement.textContent = `(${itemCount} ITEMS)`;
+
+      if (itemCount > 0) {
+        const cartCountHTML = `
+          <div class='cart-count ${itemCount > 9 ? 'cart-count--ellipse' : ''}'>
+            <span aria-hidden='true'>${itemCount}</span>
+          </div>
+        `;
+        cartCountElement.innerHTML = cartCountHTML;
+        stickyCartCountElement.innerHTML = cartCountHTML;
+      } else {
+        cartCountElement.innerHTML = '';
+        stickyCartCountElement.innerHTML = '';
+      }
+    })
+    .catch(error => {
+      console.error('Error updating cart item count:', error);
+    });
+}
+
+function checkMOQ() {
+  const productGroups = {};
+  let allMOQMet = true;
+
+  document.querySelectorAll('.custom-sidebar-cart__item').forEach(item => {
+    const key = item.dataset.cartItemKey;
+    const productID = item.dataset.productParentId || item.dataset.productId; 
+    const productName = item.dataset.productParentName || item.dataset.productName; 
+    const quantity = parseInt(item.querySelector('.cart-item-quantity__input').value, 10);
+    const minQty = parseInt(item.dataset.minQty, 10);
+
+    if (!productGroups[productID]) {
+      productGroups[productID] = {totalQuantity: 0, moq: minQty, items: []};
+    }
+    productGroups[productID].totalQuantity += quantity;
+    productGroups[productID].items.push(item);
+  });
+
+  Object.keys(productGroups).forEach(productID => {
+    const group = productGroups[productID];
+    group.items.forEach(item => {
+      const errorContainer = item.querySelector('.error-message-container');
+      if (group.totalQuantity < group.moq) {
+        errorContainer.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#f44336" version="1.1" id="Capa_1" width="1.5rem" height="1.5rem" viewBox="0 0 478.125 478.125" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<circle cx="239.904" cy="314.721" r="35.878"/>
+			<path d="M256.657,127.525h-31.9c-10.557,0-19.125,8.645-19.125,19.125v101.975c0,10.48,8.645,19.125,19.125,19.125h31.9     c10.48,0,19.125-8.645,19.125-19.125V146.65C275.782,136.17,267.138,127.525,256.657,127.525z"/>
+			<path d="M239.062,0C106.947,0,0,106.947,0,239.062s106.947,239.062,239.062,239.062c132.115,0,239.062-106.947,239.062-239.062     S371.178,0,239.062,0z M239.292,409.734c-94.171,0-170.595-76.348-170.595-170.596c0-94.248,76.347-170.595,170.595-170.595     s170.595,76.347,170.595,170.595C409.887,333.387,333.464,409.734,239.292,409.734z"/>
+		</g>
+	</g>
+</g>
+</svg><span>Additional quantity of <strong>${group.moq - group.totalQuantity}</strong> needed to meet MOQ for <strong>${group.items[0].dataset.productParentName}</strong>. If MOQ is not met, you will not be able to proceed to checkout.</span>`;
+        errorContainer.style.display = 'flex';
+        allMOQMet = false;
+      } else {
+        errorContainer.style.display = 'none';
+      }
+    });
+
+    const checkoutButton = document.getElementById('bss-checkout');
+    checkoutButton.disabled = !allMOQMet;
+  });
+}
+
+
+document.querySelectorAll('.cart-item-quantity__input').forEach(input => {
+  input.addEventListener('change', function() {
+    updateQuantity(this.dataset.key, this.value, true); 
+  });
+});
+
+function addToCartSequentially(variantsToAdd, index = 0) {
+  let customColorSwatches = document.querySelectorAll(".CCSS .custom-colour-swatch");
+  //console.log(customColorSwatches);
+  
+
+  if (index < variantsToAdd.length) {
+    const variant = variantsToAdd[index];
+    console.log("variant-", variant)
+
+    customColorSwatches.forEach(colorSwatch => {
+      if (colorSwatch.checked) {
+        console.log(colorSwatch);
+        variant.properties["colour_name"] = colorSwatch.value;
+        variant.properties["colour_hex"] = colorSwatch.getAttribute('colour-hex-code');
+        variant.properties["colour_file"] = colorSwatch.getAttribute('main-image-src');
+      }
+    });
+
+    console.log(variant.properties);
+    const data = {
+      id: variant.id,
+      quantity: variant.quantity,
+      properties: variant.properties,
+    };
+
+    console.log(`Adding variant with ID ${variant.id} and quantity ${variant.quantity}`);
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(parsedState => {
+      console.log(`Added variant with ID ${variant.id}`);
+      // setTimeout(() => {
+      //   document.querySelectorAll('.custom-sidebar-cart__item').forEach(item => {
+      //       let swatchImage = item.querySelector('.custom-swatch-image-url-cdn').getAttribute('swatchImage');
+      //       console.log(swatchImage);
+      //       item.querySelector(".cart-item__image-custom").setAttribute('src', swatchImage);
+      //   });
+      // }, 100);
+      updateCartDrawer(parsedState);
+      updateCartDetails();
+      addToCartSequentially(variantsToAdd, index + 1);
+    })
+    .catch(error => {
+      console.error(`Error adding variant ID ${variant.id} at index ${index}:`, error);
+    });
+  } else {
+    console.log('All variants added');
+  }
+}
+
+//*********************************************
+// PDP Upload Functions
+//*********************************************
+
+const uploadEventListeners = () => {
+  document.querySelector('.product-form__btn.btn.btn--lg').addEventListener('click', function(event) {
+    if (this.disabled) {
+      event.preventDefault();
+      updateAddToCartButtonState();
+    }
+  });
+
+  document.querySelectorAll('input[type="number"][id^="quantity-"], .quantity__input').forEach(input => {
+    input.addEventListener('change', updateAddToCartButtonState);
+  });
+
+  document.addEventListener('upload:added', function(e) {
+    const file = e.detail;
+    if (file.url && file.path) {
+      uploadedFiles[file.path] = { url: file.url };
+    }
+    updateAddToCartButtonState();
+  });
+
+  document.addEventListener('upload:removed', function(e) {
+    const file = e.detail;
+    if (file.url && file.field && uploadedFiles[file.field]) {
+      delete uploadedFiles[file.field];
+    }
+    updateAddToCartButtonState();
+  });
+}
+function updateVisibleBSSQuantityBreakTable(selectedVariantId) {
+  try {
+    const qbRules = window.BSS_B2B?.qb?.qbRules;
+    if (!qbRules || !Array.isArray(qbRules)) {
+      console.warn("⚠️ No qbRules found in BSS_B2B.");
+      return;
+    }
+
+    // 1️⃣ Find rule that applies to the selected variant
+    const matchedRule = qbRules.find(rule => {
+      if (!rule.product_variants) return false;
+      return rule.product_variants.split(',').includes(String(selectedVariantId));
+    });
+
+    if (!matchedRule) {
+      console.warn("⚠️ No matching rule found for variant:", selectedVariantId);
+      return;
+    }
+
+    const qtyTable = matchedRule.qty_table;
+    if (!qtyTable || !qtyTable.length) {
+      console.warn("⚠️ No qty_table for this variant.");
+      return;
+    }
+
+    // 2️⃣ Find the BSS table body
+    const tableBody = document.querySelector('.quantity_break_table tbody');
+    if (!tableBody) {
+      console.warn("⚠️ quantity_break_table not found.");
+      return;
+    }
+
+    // 3️⃣ Rebuild the table
+    tableBody.innerHTML = '';
+
+    qtyTable.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      tr.className = 'bss-b2b-qty-table-row';
+      tr.setAttribute('row-id', row.rule_id);
+      tr.setAttribute('data-min', row.qty_from);
+      if (row.qty_to) tr.setAttribute('data-max', row.qty_to);
+
+      // Quantity Range
+      let qtyRange;
+      if (row.qty_to && row.qty_to !== row.qty_from) {
+        qtyRange = `${row.qty_from} – ${row.qty_to}`;
+      } else {
+        qtyRange = `≥${row.qty_from}`;
+      }
+
+      // Price (assuming discount_value is final unit price)
+      const price = row.discount_value.toFixed(2);
+
+      tr.innerHTML = `
+        <td>${qtyRange}</td>
+        <td>
+          $${price}
+          <span class="bss-b2b-translation-qb-flat_price_suffix">each</span>
+        </td>
+      `;
+
+      tableBody.appendChild(tr);
+    });
+    const priceEls = document.querySelectorAll('[bss-b2b-main-product-form] .product-price__cost[bss-b2b-variant-price]');
+    const variantId = document.querySelector('[bss-b2b-main-product-form] input[name="id"]').getAttribute('value');
+    priceEls.forEach(el => {
+      el.setAttribute('bss-b2b-variant-id', variantId);
+    });
+    setTimeout(function() {
+      console.log(123)
+      const productForm = document.querySelector("[bss-b2b-main-product-form]");
+      BSS_B2B.observer.productSubject.notifyObserver('VariantChange', 'VariantSelectChange', {productForm});
+    }, 500);
+    console.log(`✅ BSS quantity break table updated for variant ${selectedVariantId}.`);
+  } catch (err) {
+    console.error("❌ Error updating BSS quantity break table:", err);
+  }
+}
+
+
+
+function updateAddToCartButtonState() {
+  const addToCartButton = document.querySelector('.product-form__btn.btn.btn--lg');
+  const quantityInputs = document.querySelectorAll('input[type="number"][id^="quantity-"], .quantity__input');
+  const variantInput = document.querySelector('input[name="id"]');
+  console.log("variantInput-", variantInput)
+  let totalQuantity = 0;
+  let hasUploads = false;
+
+  quantityInputs.forEach(input => {
+    totalQuantity += parseInt(input.value) || 0;
+  });
+
+  if (!noVariantTagExists && !noUploadTagExists) {
+    const uploadInputs = document.querySelectorAll('input[type="hidden"][name^="properties[upload"]');
+    let selectedVariantId = null;
+
+    if (uploadInputs.length === 1) {
+      selectedVariantId = window.productVariants[0]; // first variant
+    } else if (uploadInputs.length === 2) {
+      selectedVariantId = window.productVariants[1]; // second variant
+    }
+    {% comment %} BSS_B2B.handleVariantChange(selectedVariantId); {% endcomment %}
+ 
+     {% comment %} document.dispatchEvent(new CustomEvent('variant:change', { detail: { variant } })); {% endcomment %}
+      {% comment %} window.location = `${window.location.pathname}?variant=${selectedVariantId}`; {% endcomment %}
+
+      variantInput.value = selectedVariantId;
+      console.log("variantInput1-", variantInput)
+     {% comment %} reloadPageWithVariant(selectedVariantId); {% endcomment %}
+      updateVisibleBSSQuantityBreakTable(selectedVariantId);
+    
+    hasUploads = Array.from(uploadInputs).some(input => input.value.trim() !== '');
+
+  }
+
+  const MIN_QUANTITY = {{ product.metafields.custom.min_qty | json }} || 15;
+
+  addToCartButton.disabled = totalQuantity < MIN_QUANTITY || (!noVariantTagExists && !noUploadTagExists && !hasUploads);
+
+  const errorContainer = document.getElementById('error-message-container');
+  if (errorContainer) {
+    if (totalQuantity < MIN_QUANTITY || (!noVariantTagExists && !noUploadTagExists && !hasUploads)) {
+      errorContainer.textContent = noVariantTagExists || noUploadTagExists ? "Please ensure you've met the minimum quantity" : "Please ensure you've met the minimum quantity and uploaded your logo (min 1).";
+      errorContainer.style.display = 'block';
+    } else {
+      errorContainer.style.display = 'none';
+    }
+  }
+}
+
+document.querySelectorAll('input[type="number"][id^="quantity-"], .quantity__input').forEach(input => {
+  input.addEventListener('change', updateAddToCartButtonState);
+});
+
+uploadEventListeners();
+
+let uploadedFiles = {};
+
+document.querySelector('.product-form__btn.btn.btn--lg').addEventListener('click', function(event) {
+  if (this.disabled) {
+    event.preventDefault();
+    updateAddToCartButtonState();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', updateAddToCartButtonState);
+
+function decreaseQuantity(button) {
+  const variantId = button.getAttribute('data-variant-id');
+  const input = document.getElementById(`quantity-${variantId}`);
+  if (input.value > 0) {
+  input.value = parseInt(input.value, 10) - 1;
+  }
+  updateAddToCartButtonState();
+  checkMaxInventoryPDP(input);
+}
+
+function increaseQuantity(button) {
+  const variantId = button.getAttribute('data-variant-id');
+  const input = document.getElementById(`quantity-${variantId}`);
+  input.value = parseInt(input.value, 10) + 1;
+  updateAddToCartButtonState();
+  checkMaxInventoryPDP(input);
+}
+
+function addToCartMulti() {
+  const noUploadTagExists = productTags.includes('no-upload');
+  console.log("addtoCartMulti", noUploadTagExists)
+
+  if (noVariantTagExists) { 
+    const quantities1 = document.querySelectorAll('input[id^="quantity-"][id$="-product1"]');
+    const variantsToAdd = [];
+    const MIN_QUANTITY = {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %};
+
+    function gatherVariants(quantities) {
+      let totalQuantity = 0;
+      let localVariants = [];
+      quantities.forEach(input => {
+        const variantId = input.id.split('-')[1];
+        const quantity = parseInt(input.value, 10) || 0;
+        totalQuantity += quantity;
+        if (quantity > 0) {
+          const variantData = {
+            id: variantId,
+            quantity: quantity,
+            properties: {} 
+          };
+          localVariants.push(variantData);
+        }
+      });
+      return { totalQuantity, variants: localVariants };
+    }
+
+    const product1Result = gatherVariants(quantities1);
+    const totalQuantity = product1Result.totalQuantity;
+
+    if (totalQuantity < MIN_QUANTITY) {
+      document.getElementById(`error-product1`).style.display = 'block';
+    } else {
+      document.getElementById(`error-product1`).style.display = 'none';
+      variantsToAdd.push(...product1Result.variants);
+      if (variantsToAdd.length > 0) {
+        addToCartSequentially(variantsToAdd, 0);
+      }
+    }
+  } else { 
+    uploadedFiles = {};
+
+    Object.values(uploadFieldsMapping).flat().forEach(field => {
+      const inputElement = document.querySelector(`div.${field} input[type='hidden']`);
+      if (inputElement && inputElement.value.trim()) {
+        uploadedFiles[field] = inputElement.value.trim();
+      }
+    });
+
+    let requiredUploads = [];
+    for (let tag in uploadFieldsMapping) {
+      if (document.body.classList.contains(tag)) {
+        requiredUploads = requiredUploads.concat(uploadFieldsMapping[tag]);
+      }
+    }
+
+    const uploadInputs = document.querySelectorAll('input[type="hidden"][name^="properties[upload"]');
+    const uploadedCount = Array.from(uploadInputs).filter(i => i.value && i.value.trim() !== '').length;
+    console.log("Uploaded count:", uploadedCount);
+    console.log("uploadInputs-0", uploadInputs.length)
+    console.log("window.productVariants", window.productVariants)
+    let selectedVariantId = null;
+
+    if (uploadInputs.length === 1) {
+      selectedVariantId = window.productVariants[0]; // first variant
+    } else if (uploadInputs.length === 2) {
+      selectedVariantId = window.productVariants[1]; // second variant
+    }
+
+    if (selectedVariantId) {
+      console.log('Selected Variant ID:', selectedVariantId);
+      
+      
+    }
+
+    let hasValidUpload = requiredUploads.length === 0 || requiredUploads.some(field => uploadedFiles.hasOwnProperty(field));
+
+    if (!hasValidUpload && !noUploadTagExists) {
+      alert('Please upload the required file(s) before adding to the cart.');
+      return;
+    }
+
+    const quantities1 = document.querySelectorAll('input[id^="quantity-"][id$="-product1"]');
+    const quantities2 = document.querySelectorAll('input[id^="quantity-"][id$="-product2"]');
+    const variantsToAdd = [];
+    const MIN_QUANTITY = {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %};
+
+    function gatherVariants(quantities) {
+      let totalQuantity = 0;
+      let localVariants = [];
+      const additionalDetailsElement = document.getElementById('additional-details');
+      const additionalDetails = additionalDetailsElement ? additionalDetailsElement.value.trim() : '';
+
+      quantities.forEach(input => {
+        const variantId = input.id.split('-')[1];
+        const quantity = parseInt(input.value, 10) || 0;
+        totalQuantity += quantity;
+
+        if (quantity > 0) {
+          const variantData = {
+            id: variantId,
+            quantity: quantity,
+            properties: {}
+          };
+
+          if (additionalDetails) {  
+            variantData.properties["Additional Details"] = additionalDetails;
+          }
+
+          for (const group in uploadFieldsMapping) {
+            uploadFieldsMapping[group].forEach(fieldName => {
+              const propertyInput = document.querySelector(`input[name="properties[${fieldName}]"]`);
+              if (propertyInput && propertyInput.value) {
+                variantData.properties[fieldName] = propertyInput.value;
+              }
+            });
+          }
+
+          localVariants.push(variantData);
+        }
+      });
+
+      return { totalQuantity, variants: localVariants };
+    }
+
+    const product1Result = gatherVariants(quantities1);
+    const product2Result = gatherVariants(quantities2);
+    const totalQuantity = product1Result.totalQuantity + product2Result.totalQuantity;
+    if (uploadedCount >= 2 && product1Result.variants.length > 0) {
+      console.log("📦 Overriding product1Result variant to second variant:", selectedVariantId);
+      product1Result.variants.forEach(v => (v.id = selectedVariantId));
+    }
+
+    if (totalQuantity < MIN_QUANTITY) {
+      document.getElementById(`error-product1`).style.display = 'block';
+    } else {
+      document.getElementById(`error-product1`).style.display = 'none';
+      variantsToAdd.push(...product1Result.variants, ...product2Result.variants);
+
+      if (naidocLogoQuestionExists) {
+        const naidocLogoPreference = document.querySelector('input[name="naidoc-logo"]:checked').value;
+        variantsToAdd.forEach(variant => {
+          variant.properties['Keep NAIDOC Logos'] = naidocLogoPreference;
+        });
+      }
+
+      if (variantsToAdd.length > 0) {
+        addToCartSequentially(variantsToAdd, 0);
+      }
+    }
+  }
+  if (typeof BSS_B2B !== "undefined") {
+    setTimeout(() => {
+      BSS_B2B.handleCartCheckoutBtn(JSON.parse($('#bss-b2b-store-data').html()), false, false);
+      BSS_B2B.cart.fixer(JSON.parse($('#bss-b2b-store-data').html()), false, false);
+    }, 1000);
+  }
+}
+
+</script>
