@@ -1419,55 +1419,6 @@
         "show_navigation_on_hover": true
       }
     },
-    "64d15318-d3c2-47f5-8899-4bc014eb1490": {
-      "type": "slideshow",
-      "blocks": {
-        "0dcb7162-99e5-48dc-8a57-d0bc3d8afef3": {
-          "type": "split-image-banner",
-          "settings": {
-            "color_scheme": "custom-1",
-            "image_proportion": 0,
-            "content_wrapper_width": 30,
-            "caption": "",
-            "title": "Corporate Polos With Your Own Artwork & Logo",
-            "text": "<p>Create unique uniforms for your team, organisation, school or company using your own designs.</p>",
-            "heading_size": "h1",
-            "body_size": "body2",
-            "content_max_width": 424,
-            "desktop_content_align": "left",
-            "mobile_content_align": "center",
-            "btn_text": "Design Your Own",
-            "btn_url": "shopify://collections/design-your-own-polo",
-            "btn_style": "solid",
-            "extra_btn_text": "",
-            "extra_btn_url": "",
-            "extra_btn_style": "solid"
-          }
-        }
-      },
-      "block_order": [
-        "0dcb7162-99e5-48dc-8a57-d0bc3d8afef3"
-      ],
-      "disabled": true,
-      "settings": {
-        "color_scheme": "custom-2",
-        "enable_background_around_container": false,
-        "container_size": "full-screen",
-        "section_spacing_top": 30,
-        "section_spacing_bottom": 0,
-        "desktop_height": 620,
-        "mobile_height": 780,
-        "auto_adjust_height": false,
-        "enable_circle_navigation": true,
-        "enable_arrows_navigation": true,
-        "arrows_style": "corner-buttons",
-        "show_arrows_on_hover": false,
-        "transition_style": "swipe",
-        "enable_autoplay": false,
-        "autoplay_interval": 3,
-        "show_button_for_autoplay": true
-      }
-    },
     "featured_collection_aLN8Rh": {
       "type": "featured-collection",
       "name": "t:sections.featured_collection.name",
@@ -1504,7 +1455,8 @@
         "container_size": "large",
         "section_spacing_top": 0,
         "section_spacing_bottom": 60,
-        "desktop_img": "shopify://shop_images/Order_Process.png",
+        "desktop_img": "shopify://shop_images/ordering_process_desktop.png",
+        "mobile_img": "shopify://shop_images/ordering_process_mobile.png",
         "desktop_overlay_opacity": 20,
         "mobile_overlay_opacity": 20,
         "caption": "",
@@ -1561,7 +1513,6 @@
     "instagram_NxJxwz",
     "images_with_text_eHCLM3",
     "4968e1bd-e75e-4fc8-a27c-63b1409d6a1c",
-    "64d15318-d3c2-47f5-8899-4bc014eb1490",
     "featured_collection_aLN8Rh",
     "image_banner_with_header_nWrCxE",
     "account_registration_cta_XYYGWD"
