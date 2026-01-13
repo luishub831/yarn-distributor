@@ -1,0 +1,19 @@
+# Shopify CLI ignore file
+# This file tells Shopify CLI which files to ignore when uploading your theme
+
+# Optional: Ignore common development files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Optional: Ignore source files if you have a build process
+# assets/scss/
+# assets/src/
+
+# Optional: Ignore node_modules if you have any
+node_modules/*
+
+# Ignore git files
+.git/*
+.gitignore

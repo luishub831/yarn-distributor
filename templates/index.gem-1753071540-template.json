@@ -585,9 +585,7 @@
       "blocks": {
         "image_6ehrJ9": {
           "type": "image",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Caitlin T Vid.mp4"
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -1287,9 +1285,7 @@
       "blocks": {
         "image_Jik8nW": {
           "type": "image",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Trade Print Video.mp4"
-          }
+          "settings": {}
         }
       },
       "block_order": [

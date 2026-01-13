@@ -56,7 +56,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
   border-radius: 10px;
 }
 .btn--solid{
-  background: #753c9e;
+  /* background: #753c9e; */
 }
 .product-form__btn {
   color: white;
