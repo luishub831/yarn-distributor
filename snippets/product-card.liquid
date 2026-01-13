@@ -594,20 +594,20 @@
 
           <div class='product-card__price'>
             <div class='product-card__price-cost'>
-              {% if customer %}
+              {% comment %} {% if customer %} {% endcomment %}
               <div class='product-card__price-item {% if settings.product_card_highlight_sale_price and product.compare_at_price > price %} product-card__price-item--highlight-sale{% endif %}'>
                 {%- assign new_pricing = product.metafields.custom.new_pricing -%}
                 {%- if new_pricing -%}
                   {%- if product.price_varies -%}
-                    <span class="formprices"> RRP</span>  {{ 'cards.product_card.from_price_html' | t: price: new_pricing }}
+                    <span class="formprices"> From</span>  {{ 'cards.product_card.from_price_html' | t: price: new_pricing }}
                   {%- else -%}
-                    <span class="formprices">RRP </span> {{ new_pricing }}
+                    <span class="formprices">From </span> {{ new_pricing }}
                   {%- endif -%}
                 {%- else -%}
                   {%- if product.price_varies -%}
-                    <span class="formprices"> RRP</span>  {{ 'cards.product_card.from_price_html' | t: price: money_price }}
+                    <span class="formprices"> From</span>  {{ 'cards.product_card.from_price_html' | t: price: money_price }}
                   {%- else -%}
-                    <span class="formprices">RRP </span> {{ money_price }}
+                    <span class="formprices">From </span> {{ money_price }}
                   {%- endif -%}
                 {%- endif -%}
 
@@ -623,8 +623,8 @@
                   {{ variant.unit_price_measurement.reference_unit }})
                 {% endif %}
               </div>
-              {% endif %}
-
+              {% comment %} {% endif %} {% endcomment %}
+              
               {%- if product.compare_at_price > price -%}
                 <div class='product-card__price-item-old {% if settings.product_card_highlight_sale_price and product.compare_at_price > price %} product-card__price-item-old--highlight-sale{% endif %}'>
                   {{- product.compare_at_price | money -}}
@@ -668,7 +668,9 @@ Production Time: {{ product.metafields.custom.production_time }} </div>
     </div>
   {% endunless %} {% endcomment %}
 </div>
-
+        <div class="product-hover-button">
+          <a class="btn btn--solid " href="/#" aria-label="Get Started">Get Started</a>
+        </div>
         </div>
       </div>
     </div>
