@@ -57,6 +57,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
 .section-header{
   margin-bottom: 1rem;
   text-align: center;
+  font-size: 4.5rem;
 }
 .product--with-desktop-media-carousel .product-desktop-media{
   width: 38%;

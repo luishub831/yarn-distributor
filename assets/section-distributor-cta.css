@@ -1,0 +1,126 @@
+.distributor-cta-section {
+  padding-top: var(--section-padding-top, 60px);
+  padding-bottom: var(--section-padding-bottom, 60px);
+  overflow: hidden;
+  width: 100%;
+}
+
+.distributor-cta-wrapper {
+  position: relative;
+  min-height: 180px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.distributor-cta-curve {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.distributor-cta-curve--left {
+  left: 0;
+}
+
+.distributor-cta-curve--right {
+  right: 0;
+}
+
+.distributor-cta-curve .curve-image {
+  width: auto;
+  height: 300px;
+  display: block;
+}
+
+.distributor-cta-content {
+  position: relative;
+  text-align: center;
+  padding: 2rem 3rem;
+  z-index: 2;
+  max-width: 1000px;
+}
+
+.distributor-cta-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+  color: #000;
+}
+
+.distributor-cta-subheading {
+  font-size: 2.5rem;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.4;
+  color: #000;
+}
+
+.distributor-cta-button {
+  display: inline-block;
+  top:4.5rem;
+  /* padding: 14px 40px; */
+  /* font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 3px solid #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px; */
+}
+
+
+
+/* Tablet and mobile styles */
+@media screen and (max-width: 989px) {
+  .distributor-cta-curve {
+    display: none;
+  }
+
+  .distributor-cta-content {
+    padding: 2rem 1rem;
+  }
+
+  .distributor-cta-heading {
+    font-size: 1.75rem;
+  }
+
+  .distributor-cta-subheading {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .distributor-cta-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .distributor-cta-wrapper {
+    min-height: auto;
+  }
+
+  .distributor-cta-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .distributor-cta-heading {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .distributor-cta-subheading {
+    font-size: 0.9375rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .distributor-cta-button {
+    padding: 12px 32px;
+    font-size: 0.9375rem;
+    width: 100%;
+    max-width: 300px;
+  }
+}

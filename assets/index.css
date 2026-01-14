@@ -1003,7 +1003,7 @@ html {
     box-sizing: border-box;
     height: 100%;
     color: var(--gsc-text-color-100);
-    font-size: 62.5%
+    font-size: 62.5%;
 }
 
 * {
