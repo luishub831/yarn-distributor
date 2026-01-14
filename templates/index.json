@@ -1447,6 +1447,9 @@
     },
     "image_banner_with_header_nWrCxE": {
       "type": "image-banner-with-header",
+      "custom_css": [
+        "@media screen and (max-width: 768px) {.image-banner {padding: 0 4.5rem;}}"
+      ],
       "name": "Image Banner with header",
       "settings": {
         "color_scheme": "default",
@@ -1457,8 +1460,8 @@
         "section_spacing_bottom": 60,
         "desktop_img": "shopify://shop_images/ordering_process_desktop.png",
         "mobile_img": "shopify://shop_images/ordering_process_mobile.png",
-        "desktop_overlay_opacity": 20,
-        "mobile_overlay_opacity": 20,
+        "desktop_overlay_opacity": 0,
+        "mobile_overlay_opacity": 0,
         "caption": "",
         "title": "",
         "text": "",
@@ -1499,9 +1502,9 @@
         "subheading": "Grow your business with The Print Garage",
         "button_label": "REGISTER FOR FREE",
         "button_link": "",
-        "button_color": "#FF6B1A",
-        "button_text_color": "#FFFFFF",
-        "background_color": "#FFFFFF",
+        "button_color": "#ff6b1a",
+        "button_text_color": "#ffffff",
+        "background_color": "#ffffff",
         "left_curve_image": "shopify://shop_images/curve_left.png",
         "right_curve_image": "shopify://shop_images/curve_right.png",
         "section_padding_top": 60,
