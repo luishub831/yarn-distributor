@@ -1482,12 +1482,30 @@
     },
     "account_registration_cta_XYYGWD": {
       "type": "account-registration-cta",
+      "disabled": true,
       "name": "CTA Registration Banner",
       "settings": {
         "background_image": "shopify://shop_images/distr_CTA_BAnner.jpg",
         "cta_heading": "",
         "button_text": "Register",
         "button_link": "shopify://pages/signup"
+      }
+    },
+    "distributor_cta_FCcqyy": {
+      "type": "distributor-cta",
+      "name": "Distributor CTA",
+      "settings": {
+        "heading": "Become a Distributor Today",
+        "subheading": "Grow your business with The Print Garage",
+        "button_label": "REGISTER FOR FREE",
+        "button_link": "",
+        "button_color": "#FF6B1A",
+        "button_text_color": "#FFFFFF",
+        "background_color": "#FFFFFF",
+        "left_curve_image": "shopify://shop_images/curve_left.png",
+        "right_curve_image": "shopify://shop_images/curve_right.png",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60
       }
     }
   },
@@ -1515,6 +1533,7 @@
     "4968e1bd-e75e-4fc8-a27c-63b1409d6a1c",
     "featured_collection_aLN8Rh",
     "image_banner_with_header_nWrCxE",
-    "account_registration_cta_XYYGWD"
+    "account_registration_cta_XYYGWD",
+    "distributor_cta_FCcqyy"
   ]
 }
