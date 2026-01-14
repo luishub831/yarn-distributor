@@ -55,7 +55,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
   transition: opacity 0.3s ease-in-out;
 } 
 .section-header{
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
   text-align: center;
   font-size: 4.5rem;
 }
@@ -117,6 +117,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
   .product__info {
         width: 50%;
     }
+  
   .theme-with-rounded-style .shopify-section-group-main-header-group {
         margin: 0;
     }
@@ -124,5 +125,18 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
         display: flex;
         gap: 15px;
     }
+}
+@media screen and (max-width: 768px) {
+  .product-hover-button{
+    opacity: 1;
+  }
+  .product-hover-button .btn{
+    min-height: 4.8rem;
+  }
+  .section-header{
+    font-size: 3rem;
+    padding: 0 20px;
+  }
+  
 }
 
