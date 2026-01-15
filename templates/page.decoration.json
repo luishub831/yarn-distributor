@@ -21,82 +21,42 @@
         "show_heading": true
       }
     },
-    "hero_banner_CeeBGz": {
-      "type": "hero-banner",
-      "name": "Hero Banner",
-      "settings": {
-        "hero_desktop_img": "shopify://shop_images/Decoration_Services.png",
-        "hero_banner_link": ""
-      }
-    },
-    "rich_text_yLYHmy": {
-      "type": "rich-text",
+    "decoration_hero_wREnfK": {
+      "type": "decoration-hero",
       "blocks": {
-        "icon_bdTHFh": {
-          "type": "icon",
+        "button_6XMCcJ": {
+          "type": "button",
           "settings": {
-            "icon": "none"
-          }
-        },
-        "caption_PGtbhF": {
-          "type": "caption",
-          "disabled": true,
-          "settings": {
-            "caption": ""
-          }
-        },
-        "heading_JbUzXt": {
-          "type": "heading",
-          "settings": {
-            "title": "Our Printing Services",
-            "heading_size": "h1"
-          }
-        },
-        "text_yYfdrU": {
-          "type": "text",
-          "settings": {
-            "text": "<p>At The Print Garage, we specialise in premium garment decoration using industry-leading machinery across three core services: screen printing for bold, durable bulk runs; DTG (direct-to-garment) for detailed, full-colour short runs; and DTF (direct-to-film) for vibrant, versatile prints on a wide range of fabrics. From uniforms and promo tees to limited drops, we’ll recommend the best method for your project, timeline, and budget—and deliver consistent quality with reliable turnaround. Ready to go? </p><p>Talk to us today for a fast, tailored quote!</p>",
-            "text_2": "",
-            "text_3": "",
-            "body_size": "body1"
+            "btn_layout": "btn_layout_both",
+            "btn_style": "is-primary",
+            "btn_size": "is-default",
+            "btn_icon_size": "icon-1x1-small",
+            "btn_url": "",
+            "btn_text": "Button Text",
+            "btn_icon_viewbox": "",
+            "btn_icon_path": ""
           }
         }
       },
       "block_order": [
-        "icon_bdTHFh",
-        "caption_PGtbhF",
-        "heading_JbUzXt",
-        "text_yYfdrU"
+        "button_6XMCcJ"
       ],
-      "name": "t:sections.rich_text.name",
+      "name": "Decoration Hero",
       "settings": {
-        "color_scheme": "default",
-        "enable_background_around_container": false,
-        "container_size": "page-width",
-        "section_spacing_top": 0,
-        "section_spacing_bottom": 0,
-        "section_mobile_spacing_top": 30,
-        "section_mobile_spacing_bottom": 30,
-        "content_align": "center",
-        "mobile_content_align": "center"
-      }
-    },
-    "custom_liquid_LgFNP7": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom_liquid.name",
-      "settings": {
-        "color_scheme": "default",
         "container_size": "large",
-        "section_spacing_top": 48,
-        "section_spacing_bottom": 48,
-        "custom_liquid": "<script charset=\"utf-8\" type=\"text/javascript\" src=\"//js.hsforms.net/forms/embed/v2.js\"></script>\n<script>\n  hbspt.forms.create({\n    portalId: \"5189439\",\n    formId: \"bf12ac7b-f5ab-482d-98fe-c5daeb1d21c0\",\n    region: \"na1\"\n  });\n</script>"
+        "btn_text": "REQUEST A FREE QUOTE",
+        "btn_url": "shopify://pages/about",
+        "hero_heading_text": "Contract Screen Printing, DTG and DTF for the Trade",
+        "hero_paragraph_text": "<p>At The Print Garage, our decoration services are built specically for distributors and trade partners.  </p><p>We work behind the scenes as your production arm, giving you reliable contract screen printing, DTG and DTF that helps you win more quotes, protect your margins and keep your clients coming back. Whether you’re a wholesaler, promotional agency or another decorator needing extra capacity, we t neatly into your workflow as a white-label partner.  </p><p><strong>Because we’re focused on trade, we understand the realities of your world: tight deadlines, complex orders, last-minute changes and pressure on pricing.</strong></p><p>Our production is set up to handle everything from small, multi-design runs through DTG, to large, repeat screen print programs, to fexible DTF solutions for tricky fabrics and on-demand work. Orders are produced under your name, with neutral packaging and blind shipping available so your brand is always front and centre<br/><br/></p>",
+        "hero_image_1": "shopify://shop_images/DSC00898_jpg.png",
+        "hero_image_2": "shopify://shop_images/DSC00482_jpg.png",
+        "hero_image_3": "shopify://shop_images/image_36.png",
+        "hero_image_4": "shopify://shop_images/DSC00016_jpg.png"
       }
     }
   },
   "order": [
     "page",
-    "hero_banner_CeeBGz",
-    "rich_text_yLYHmy",
-    "custom_liquid_LgFNP7"
+    "decoration_hero_wREnfK"
   ]
 }
