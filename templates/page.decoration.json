@@ -53,10 +53,36 @@
         "hero_image_3": "shopify://shop_images/image_36.png",
         "hero_image_4": "shopify://shop_images/DSC00016_jpg.png"
       }
+    },
+    "pageheader_split_ee46jR": {
+      "type": "pageheader-split",
+      "name": "PageHeaderSplit",
+      "settings": {
+        "container_size": "large",
+        "btn_text": "REQUEST A FREE QUOTE",
+        "btn_url": ""
+      }
+    },
+    "dtg_dtf_split_iWttKG": {
+      "type": "dtg-dtf-split",
+      "name": "DTG & DTF Split Section",
+      "settings": {
+        "container_size": "large",
+        "top_image": "shopify://shop_images/DSC00898.jpg_1.png",
+        "left_bg_image": "shopify://shop_images/DSC01094_jpg.png",
+        "left_bg_opacity": 0.7,
+        "left_header": "DTG for Short Runs and Complex Artwork",
+        "left_desc": "<p>For smaller quantities, frequent design changes or complex artwork, our DTG service gives you the fexibility that traditional screen printing can’t. DTG works especially well for full-colour designs, gradients, photos and limited runs where you still want a professional, retail-ready nish. It’s ideal for online stores, on-demand campaigns and short runs that don’t justify screen setup.</p><p>Because there are no screens, you can oer your clients multiple designs or personalised prints with low setup fees to every variation. You get low minimums, fast changeovers and a soft hand feel on the garment, all produced under your brand.<br/><br/></p>",
+        "right_bg_color": "#c8104a",
+        "right_header": "DTF Transfers for Versatility and On-Demand Decoration",
+        "right_desc": "<p>DTF (Direct-to-Film) opens up even more flexibility for you and your customers. Instead of printing directly to the garment, we print transfers that can be heat-applied to a wide range of products, including items that are difficult or inefficient to run as standard screen or DTG jobs.<br/><br/>DTF works particularly well for multi-colour logos, left chest and pocket prints, names and numbers, and branding across mixed garments and sizes.</p>"
+      }
     }
   },
   "order": [
     "page",
-    "decoration_hero_wREnfK"
+    "decoration_hero_wREnfK",
+    "pageheader_split_ee46jR",
+    "dtg_dtf_split_iWttKG"
   ]
 }
