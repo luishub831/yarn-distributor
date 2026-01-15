@@ -1,0 +1,268 @@
+{%- assign container_size = section.settings.container_size | default: 'full-screen' -%}
+{%- assign faq_heading = section.settings.faq_heading -%}
+{%- assign cta_text = section.settings.cta_text -%}
+{%- assign cta_url = section.settings.cta_url -%}
+
+<div class="custom-faqs-section container container--{{ container_size }}">
+  <div class="custom-faqs-grid">
+    <div class="custom-faqs-left">
+      <h2 class="section-header">{{ faq_heading }}</h2>
+    </div>
+    <div class="custom-faqs-right">
+      <div class="custom-faqs-list">
+        {% for faq in metaobjects.faq.values %}
+          <div class="custom-faqs-item">
+            <button class="custom-faqs-question  dd" aria-expanded="false" type="button">
+              <span class="custom-faqs-question-text">{{ faq.question }}</span>
+              <span class="custom-faqs-plus-btn-wrap">
+                <button class="custom-faqs-plus-btn" type="button" tabindex="-1" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor" class="icon-1x1-small">
+                    <path d="M248 72c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 160L40 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l160 0 0 160c0 13.3 10.7 24 24 24s24-10.7 24-24l0-160 160 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-160 0 0-160z"></path>
+                  </svg>
+                </button>
+              </span>
+            </button>
+            <div class="custom-faqs-answer" hidden>
+              <div>{{ faq.answer }}</div>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="custom-faqs-item custom-faqs-cta">
+          <div class="custom-faqs-question custom-faqs-cta-text">{{ cta_text }}</div>
+          {% if cta_url %}
+            <a class="custom-faqs-cta-btn" href="{{ cta_url }}" target="_blank">READ FULL FAQS <span aria-hidden="true">→</span></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.custom-faqs-plus-btn {
+  border-radius: 1920px;
+  border: 1px solid #001828;
+  background: #F66718;
+  box-shadow: -2px 2px 0 0 #001828;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.custom-faqs-plus-btn svg {
+  display: block;
+  transition: transform 0.2s;
+}
+.custom-faqs-item.open .custom-faqs-plus-btn svg {
+  transform: rotate(45deg);
+}
+.custom-faqs-section {
+  padding: 3rem 0;
+}
+.custom-faqs-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+.custom-faqs-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 260px;
+}
+.custom-faqs-heading {
+  font-family: Newake, Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+  line-height: 1.1;
+}
+.custom-faqs-right {
+  width: 100%;
+}
+.custom-faqs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.custom-faqs-item {
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 3rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.custom-faqs-question {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  gap: 1.5rem;
+}
+.custom-faqs-plus-btn-wrap {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.custom-faqs-plus-btn {
+  margin: 0;
+}
+.custom-faqs-question:hover {
+  background: #f7f7f7;
+}
+.custom-faqs-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+.custom-faqs-answer {
+  padding: 0 1.5rem 1.1rem 1.5rem;
+  font-size: 1rem;
+  color: #222;
+}
+.custom-faqs-cta {
+  border: none;
+  background: none;
+  box-shadow: none;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.custom-faqs-cta-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  padding: 1.1rem 1.5rem 0.5rem 1.5rem;
+}
+.custom-faqs-cta-btn {
+  display: inline-block;
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 2rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+  margin: 0.5rem 1.5rem 1.1rem 1.5rem;
+  transition: background 0.2s;
+}
+.custom-faqs-cta-btn:hover {
+  background: #f7f7f7;
+}
+@media (max-width: 900px) {
+  .custom-faqs-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .custom-faqs-left {
+    justify-content: flex-start;
+    min-width: 0;
+  }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var items = document.querySelectorAll('.custom-faqs-question');
+  items.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var parent = btn.closest('.custom-faqs-item');
+      var answer = parent.querySelector('.custom-faqs-answer');
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      if (answer) {
+        answer.hidden = expanded;
+      }
+      // Toggle open class for icon rotation
+      if (!expanded) {
+        parent.classList.add('open');
+      } else {
+        parent.classList.remove('open');
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Custom FAQs",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        { "value": "full-screen", "label": "Full Screen" },
+        { "value": "page-width", "label": "Page Width" },
+        { "value": "large", "label": "Large" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "small", "label": "Small" }
+      ],
+      "default": "full-screen",
+      "label": "Container Size"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_heading",
+      "label": "FAQ Heading",
+      "default": "Got questions? We've already answered them."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Still Not Sure? Check out the full FAQs list here."
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom FAQs",
+      "blocks": [
+        { "type": "faq" },
+        { "type": "faq" },
+        { "type": "faq" }
+      ]
+    }
+  ]
+}
+{% endschema %}
