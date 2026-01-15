@@ -1,0 +1,147 @@
+
+{%- assign container_size = section.settings.container_size | default: 'full-screen' -%}
+<div class="padding-global">
+	<div class="container container--{{ container_size }} {% if container_size == 'full-screen' %}image-banner__outer-container--full-screen{% endif %}">
+		<div class="padding-section-large">
+			<div class="splithero_component">
+				<div class="settings-schema w-embed"></div>
+				<div class="splithero_grid">
+					<!-- Left content -->
+					<div class="splithero_content">
+						<div class="splithero_text-wrapper">
+							<h1 class="heading-style-h1 section-header">From the moment you send through the job, we’re looking at the most efficient way to produce it.</h1>
+							<div class="splithero_paragraph">
+								<div>Our team will advise on the best print method, screen setup and artwork preparation so that production moves smoothly and pricing is optimised for your volumes and repeat potential.</div>
+							</div>
+						</div>
+					</div>
+					<!-- Right content -->
+					<div class="splithero_content">
+						<div class="splithero_text-wrapper splithero-text-right">
+							<h2 class="heading-style-h2">Screen Printing for Volume and Programs</h2>
+							<div class="splithero_paragraph">
+								<div>Our contract screen printing is designed for jobs where volume and consistency matter.<br><br>It’s ideal for uniform programs, sports and supporter ranges, tour and event merch, workwear and larger promotional campaigns. We deliver crisp, durable prints with strong colour coverage and the kind of finish your clients expect from retail-quality garments.<br><br>Where needed, we can work to Pantone targets and help you choose the right ink and placement options to balance cost per unit with the look you’re chasing.</div>
+							</div>
+							<div class="splithero_button-wrapper button-group">
+								{% if section.settings.btn_text and section.settings.btn_url %}
+									<a class="btn btn--solid" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+								{% elsif section.settings.btn_text %}
+									<a class="btn btn--solid">{{ section.settings.btn_text }}</a>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+.splithero_component {
+	width: 100%;
+}
+.splithero_grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 60px;
+	align-items: start;
+	min-height: 400px;
+}
+.splithero_content {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-top: 40px;
+}
+.splithero_text-wrapper {
+	background: #753F9A;
+	color: #fff;
+	border-radius: 20px;
+	padding: 40px 32px;
+    border: 2px solid #592A78;
+    box-shadow: -8px 8px 0 0 #592A78;
+}
+.splithero-text-right {
+	background: #fff;
+	color: #1a1a1a;
+	box-shadow: none;
+	padding: 0;
+    border: none;
+}
+.splithero_text-wrapper .heading-style-h1 {
+	color: #FFF;
+	leading-trim: both;
+	text-edge: cap;
+	font-family: Newake;
+	font-size: 50px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 50px;
+	margin-bottom: 18px;
+}
+.splithero_text-wrapper .heading-style-h2 {
+	font-size: 3rem;
+	font-weight: 400;
+	margin-bottom: 12px;
+    color: var(--dark-blue);
+}
+.splithero_paragraph {
+	line-height: 25px;
+	margin-bottom: 24px;
+}
+.splithero_button-wrapper {
+	margin-top: 18px;
+}
+
+@media (max-width: 768px) {
+	.splithero_grid {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+	.splithero_content {
+		margin-top: 0;
+	}
+	.splithero_text-wrapper {
+		max-width: 100%;
+		padding: 32px 16px;
+	}
+}
+</style>
+
+{% schema %}
+{
+	"name": "Page Header Split Hero",
+	"settings": [
+		{
+			"type": "select",
+			"id": "container_size",
+			"options": [
+				{ "value": "full-screen", "label": "t:sections.general_section_settings.container_size.screen_width_option" },
+				{ "value": "page-width", "label": "t:sections.general_section_settings.container_size.page_width_option" },
+				{ "value": "large", "label": "t:sections.general_section_settings.container_size.large_width_option" },
+				{ "value": "medium", "label": "t:sections.general_section_settings.container_size.medium_width_option" },
+				{ "value": "small", "label": "t:sections.general_section_settings.container_size.small_width_option" }
+			],
+			"default": "full-screen",
+			"label": "Container Size"
+		},
+		{
+			"type": "text",
+			"id": "btn_text",
+			"label": "Button Label",
+			"default": "REQUEST A FREE QUOTE"
+		},
+		{
+			"type": "url",
+			"id": "btn_url",
+			"label": "Button Link"
+		}
+	],
+	"presets": [
+		{
+			"name": "Page Header Split Hero"
+		}
+	]
+}
+{% endschema %}

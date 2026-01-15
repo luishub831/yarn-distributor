@@ -341,7 +341,8 @@ template,
     --gsc-large-container-width: 127.2rem;
     --gsc-medium-container-width: 120rem;
     --gsc-small-container-width: 101.6rem;
-    --gsc-xsmall-container-width: 76.8rem
+    --gsc-xsmall-container-width: 76.8rem;
+    --dark-blue: #001828;
 }
 
 @media screen and (min-width:1200px) {
