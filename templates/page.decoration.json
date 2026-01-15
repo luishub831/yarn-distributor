@@ -77,12 +77,51 @@
         "right_header": "DTF Transfers for Versatility and On-Demand Decoration",
         "right_desc": "<p>DTF (Direct-to-Film) opens up even more flexibility for you and your customers. Instead of printing directly to the garment, we print transfers that can be heat-applied to a wide range of products, including items that are difficult or inefficient to run as standard screen or DTG jobs.<br/><br/>DTF works particularly well for multi-colour logos, left chest and pocket prints, names and numbers, and branding across mixed garments and sizes.</p>"
       }
+    },
+    "custom_faqs_7PpYk7": {
+      "type": "custom-faqs",
+      "blocks": {
+        "faq_ADg88t": {
+          "type": "faq",
+          "settings": {
+            "question": "",
+            "answer": ""
+          }
+        },
+        "faq_txaghL": {
+          "type": "faq",
+          "settings": {
+            "question": "",
+            "answer": ""
+          }
+        },
+        "faq_EjAwYH": {
+          "type": "faq",
+          "settings": {
+            "question": "",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_ADg88t",
+        "faq_txaghL",
+        "faq_EjAwYH"
+      ],
+      "name": "Custom FAQs",
+      "settings": {
+        "container_size": "full-screen",
+        "faq_heading": "Got questions? We've already answered them.",
+        "cta_text": "Still Not Sure? Check out the full FAQs list here.",
+        "cta_url": ""
+      }
     }
   },
   "order": [
     "page",
     "decoration_hero_wREnfK",
     "pageheader_split_ee46jR",
-    "dtg_dtf_split_iWttKG"
+    "dtg_dtf_split_iWttKG",
+    "custom_faqs_7PpYk7"
   ]
 }
