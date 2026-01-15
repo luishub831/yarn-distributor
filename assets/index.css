@@ -1022,7 +1022,7 @@ body {
     letter-spacing: var(--gsc-body-letter-spacing);
     word-spacing: var(--gsc-body-word-spacing);
     background: var(--gsc-background-color-100);
-    font-size: var(--gsc-fz-11);
+    font-size: var(--gsc-fz-9);
     line-height: var(--gsc-lh-base);
     flex-flow: column;
     margin: 0;

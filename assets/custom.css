@@ -3,7 +3,9 @@
   font-weight: 400;
   font-style: normal;
   src: url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/Newake-Font-Regular.woff2?v=1757405267") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/Newake-Font-Regular.woff?v=1757405267") format("woff");
+     url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/Newake-Font-Regular.woff?v=1757405267") format("woff");
+  /* src: url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/newake-400.woff2?v=1768483304") format("woff2"),
+      url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/newake-400.woff?v=1768483304") format("woff"); */
   font-display: swap;
 }
 
@@ -56,7 +58,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
 } 
 .section-header{
   margin-bottom: 4rem;
-  text-align: center;
   font-size: 4.5rem;
 }
 .product--with-desktop-media-carousel .product-desktop-media{
@@ -104,6 +105,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
   background: #cbcbcb;
   color: #9f9f9f;
   opacity: 1;
+}
+.text-center{
+  text-align: center;
 }
 @media screen and (min-width: 1016px) {
     .header__logo {
