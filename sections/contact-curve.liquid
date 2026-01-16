@@ -1,0 +1,268 @@
+{%- assign container_size = section.settings.container_size | default: 'full-screen' -%}
+{%- assign heading = section.settings.heading -%}
+{%- assign subheading = section.settings.subheading -%}
+{%- assign phone = section.settings.phone -%}
+{%- assign email = section.settings.email -%}
+{%- assign address = section.settings.address -%}
+{%- assign bg_image = section.settings.bg_image -%}
+
+<div class="contact-curve-section" {% if bg_image %}style="background-image: url({{ bg_image | image_url: width: 2400 }}); background-position: center center; background-repeat: no-repeat; background-size: 100% 100%; background-attachment: scroll;"{% endif %}>
+  <div class="container container--{{ container_size }}">
+    <div class="contact-curve-grid">
+    <div class="contact-curve-left">
+      <h2 class="section-header">{{ heading }}</h2>
+      <div class="contact-curve-subheading">{{ subheading }}</div>
+      <ul class="contact-curve-list">
+        {% if phone %}
+        <li><span class="contact-curve-icon">📞</span> <span class="contact-curve-bold">{{ phone }}</span></li>
+        {% endif %}
+        {% if email %}
+        <li><span class="contact-curve-icon">✉️</span> <span class="contact-curve-bold">{{ email }}</span></li>
+        {% endif %}
+        {% if address %}
+        <li><span class="contact-curve-icon">📍</span> <span class="contact-curve-bold">{{ address }}</span></li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="contact-curve-right">
+      {% form 'contact' %}
+        <div class="contact-curve-form-row">
+          <div class="contact-curve-form-group">
+            <label>First name*</label>
+            <input type="text" name="contact[first_name]" required />
+          </div>
+          <div class="contact-curve-form-group">
+            <label>Last name*</label>
+            <input type="text" name="contact[last_name]" required />
+          </div>
+        </div>
+        <div class="contact-curve-form-group">
+          <label>Your company*</label>
+          <input type="text" name="contact[company]" required />
+        </div>
+        <div class="contact-curve-form-row">
+          <div class="contact-curve-form-group">
+            <label>Phone*</label>
+            <input type="tel" name="contact[phone]" required />
+          </div>
+          <div class="contact-curve-form-group">
+            <label>Email*</label>
+            <input type="email" name="contact[email]" required />
+          </div>
+        </div>
+        <div class="contact-curve-form-group">
+          <label>Upload your logo*</label>
+          <input type="file" name="contact[logo]" required />
+        </div>
+        <div class="contact-curve-form-group">
+          <label>Additional Notes*</label>
+          <textarea name="contact[body]" required placeholder="What's your question? Or what kind of help do you need?"></textarea>
+        </div>
+        <div class="contact-curve-form-policy">
+          TPG needs the contact information you provide to us to contact you about our products and services. You may unsubscribe from these communications at any time. For information on how to unsubscribe, as well as our privacy practices and commitment to protecting your privacy, check out our Privacy Policy.
+        </div>
+        <button type="submit" class="contact-curve-submit">SUBMIT</button>
+      {% endform %}
+    </div>
+  </div>
+  </div>
+</div>
+
+<style>
+.contact-curve-section {
+  min-height: 500px;
+  background: #fff;
+  position: relative;
+}
+.contact-curve-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+  padding: 12rem 2rem 12rem 2rem;
+}
+.contact-curve-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 260px;
+  max-width: 420px;
+  color: #111;
+}
+.contact-curve-heading {
+  font-family: Newake, Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+.contact-curve-subheading {
+  margin-bottom: 5.5rem;
+}
+.contact-curve-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-curve-list li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.contact-curve-icon {
+  margin-right: 0.7rem;
+  font-size: 1.2em;
+}
+.contact-curve-bold {
+  font-weight: 700;
+}
+.contact-curve-right {
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 2rem;
+  box-shadow: -8px 8px 0 0 #001828;
+  padding: 3.4rem 2.9rem 5.4rem 2.9rem;
+  max-width: 650px;
+  width: 100%;
+  margin-left: auto;
+  background: #FAF4E7;
+}
+.contact-curve-form-row {
+  display: flex;
+  gap: 1rem;
+}
+.contact-curve-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+}
+.contact-curve-form-group label {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+.contact-curve-form-group input,
+.contact-curve-form-group textarea {
+  border: 1px solid #ddd;
+  border-radius: 0.8rem;
+  padding: 0.7rem 1rem;
+  font-size: 1.6rem;
+  background: #f7f7f7;
+  margin-bottom: 0;
+}
+.contact-curve-form-group input[type="file"] {
+  padding: 0.3rem 0;
+  background: none;
+  border: none;
+}
+.contact-curve-form-group textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+.contact-curve-form-policy {
+  font-size: 1.6rem;
+  color: var(--gray-text);
+  margin-bottom: 1.2rem;
+}
+.contact-curve-submit {
+    display: block;
+    background: #F66718;
+    color: #fff;
+    border: 2px solid #001828;
+    border-radius: 2rem;
+    font-size: 1.7rem;
+    font-weight: 400;
+    padding: 0.8rem 2.5rem;
+    margin-top: 0.5rem;
+    box-shadow: -2px 2px 0 0 #001828;
+    cursor: pointer;
+    transition: background 0.2s;
+    float: right;
+}
+.contact-curve-submit:hover {
+  background: #e65c23;
+}
+.contact-curve-right .upload-container {
+  display: none;
+}
+@media (max-width: 600px) {
+  .contact-curve-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+  }
+  .contact-curve-right {
+    margin-left: 0;
+    max-width: 93%;
+  }
+  .contact-curve-form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .contact-curve-section{
+    background-image: none !important;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Contact Curve",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        { "value": "full-screen", "label": "Full Screen" },
+        { "value": "page-width", "label": "Page Width" },
+        { "value": "large", "label": "Large" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "small", "label": "Small" }
+      ],
+      "default": "full-screen",
+      "label": "Container Size"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Big idea? We’re all ears."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Drop us a note, shoot through a sketch, or call to say hey – our crew’s in the garage, ready to bring it to life."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "(07) 3902 3200"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "sales@theprintgarage.com.au"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "2/338 Lytton Road, Morningside, Queensland, AU"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Curve Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Curve"
+    }
+  ]
+}
+{% endschema %}

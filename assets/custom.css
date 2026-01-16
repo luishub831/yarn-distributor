@@ -8,10 +8,21 @@
       url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/newake-400.woff?v=1768483304") format("woff"); */
   font-display: swap;
 }
+@font-face {
+  font-family: 'Forma DJR Micro';
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/FormaDJRMicro-Regular.woff2?v=1768552904") format("woff2"),
+     url("https://cdn.shopify.com/s/files/1/0764/8539/4662/files/FormaDJRMicro-Regular.woff?v=1768552904") format("woff");
+  font-display: swap;
+}
 
-body, h1, h2, h3, h4, h5, h6, p, a, span {
+body, h1, h2, h3, h4, h5, h6{
   font-family: 'Newake' !important;
   letter-spacing: 1px !important;
+}
+body, p, a, span{
+  font-family: 'Forma DJR Micro' !important;
 }
 .collection__header {
     margin: 0 0 1rem;  
@@ -139,7 +150,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
   }
   .section-header{
     font-size: 3rem;
-    padding: 0 20px;
   }
   
 }

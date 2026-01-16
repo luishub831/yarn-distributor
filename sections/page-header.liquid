@@ -1,0 +1,148 @@
+{%- assign container_size = section.settings.container_size | default: 'full-screen' -%}
+{%- assign page_title = section.settings.page_title -%}
+{%- assign curve_image = section.settings.curve_image -%}
+{%- assign breadcrumb_home = section.settings.breadcrumb_home | default: 'Home' -%}
+{%- assign breadcrumb_current = section.settings.breadcrumb_current -%}
+
+<div class="page-header-wrapper container container--{{ container_size }}">
+  <div class="page-header-subwrapper">
+      <div class="page-header-section" {% if curve_image %}style="background-image: url({{ curve_image | image_url: width: 2400 }}); background-position: right center; background-repeat: no-repeat;  background-attachment: scroll;"{% endif %}>
+          <div class="page-header-content">
+            <h1 class="page-header-title">{{ page_title }}</h1>
+          </div>
+      </div>
+      <div class="page-header-breadcrumb-wrapper">
+          <nav class="page-header-breadcrumb" aria-label="breadcrumb">
+            <a href="/" class="breadcrumb-link">{{ breadcrumb_home }}</a>
+            <span class="breadcrumb-separator">></span>
+            <span class="breadcrumb-current">{{ breadcrumb_current }}</span>
+          </nav>
+      </div>
+  </div>
+</div>
+
+<style>
+.page-header-wrapper {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  margin-top:2rem;
+  margin-bottom:2rem;
+}
+.page-header-subwrapper{
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+.page-header-section {
+  background: #753F9A;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem 0;
+}
+.page-header-content {
+  padding: 0 2rem;
+}
+.page-header-title {
+  font-family: Newake, Arial, sans-serif;
+  font-size: 4.5rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+.page-header-breadcrumb-wrapper {
+  background: #E8E8E8;
+  padding: 1.2rem 0;
+}
+.page-header-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  color: #111;
+  padding: 0 2rem;
+}
+.breadcrumb-link {
+  color: #111;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.breadcrumb-link:hover {
+  opacity: 0.6;
+}
+.breadcrumb-separator {
+  color: #111;
+  margin: 0 0.3rem;
+}
+.breadcrumb-current {
+  color: #111;
+  font-weight: 400;
+}
+@media (max-width: 768px) {
+  .page-header-section {
+    padding: 2rem 0 1.5rem 0;
+    background-image: none !important;
+  }
+  .page-header-title {
+    font-size: 2rem;
+  }
+  .page-header-breadcrumb {
+    font-size: 1.2rem;
+  }
+  .page-header-content {
+    padding: 0 1rem;
+  }
+  .page-header-breadcrumb {
+    padding: 0 1rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Page Header",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        { "value": "full-screen", "label": "Full Screen" },
+        { "value": "page-width", "label": "Page Width" },
+        { "value": "large", "label": "Large" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "small", "label": "Small" }
+      ],
+      "default": "full-screen",
+      "label": "Container Size"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title",
+      "default": "Retail Decoration"
+    },
+    {
+      "type": "image_picker",
+      "id": "curve_image",
+      "label": "Curve Background Image"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_home",
+      "label": "Breadcrumb Home Text",
+      "default": "Home"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_current",
+      "label": "Breadcrumb Current Page",
+      "default": "Distributor Decoration"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Header"
+    }
+  ]
+}
+{% endschema %}
