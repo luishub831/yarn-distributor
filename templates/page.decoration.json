@@ -110,10 +110,10 @@
       ],
       "name": "Custom FAQs",
       "settings": {
-        "container_size": "full-screen",
+        "container_size": "large",
         "faq_heading": "Got questions? We've already answered them.",
         "cta_text": "Still Not Sure? Check out the full FAQs list here.",
-        "cta_url": ""
+        "cta_url": "shopify://pages/contact"
       }
     }
   },
