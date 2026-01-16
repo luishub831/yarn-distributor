@@ -21,6 +21,17 @@
         "show_heading": true
       }
     },
+    "page_header_GE4Chq": {
+      "type": "page-header",
+      "name": "Page Header",
+      "settings": {
+        "container_size": "page-width",
+        "page_title": "Distributor Decoration",
+        "curve_image": "shopify://shop_images/curve-right.png",
+        "breadcrumb_home": "Home",
+        "breadcrumb_current": "Distributor Decoration"
+      }
+    },
     "decoration_hero_wREnfK": {
       "type": "decoration-hero",
       "blocks": {
@@ -115,13 +126,28 @@
         "cta_text": "Still Not Sure? Check out the full FAQs list here.",
         "cta_url": "shopify://pages/contact"
       }
+    },
+    "contact_curve_9WnYqV": {
+      "type": "contact-curve",
+      "name": "Contact Curve",
+      "settings": {
+        "container_size": "large",
+        "heading": "Big idea?  We’re all ears.",
+        "subheading": "Drop us a note, shoot through a sketch, or call to say hey – our crew’s in the garage, ready to bring it to life.",
+        "phone": "(07) 3902 3200",
+        "email": "sales@theprintgarage.com.au",
+        "address": "2/338 Lytton Road, Morningside, Queensland, AU",
+        "bg_image": "shopify://shop_images/curve.png"
+      }
     }
   },
   "order": [
     "page",
+    "page_header_GE4Chq",
     "decoration_hero_wREnfK",
     "pageheader_split_ee46jR",
     "dtg_dtf_split_iWttKG",
-    "custom_faqs_7PpYk7"
+    "custom_faqs_7PpYk7",
+    "contact_curve_9WnYqV"
   ]
 }
