@@ -316,7 +316,7 @@
         "product_recommendations_type": "auto",
         "featured_collection": "",
         "featured_products": [],
-        "img_ratio": "portrait",
+        "img_ratio": "default",
         "product_card_align": "center",
         "cards_to_show": 18,
         "desktop_columns": 5,
