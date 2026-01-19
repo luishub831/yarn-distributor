@@ -1955,7 +1955,8 @@ body[is-filters-button-fixed] .back-to-top-button{
     letter-spacing:var(--gsc-button-letter-spacing);
     text-align:center;
     text-transform:var(--gsc-button-text-transform);
-    border-radius:var(--gsc-medium-button-border-radius, 0);
+    /*border-radius:var(--gsc-medium-button-border-radius, 0);*/
+    border-radius: 4rem;
     cursor:pointer;
     font-size:var(--gsc-button-font-size);
     line-height:var(--gsc-button-line-height);
@@ -15362,14 +15363,7 @@ div.media:empty{
     border-radius:var(--gsc-rich-text-section-border-radius, 0);
     overflow:hidden
 }
-.btn--solid{
-    background:#f7c156;
-    color:#222
-}
-.btn.btn--solid{
-    min-height:60px;
-    min-width:246px
-}
+
 .newsletter__field .btn.btn--solid{
     min-width:fit-content
 }
