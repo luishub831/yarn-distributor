@@ -4778,7 +4778,7 @@ body[is-filters-button-fixed] .back-to-top-button{
     position:absolute;
     top:0;
     left:0;
-    aspect-ratio: 1 / 2;
+    aspect-ratio: 1 / 1;
 }
 .product-card__img--visible{
     opacity:1
