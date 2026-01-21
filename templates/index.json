@@ -45,13 +45,13 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "custom-3",
-            "desktop_img": "shopify://shop_images/newslider.png",
+            "desktop_img": "shopify://shop_images/decorations_banner.jpg",
             "mobile_img": "shopify://shop_images/slide_mobile.png",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
-            "title": "360 Bottle Printing Full Wrap, Edge to Edge",
-            "text": "<p>Minimum Order Quantity (MOQ) of 15 units</p>",
+            "title": "Need Garment Trade Printing?",
+            "text": "<p>Message us now for a quote!</p>",
             "heading_size": "h1",
             "body_size": "body3",
             "desktop_content_position": "align-items:center;justify-content:flex-start;",
@@ -62,8 +62,8 @@
             "mobile_content_align": "left",
             "desktop_content_background": "none",
             "mobile_content_background": "none",
-            "btn_text": "View the Range",
-            "btn_url": "shopify://collections/bottles",
+            "btn_text": "Decoration Services",
+            "btn_url": "shopify://pages/decoration",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -1448,7 +1448,7 @@
     "image_banner_with_header_nWrCxE": {
       "type": "image-banner-with-header",
       "custom_css": [
-        "@media screen and (max-width: 768px) {.image-banner {padding: 0 4.5rem;}}"
+        "@media screen and (max-width: 768px) {.image-banner {padding: 0 4.5rem; }}"
       ],
       "name": "Image Banner with header",
       "settings": {
