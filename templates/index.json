@@ -45,7 +45,7 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "custom-3",
-            "desktop_img": "shopify://shop_images/decorations_banner.jpg",
+            "desktop_img": "shopify://shop_images/decorations_banner_v2.jpg",
             "mobile_img": "shopify://shop_images/slide_mobile.png",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
