@@ -1,1 +1,45 @@
-{"sections":{"collection_list_page":{"type":"collection-list-page","settings":{"color_scheme":"default","container_size":"full-screen","section_spacing_top":48,"section_spacing_bottom":48,"title":"Product Types","heading_size":"h5","collections_to_show":"selected","collection_list":["bottles","bags","ceramic-mugs","mouse-pads","t-shirts-all"],"img_ratio":"square","text_style":"under-image","collection_card_content_align":"center","collection_card_heading_size":"h5","show_product_count":false,"collection_per_page":33,"desktop_columns":5,"desktop_space_between_cards":16,"mobile_space_between_cards":20,"pagination_type":"load-button-pagination"}}},"order":["collection_list_page"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_list_page": {
+      "type": "collection-list-page",
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "full-screen",
+        "section_spacing_top": 48,
+        "section_spacing_bottom": 48,
+        "title": "Product Types",
+        "heading_size": "h5",
+        "collections_to_show": "selected",
+        "collection_list": [
+          "bottles",
+          "bags",
+          "ceramic-mugs",
+          "mouse-pads",
+          "towels"
+        ],
+        "img_ratio": "square",
+        "text_style": "under-image",
+        "collection_card_content_align": "center",
+        "collection_card_heading_size": "h5",
+        "show_product_count": false,
+        "collection_per_page": 33,
+        "desktop_columns": 5,
+        "desktop_space_between_cards": 16,
+        "mobile_space_between_cards": 20,
+        "pagination_type": "load-button-pagination"
+      }
+    }
+  },
+  "order": [
+    "collection_list_page"
+  ]
+}
