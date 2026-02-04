@@ -87,7 +87,7 @@
             "desktop_content_align": "center",
             "content_max_width": 528,
             "content_spacing": 32,
-            "mobile_content_position": "align-items:flex-end;justify-content:center;",
+            "mobile_content_position": "align-items:flex-start;justify-content:center;",
             "mobile_content_align": "center",
             "desktop_content_background": "none",
             "mobile_content_background": "none",
