@@ -221,7 +221,7 @@
             "heading_size": "h2",
             "body_size": "body3",
             "link_text": "",
-            "link": "shopify://collections/polos",
+            "link": "shopify://collections/bottles",
             "content_position": "bottom-center"
           }
         },
@@ -241,7 +241,7 @@
             "heading_size": "h2",
             "body_size": "body3",
             "link_text": "",
-            "link": "shopify://pages/testimonials",
+            "link": "shopify://collections/bags",
             "content_position": "bottom-center"
           }
         },
@@ -261,7 +261,7 @@
             "heading_size": "h2",
             "body_size": "body3",
             "link_text": "",
-            "link": "shopify://collections/tops",
+            "link": "shopify://collections/ceramic-mugs",
             "content_position": "bottom-center"
           }
         }
