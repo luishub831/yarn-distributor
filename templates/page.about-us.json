@@ -366,7 +366,7 @@
             "heading_size": "h6",
             "body_size": "body3",
             "link_text": "",
-            "link": "shopify://collections/dtf-products",
+            "link": "shopify://pages/decoration",
             "content_position": "center-center"
           }
         },
@@ -386,7 +386,7 @@
             "heading_size": "h6",
             "body_size": "body3",
             "link_text": "",
-            "link": "shopify://collections/screen-printed-products",
+            "link": "shopify://pages/decoration",
             "content_position": "center-center"
           }
         }
