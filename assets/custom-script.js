@@ -64,7 +64,7 @@ function formatPrices() {
 
             let fromText = '';
             if (priceText.toLowerCase().startsWith('from ')) {
-                fromText = 'From ';
+                fromText = 'RRP ';
                 priceText = priceText.substring(5).trim();
             }
             if (priceText.toLowerCase().startsWith('rrp ')) {
