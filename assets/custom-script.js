@@ -64,12 +64,16 @@ function formatPrices() {
 
             let fromText = '';
             if (priceText.toLowerCase().startsWith('from ')) {
-                fromText = 'From ';
-                priceText = priceText.substring(5).trim();
+                fromText = 'As low as ';
+                priceText = priceText.substring(10).trim();
             }
             if (priceText.toLowerCase().startsWith('rrp ')) {
                 fromText = 'RRP ';
                 priceText = priceText.substring(4).trim();
+            }
+            if (priceText.toLowerCase().startsWith('as low as ')) {
+                fromText = 'As low as ';
+                priceText = priceText.substring(10).trim();
             }
 
             let priceMatch = priceText.match(/\$?(\d+(?:\.\d{1,2})?)/);
