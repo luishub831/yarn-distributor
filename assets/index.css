@@ -14544,7 +14544,7 @@ product-media[ready],product-media-carousel[ready]{
     align-items:center
 }
 .product__info .product-price__current-price:before{
-    content:"As low as";
+    content:"RRP";
     color:gray!important;
     font-size:12px;
     margin-right:15px
